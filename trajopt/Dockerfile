@@ -12,4 +12,9 @@ ENV GUROBI_HOME /usr/local/src/gurobi563/linux64
 
 # trajopt
 RUN git clone https://github.com/joschu/trajopt.git /usr/local/src/trajopt
+RUN cd /usr/local/src/trajopt; \
+	mkdir build; \
+	cd build; \
+	cmake ..; \
+	make -j
 
