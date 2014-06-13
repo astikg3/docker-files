@@ -6,6 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONPATH /usr/local/raas/src:/usr/local/raas/src/raas_example
 
 RUN apt-get install -y apt-utils
-RUN apt-get install -y python-numpy python-scipy python-setuptools
+RUN apt-get install -y python-numpy python-setuptools
 RUN easy_install pytz
 
