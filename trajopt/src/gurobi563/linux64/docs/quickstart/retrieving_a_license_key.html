@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Retrieving a license key</TITLE>
+<META NAME="description" CONTENT="Retrieving a license key">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="setting_up_a_token_server.html">
+<LINK REL="previous" HREF="creating_a_new_trial_or_ac.html">
+<LINK REL="up" HREF="how_to_obtain_and_install_.html">
+<LINK REL="next" HREF="where_to_store_your_licens.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html293"
+  HREF="where_to_store_your_licens.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html291"
+  HREF="how_to_obtain_and_install_.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html285"
+  HREF="creating_a_new_trial_or_ac.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html294"
+  HREF="where_to_store_your_licens.html">Where to store your</A>
+<B> Up:</B> <A NAME="tex2html292"
+  HREF="how_to_obtain_and_install_.html">How to Obtain and</A>
+<B> Previous:</B> <A NAME="tex2html286"
+  HREF="creating_a_new_trial_or_ac.html">Creating a new trial</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00022000000000000000"></A>
+<A NAME="subsection:licensekey"></A>
+<BR>
+Retrieving a license key
+</H2>
+
+<P>
+Once a license is visible under the
+<A NAME="tex2html12"
+  HREF="http://www.gurobi.com/download/licenses/current">Current</A>
+tab, clicking on the <EM>License ID</EM> will produce a page
+like the following:
+
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="726" HEIGHT="784" ALIGN="BOTTOM" BORDER="0"
+ SRC="./license.png"
+ ALT="Image license">
+
+</DIV>
+The next step is to associate this license with your machine
+by obtaining a <EM>License Key</EM>.
+
+<P>
+To obtain a Gurobi license key for your machine, you'll need to run
+the <code>grbgetkey</code> command on the machine on which you would like
+to run the Gurobi Optimizer.  Note that the machine must be connected to
+the Internet in order to run this command.  If you are using a free
+academic license, your machine must be connected from a recognized
+academic domain. Note that an Internet connection is not required once
+you have obtained your license key.
+
+<P>
+The exact command to run for a specific license is indicated at the
+bottom of the license page (e.g., <code>grbgetkey 253e22f3-...</code>).  We
+recommend that you use copy-paste to grab the entire <code>grbgetkey</code>
+command from our website.  On a Windows system, you can paste the
+command directly into the Windows <EM>Run</EM> box.
+Press the <EM>Start</EM> key and the letter <EM>R</EM> simultaneously
+to open this box.  On Windows Vista and Windows 7, you can
+also paste the command into the <EM>Search</EM> box (available
+under the <EM>Start</EM> button).  This is demonstrated in the
+Windows 7 example shown here:
+
+<DIV ALIGN="CENTER">
+<DIV ALIGN="CENTER">
+
+</DIV><IMG
+  WIDTH="409" HEIGHT="183" ALIGN="BOTTOM" BORDER="0"
+ SRC="./startrun.png"
+ ALT="Image startrun">
+
+</DIV>
+Paste the command into this box and then hit <EM>Enter</EM> to run the
+command.  On a Linux machine, you would paste this command into a
+shell window.  On a Mac system, you would paste the command into a
+<EM>Terminal</EM> window.
+
+<P>
+The <code>grbgetkey</code> program passes identifying information about
+your machine back to our website, and the website responds with your
+license key.  Once this exchange has occured, <code>grbgetkey</code> will
+ask you for the name of the directory in which to store your license
+key file.  You should see a prompt that looks like the following
+<PRE>
+---------------------
+Saving license key...
+---------------------
+
+In which directory would you like to store the Gurobi license key file?
+[hit Enter to store it in c:/Users/Jones]:
+</PRE>
+You can store the license file anywhere, but we recommend that you
+accept the default location (by hitting <EM>Enter</EM>).
+You can learn more about
+<A HREF="where_to_store_your_licens.html#subsubsection:licensefilelocation">using a non-default license file location</A>.
+
+<P>
+If you are installing a paid license and your computer isn't connected
+to the Internet, we also offer a manual installation process.
+You'll find manual installation instructions at the bottom
+of the license page (by following the link labeled <EM>click
+here for additional instructions</EM>).
+
+<P>
+If you are using a free academic license, <code>grbgetkey</code> will try to
+<A HREF="academic_validation.html#subsection:academicvalidation">validate your academic license</A>.
+
+<P>
+<SPAN  CLASS="textbf">Next steps</SPAN>
+
+<P>
+If you are using one of our floating license types
+(including a single-use license), you'll also need to
+<A HREF="setting_up_a_token_server.html#subsection:tokenserver">set up the token server</A>.
+
+<P>
+If you are setting up a Gurobi compute server, you'll need
+<A HREF="setting_up_a_compute_serve.html#subsection:computeserver">set up the compute server</A>.
+
+<P>
+Once you have followed the steps above and have obtained
+a license key file, your next step is to
+<A HREF="testing_the_license.html#subsection:testlicense">test your license</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html295"
+  HREF="where_to_store_your_licens.html">Where to store your license key file</A>
+<LI><A NAME="tex2html296"
+  HREF="academic_validation.html">Academic validation</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html293"
+  HREF="where_to_store_your_licens.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html291"
+  HREF="how_to_obtain_and_install_.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html285"
+  HREF="creating_a_new_trial_or_ac.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html294"
+  HREF="where_to_store_your_licens.html">Where to store your</A>
+<B> Up:</B> <A NAME="tex2html292"
+  HREF="how_to_obtain_and_install_.html">How to Obtain and</A>
+<B> Previous:</B> <A NAME="tex2html286"
+  HREF="creating_a_new_trial_or_ac.html">Creating a new trial</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

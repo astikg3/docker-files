@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Gurobi Optimization</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<style type="text/css">
+	body {
+		background-color: #E7E9EB;
+		padding: 20px 40px;
+		font-family: Helvetica, Arial, sans-serif;
+		font-size:11pt;
+		line-height:20px;
+		margin:0px;
+	}
+	img {
+		border: none;
+	}
+	h2 {
+		margin: 36px 0 8px;
+	}
+	.menu {
+		padding-bottom: 40px;
+	}
+	.menu td {
+		padding-right: 30px;
+		font-size: 14pt;
+		font-weight: bold;
+	}
+	.menu a {
+		text-decoration: none;
+		color: #292929;
+	}
+	.menu a:hover {
+		color: #909090;
+	}
+	.platforms {
+		border-collapse: collapse;
+	}
+	.platforms td, .platforms th {
+		font-size: 10pt;
+		border: solid 1px black;
+		padding: 4px 8px;
+		text-align: left;
+	}
+	</style>
+</head>
+<body>
+<table class='menu'>
+	<tr>
+		<td><a href="http://www.gurobi.com"><img style='width:211px' src="docs/logo.png" alt="Gurobi Optimization" title="Gurobi Optimization" /></a></td>
+		<td><a href="http://www.gurobi.com">gurobi.com</a></td>
+		<td><a href="docs/refman/refman.html">Reference Manual</a></td>
+		<td><a href="mailto:support@gurobi.com">Customer Support</a></td>
+	</tr>
+</table>
+<h1>
+	WELCOME
+</h1>
+<p>
+	You have successfully installed version 5.6 of the Gurobi Optimizer.
+</p>
+<p>
+	You'll find instructions for setting up your Gurobi license in this document, as well as a list of supported platforms, and Release Notes and guidelines for converting existing Gurobi code to run with this new version. Once you have finished browsing this document, you should refer to the <a href="docs/quickstart/quickstart.html">Quick Start Guide</a>, the <a href="docs/examples/examples.html">Example Tour</a>, or the <a href="docs/refman/refman.html">Reference Manual</a> to get started using the Gurobi Optimizer.
+</p>
+<h2>
+	Obtaining Your License
+</h2>
+<p>
+	Gurobi Optimizer 5.6 uses the same licenses as version 5.5, so if you already have a Gurobi 5 license, there's no need to obtain a new one.  You may need to copy your existing license file to a new location, though.  Consult the <a href="docs/quickstart/quickstart.html">Quick Start Guide</a> for information on where to store your license file.
+</p>
+<p>
+If you don't already have a Gurobi 5 license, you will need to visit the <a href="http://gurobi.com/download/licenses" target="_blank"> Licenses</a> page on the Gurobi website. If you are a commercial user under maintenance, you should see your Gurobi 5 license under <a href="http://gurobi.com/download/licenses/current">Current</a>.  If you would like to request a free trial or free academic license, you should request a new license from the <a href="http://gurobi.com/download/licenses/free-trial">Free Trial</a> or <a href="http://gurobi.com/download/licenses/free-academic">Free Academic</a> menu items. Once you have a license on the Gurobi web site, you will need to follow the <a href="docs/quickstart/how_to_obtain_and_install_.html">instructions for obtaining and installing a license</a> in the <a href="docs/quickstart/quickstart.html">Quick Start Guide</a>.
+</p>
+<h2>
+	Supported Platforms for Version 5.6
+</h2>
+<p>
+	The following table lists the supported platforms for version 5.6:
+</p>
+<table class='platforms'>
+	<tr>
+		<th>Platform</th>
+		<th>Operating System</th>
+		<th>Compiler</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td rowspan="4">Windows&reg; 32-bit (win32)</td>
+		<td>Windows Vista&reg;, Windows 7, Windows 8</td>
+		<td>Visual Studio&reg; 2008</td>
+		<td>Use gurobi_c++md2008.lib (e.g.) for C++</td>
+	</tr>
+	<tr>
+		<td>Windows Vista, Windows 7, Windows 8</td>
+		<td>Visual Studio 2010</td>
+		<td>Use gurobi_c++md2010.lib (e.g.) for C++</td>
+	</tr>
+	<tr>
+		<td>Windows 7, Windows 8</td>
+		<td>Visual Studio 2012</td>
+		<td>Use gurobi_c++md2012.lib (e.g.) for C++</td>
+	</tr>
+	<tr>
+		<td>Windows 7, Windows 8</td>
+		<td>Visual Studio 2013</td>
+		<td>Use gurobi_c++md2013.lib (e.g.) for C++</td>
+	</tr>
+	<tr>
+		<td rowspan="4">Windows 64-bit (win64)</td>
+		<td>Windows Vista, Windows 7, Windows 8, Windows Server 2008 R2, Windows Server 2012 R2</td>
+		<td>Visual Studio 2008</td>
+		<td>Use gurobi_c++md2008.lib (e.g.) for C++</td>
+	</tr>
+	<tr>
+		<td>Windows Vista, Windows 7, Windows 8, Windows Server 2008 R2, Windows Server 2012 R2</td>
+		<td>Visual Studio 2010</td>
+		<td>Use gurobi_c++md2010.lib (e.g.) for C++</td>
+	</tr>
+	<tr>
+		<td>Windows 7, Windows 8, Windows Server 2008 R2, Windows Server 2012 R2</td>
+		<td>Visual Studio 2012</td>
+		<td>Use gurobi_c++md2012.lib (e.g.) for C++</td>
+	</tr>
+	<tr>
+		<td>Windows 7, Windows 8, Windows Server 2008 R2, Windows Server 2012 R2</td>
+		<td>Visual Studio 2013</td>
+		<td>Use gurobi_c++md2013.lib (e.g.) for C++</td>
+	</tr>
+	<tr>
+		<td rowspan="3">Linux&reg; 64-bit (linux64)</td>
+		<td>Red Hat&reg; Enterprise Linux 5.3-5.10, 6.0-6.5</td>
+		<td>GCC 4.1/4.4</td>
+		<td>Use libgurobi_g++4.1.a for C++ in RHEL 5</td>
+	</tr>
+	<tr>
+		<td>SUSE&reg; Enterprise Linux 11, 12</td>
+		<td>GCC 4.3/4.4</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Ubuntu&reg; 10.04, 12.04, 13.04, 13.10, 14.04</td>
+		<td>GCC 4.2/4.3/4.4/4.6</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Mac OS 64-bit (mac64)</td>
+		<td>Mac OS X 10.7 (Lion), 10.8 (Mountain Lion), 10.9 (Mavericks)</td>
+		<td>Xcode 4/5</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AIX&reg; 64-bit (power64)</td>
+		<td>AIX 6.1, 7.1</td>
+		<td>XL C/C++ 9</td>
+		<td>Due to limited Python support on AIX, this port does not include the Interactive Shell or the Python libraries.</td>
+	</tr>
+</table>
+<p>
+	Our MATLAB&reg; interface supports MATLAB versions 2008b through 2014a. Our R interface supports R versions 3.0.0 through 3.0.3.
+</p>
+<h2>
+	Release Notes for Version 5.6
+</h2>
+<p>
+	In addition to performance enhancements, Gurobi 5.6 adds new features, Python 3.2 support, R 3.0 support,
+and increases the size of problem you can solve with our free trial version:
+</p>
+<ul>
+        <li><b>Distributed tuning and distributed concurrent MIP:</b> Gurobi Compute Server users can now harness the power of multiple independent machines to do parallel parameter tuning or concurrent MIP solving.  You simply provide a list of compute servers, and Gurobi automatically distributes the work among the available machines.  Several new parameters have been added to support this new capability:
+        <ul>
+                <li><a href="docs/refman/concurrentmipjobs.html"><b>ConcurrentMIPJobs:</b></a> Indicates how many concurrent MIP jobs to start.  You would typically run one job on each available compute server, but you also have the option of running multiple jobs on a single compute server.</li>
+                <li><a href="docs/refman/tunejobs.html"><b>TuneJobs:</b></a> Indicates how many tuning jobs to start.  Again, you would typically run one job on each available compute server, but you can also run multiple jobs on a single compute server.</li>
+                <li><a href="docs/refman/serverpool.html"><b>ServerPool:</b></a> The list of Gurobi compute servers to use for distributed tuning or distributed concurrent MIP solving.</li>
+                <li><a href="docs/refman/serverpassword.html"><b>ServerPassword:</b></a> The access password for the compute servers (if any).</li>
+        </ul>
+        Please refer to the <a href="docs/refman/distributed_parallel_algor.html">distributed parallel algorithm</a> discussion in the <a href="docs/refman/refman.html">Gurobi Reference Manual</a> for additional details on these new features.</li>
+	<li><b>MPS and LP file reading and writing from MATLAB:</b> You can now use the Gurobi MATLAB interface to read an MPS or LP file into a MATLAB matrix, or write a MATLAB matrix into an MPS or LP file.</li>
+	<li><b>Support for Python 3.2 on Linux and Windows:</b> You can now use Gurobi from Python 3.2.  Use the <i>setup.py</i> script included with this distribution to install the Gurobi module into your Python 3.2 installation.</li>
+	<li><b>Support for R 3.0:</b> You can now use Gurobi from R 3.0.</li>
+	<li><b>Solve larger problems with our free trial version:</b> The Gurobi free trial now allows you to build and solve models with up to 2000 constraints and 2000 variables.</li>
+	<li><b>Additional new parameters:</b>
+	<ul>
+		<li><a href="docs/refman/disconnected.html"><b>Disconnected:</b></a> MIP models are sometimes made up of multiple, independent sub-models.  This parameter controls the strategy used to exploit this structure.</li>
+		<li><a href="docs/refman/presos1bigm.html"><b>PreSOS1BigM</b></a> and <a href="docs/refman/presos2bigm.html"><b>PreSOS2BigM:</b></a> These new parameters provide user control of presolve SOS linearization.</li>
+		<li><a href="docs/refman/concurrentsettings.html"><b>ConcurrentSettings:</b></a> This command-line only parameter allows you to create concurrent environments (for concurrent MIP) from a set of .prm files.</li>
+	</ul>
+        Details can be found in the <a href="docs/refman/parameters.html">parameters</a> section of the <a href="docs/refman/refman.html">Gurobi Reference Manual</a>.
+	<li><b>New <i>sync</i> routines for non-blocking optimization:</b> Users of the non-blocking optimization feature in Compute Server should use the new <i>sync</i> routines, available in all supported languages, to sychronize with an optimization that is in progress.</li>
+	</li>
+</ul>
+<h2>
+	Code Conversion from Version 5.5
+</h2>
+Programs that were originally written for version 5.5 of the Gurobi Optimizer require no code changes to use version 5.6.  If you'd like to use the new features, some code changes are required.
+<h2>
+	License Agreement
+</h2>
+<p>
+	Note that this software is covered by the <a href="EULA.pdf">Gurobi End User License Agreement</a>. By completing the Gurobi installation process and using the software, you are accepting the terms of this agreement.
+</p>
+<p>
+	Thank you using Gurobi products!
+</p>
+<hr />
+<p>
+	&copy; 2013 Gurobi Optimization. All Rights Reserved.
+</p>
+</body>
+</html>

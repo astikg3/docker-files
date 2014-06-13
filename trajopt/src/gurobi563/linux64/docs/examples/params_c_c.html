@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>params_c.c</TITLE>
+<META NAME="description" CONTENT="params_c.c">
+<META NAME="keywords" CONTENT="examples">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="examples.css">
+
+<LINK REL="next" HREF="qcp_c_c.html">
+<LINK REL="previous" HREF="mip2_c_c.html">
+<LINK REL="up" HREF="c_examples.html">
+<LINK REL="next" HREF="qcp_c_c.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html616"
+  HREF="qcp_c_c.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html614"
+  HREF="c_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html608"
+  HREF="mip2_c_c.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html617"
+  HREF="qcp_c_c.html">qcp_c.c</A>
+<B> Up:</B> <A NAME="tex2html615"
+  HREF="c_examples.html">C Examples</A>
+<B> Previous:</B> <A NAME="tex2html609"
+  HREF="mip2_c_c.html">mip2_c.c</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000211200000000000000"></A>
+<A NAME="subsubsection:params_c.c"></A>
+<BR>
+params_c.c
+</H3>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">/* Copyright 2013, Gurobi Optimization, Inc. */
+
+/* Use parameters that are associated with a model.
+
+   A MIP is solved for 5 seconds with different sets of parameters.
+   The one with the smallest MIP gap is selected, and the optimization
+   is resumed until the optimal solution is found.
+*/
+
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include "gurobi_c.h"
+
+int gap(GRBmodel*, double*);
+
+int
+main(int   argc,
+     char *argv[])
+{
+  GRBenv   *env   = NULL, *baseenv = NULL, *menv = NULL, *bestenv = NULL;
+  GRBmodel *base  = NULL, *m = NULL, *bestModel = NULL;
+  int       error = 0;
+  int       i;
+  int       ismip;
+  int       mipfocus;
+  double    bestGap = GRB_INFINITY, currGap;
+
+  if (argc &lt; 2)
+  {
+    fprintf(stderr, "Usage: params_c filename\n");
+    exit(1);
+  }
+
+  error = GRBloadenv(&amp;env, "params.log");
+  if (error) goto QUIT;
+
+  /* Read model and verify that it is a MIP */
+  error = GRBreadmodel(env, argv[1], &amp;base);
+  if (error) goto QUIT;
+  error = GRBgetintattr(base, "IsMIP", &amp;ismip);
+  if (error) goto QUIT;
+  if (ismip == 0)
+  {
+    printf("The model is not an integer program\n");
+    goto QUIT;
+  }
+
+  /* Set a 5 second time limit */
+  baseenv = GRBgetenv(base);
+  if (!baseenv) goto QUIT;
+  error = GRBsetdblparam(baseenv, "TimeLimit", 5);
+  if (error) goto QUIT;
+
+  /* Now solve the model with different values of MIPFocus */
+  for (i = 0; i &lt;= 3; ++i)
+  {
+    m = GRBcopymodel(base);
+    if (!m) goto QUIT;
+    menv = GRBgetenv(m);
+    if (!menv) goto QUIT;
+    error = GRBsetintparam(menv, "MIPFocus", i);
+    if (error) goto QUIT;
+    error = GRBoptimize(m);
+    if (error) goto QUIT;
+    error = gap(m, &amp;currGap);
+    if (error) goto QUIT;
+    if (bestModel == NULL || bestGap &gt; currGap)
+    {
+      GRBfreemodel(bestModel);
+      bestModel = m;
+      bestGap = currGap;
+    }
+    else
+    {
+      GRBfreemodel(m);
+    }
+  }
+
+  /* Finally, reset the time limit and continue to solve the
+     best model to optimality */
+  bestenv = GRBgetenv(bestModel);
+  if (!bestenv) goto QUIT;
+  error = GRBsetdblparam(bestenv, "TimeLimit", GRB_INFINITY);
+  if (error) goto QUIT;
+  error = GRBoptimize(bestModel);
+  if (error) goto QUIT;
+  error = GRBgetintparam(bestenv, "MIPFocus", &amp;mipfocus);
+  if (error) goto QUIT;
+
+  printf("Solved with MIPFocus: %i\n", mipfocus);
+
+QUIT:
+
+  /* Error reporting */
+
+  if (error)
+  {
+    printf("ERROR: %s\n", GRBgeterrormsg(env));
+    exit(1);
+  }
+
+  /* Free models */
+
+  GRBfreemodel(bestModel);
+  GRBfreemodel(base);
+
+  /* Free environment */
+
+  GRBfreeenv(env);
+
+  return 0;
+}
+
+
+/* Simple function to determine the MIP gap */
+int gap(GRBmodel *model, double *gap)
+{
+  int error;
+  int solcount;
+  double objval, objbound;
+
+  error = GRBgetintattr(model, "SolCount", &amp;solcount);
+  if (error) return error;
+  error = GRBgetdblattr(model, "ObjVal", &amp;objval);
+  if (error) return error;
+
+  if ((solcount == 0) || (fabs(objval) &lt; 1e-6))
+  {
+    *gap = GRB_INFINITY;
+    return 0;
+  }
+  error = GRBgetdblattr(model, "ObjBound", &amp;objbound);
+  if (error) return error;
+
+  *gap = fabs(objbound - objval) / fabs(objval);
+  return 0;
+}
+</PRE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html616"
+  HREF="qcp_c_c.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html614"
+  HREF="c_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html608"
+  HREF="mip2_c_c.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html617"
+  HREF="qcp_c_c.html">qcp_c.c</A>
+<B> Up:</B> <A NAME="tex2html615"
+  HREF="c_examples.html">C Examples</A>
+<B> Previous:</B> <A NAME="tex2html609"
+  HREF="mip2_c_c.html">mip2_c.c</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

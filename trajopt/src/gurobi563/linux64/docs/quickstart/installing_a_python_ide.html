@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Installing a Python IDE</TITLE>
+<META NAME="description" CONTENT="Installing a Python IDE">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="file_overview.html">
+<LINK REL="previous" HREF="recommended_reading.html">
+<LINK REL="up" HREF="quickstart.html">
+<LINK REL="next" HREF="file_overview.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1718"
+  HREF="file_overview.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1716"
+  HREF="quickstart.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1710"
+  HREF="recommended_reading.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1719"
+  HREF="file_overview.html">File Overview</A>
+<B> Up:</B> <A NAME="tex2html1717"
+  HREF="quickstart.html">Gurobi Optimizer Quick Start</A>
+<B> Previous:</B> <A NAME="tex2html1711"
+  HREF="recommended_reading.html">Recommended Reading</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION000140000000000000000"></A>
+<A NAME="section:PyScripter"></A>
+<BR>
+Installing a Python IDE
+</H1>
+
+<P>
+While command-line tools are likely to be familiar to Linux users and
+to most Mac users, we realize that the command line can be quite
+foreign to a Windows user.  This section guides you through the steps
+involved in installing PyScripter, a free and widely-used Python
+Integrated Development Environment (IDE) for Windows.  PyScripter
+makes it easier for Windows users to use the Gurobi Interactive Shell,
+and to develop and debug programs that use the Gurobi Python
+interface.
+
+<P>
+If you are using Gurobi on a Linux or Mac platform, or if you would
+like to consider other IDE options on Windows, a number of other free
+Python IDEs are available.  Popular choices include
+<A NAME="tex2html56"
+  HREF="http://eric-ide.python-projects.org">Eric</A>,
+<A NAME="tex2html57"
+  HREF="http://code.google.com/p/iep">iep</A>, and
+<A NAME="tex2html58"
+  HREF="http://pydev.org">PyDev</A>.  We won't be covering the
+details of installing these other options for use with Gurobi, but the
+PyScripter instructions that follow should provide a good outline for
+the steps involved.  We've found that PyScripter provides a nice
+balance between power and complexity, but we realize that people may
+look for different things in their IDEs.
+
+<P>
+<SPAN  CLASS="textbf">Step 1: Install Gurobi</SPAN>
+
+<P>
+The first step in using Gurobi from Pyscripter is to
+<A HREF="installation_windows.html#subsection:InstallWindows">install Gurobi on your machine</A>
+and
+<A HREF="how_to_obtain_and_install_.html#section:License">install a Gurobi license</A>
+ (if you haven't already done so).
+
+<P>
+<SPAN  CLASS="textbf">Step 2: Install Python</SPAN>
+
+<P>
+The next step is to install a stand-alone
+<A NAME="tex2html59"
+  HREF="http://python.org/download">Python interpreter</A>.  Be sure to install a
+version that is compatible with the version of Gurobi you installed.
+We recommend Python 2.7, but Python 3.2 is also an option:
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="814" HEIGHT="503" ALIGN="BOTTOM" BORDER="0"
+ SRC="./python.png"
+ ALT="Image python">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+Choose the <code>Windows X86-64 Installer</code> if you installed the 64-bit
+version of Gurobi, or the <code>Windows Installer</code> if you installed the
+32-bit version of Gurobi.
+
+<P>
+Note that Python gives you the option of choosing an install directory,
+but PyScripter will only be able to find it if you stick with the default.
+
+<P>
+<SPAN  CLASS="textbf">Step 3: Install Gurobi into Python</SPAN>
+
+<P>
+The third step is to run a simple program that installs the Gurobi
+module into Python.  Simply double-click on <code>pysetup</code> in the
+<code>bin</code> folder of your Gurobi installation
+(<code>c:\gurobi560\win64\bin</code> for a default installation of the
+64-bit Windows version).  The program will prompt you for the location
+of your Python installation.  When the program is finished, you should
+see output that looks like the following:
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="678" HEIGHT="344" ALIGN="BOTTOM" BORDER="0"
+ SRC="./pysetup.png"
+ ALT="Image pysetup">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+<SPAN  CLASS="textbf">Step 4: Install PyScripter</SPAN>
+
+<P>
+The final step is to
+<A NAME="tex2html60"
+  HREF="https://code.google.com/p/pyscripter/">install PyScripter</A>:
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="707" HEIGHT="572" ALIGN="BOTTOM" BORDER="0"
+ SRC="./pyscripter.png"
+ ALT="Image pyscripter">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+Again, choose the <code>x64-Setup</code> version if you installed the 64-bit
+version of Gurobi, or the <code>Setup</code> version if you installed the
+32-bit version of Gurobi.
+
+<P>
+One installation of PyScripter can work with multiple versions of
+Python.  You will need to launch the one that corresponds to the
+Python version you installed (we used <code>PyScripter for Python 2.7</code>
+in this example):
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="729" HEIGHT="482" ALIGN="BOTTOM" BORDER="0"
+ SRC="./pyscripter2.png"
+ ALT="Image pyscripter2">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+<SPAN  CLASS="textbf">Using PyScripter</SPAN>
+
+<P>
+Gurobi Interactive Shell commands can be typed directly into the
+<code>Python Interpreter</code> window of PyScripter:
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="774" HEIGHT="522" ALIGN="BOTTOM" BORDER="0"
+ SRC="./pyscripter5.png"
+ ALT="Image pyscripter5">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+Unfortunately, a general-purpose Python IDE like PyScripter requires
+one extra step that isn't required when you launch the Gurobi shell
+from the Gurobi icon or by using the <code>gurobi.sh</code> command: you
+must type <code>from gurobipy import *</code> before issuing any Gurobi
+commands.  Unlike our icon or our <code>gurobi.sh</code> command, the IDE
+won't load the Gurobi module automatically, so you must do it
+manually.
+
+<P>
+You can also use PyScripter to run any of the Gurobi examples.  For
+example, if you use <code>Open</code> under the <code>File</code> menu to open
+Gurobi example <code>mip1.py</code>, and then click on the <code>Run</code> icon,
+you should see:
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="729" HEIGHT="560" ALIGN="BOTTOM" BORDER="0"
+ SRC="./pyscripter3.png"
+ ALT="Image pyscripter3">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+Some Gurobi examples require command-line arguments.  Those can
+be input from the <TT>Command Line Parameters...</TT> item of
+the <code>Run</code> menu.  For example, to run the <code>sudoku.py</code>
+example with file <code>sudoku1</code> as input...
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="731" HEIGHT="524" ALIGN="BOTTOM" BORDER="0"
+ SRC="./pyscripter4.png"
+ ALT="Image pyscripter4">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+A few Gurobi examples require additional Python modules.  For example,
+our <code>diet4</code> example uses the Python
+<A NAME="tex2html61"
+  HREF="http://pypi.python.org/pypi/xlrd">xlrd</A>
+module to
+extract data from an Excel spreadsheet.  You can find missing Python
+modules at the <A NAME="tex2html62"
+  HREF="http://pypi.python.org">Python Package Index (PyPI)
+  site</A>.  The Python interpreter that we
+include with our distribution includes all the modules used by our
+examples.  When you install your own Python interpreter, you may have
+to install some modules yourself from this site.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1718"
+  HREF="file_overview.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1716"
+  HREF="quickstart.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1710"
+  HREF="recommended_reading.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1719"
+  HREF="file_overview.html">File Overview</A>
+<B> Up:</B> <A NAME="tex2html1717"
+  HREF="quickstart.html">Gurobi Optimizer Quick Start</A>
+<B> Previous:</B> <A NAME="tex2html1711"
+  HREF="recommended_reading.html">Recommended Reading</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Testing the license</TITLE>
+<META NAME="description" CONTENT="Testing the license">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="previous" HREF="creating_a_client_license.html">
+<LINK REL="up" HREF="how_to_obtain_and_install_.html">
+<LINK REL="next" HREF="solving_a_simple_model_the.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html433"
+  HREF="solving_a_simple_model_the.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html431"
+  HREF="how_to_obtain_and_install_.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html427"
+  HREF="client_license_file_locati.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html434"
+  HREF="solving_a_simple_model_the.html">Solving a Simple Model</A>
+<B> Up:</B> <A NAME="tex2html432"
+  HREF="how_to_obtain_and_install_.html">How to Obtain and</A>
+<B> Previous:</B> <A NAME="tex2html428"
+  HREF="client_license_file_locati.html">Client license file location</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00026000000000000000"></A>
+<A NAME="subsection:testlicense"></A>
+<BR>
+Testing the license
+</H2>
+
+<P>
+Once you have obtained a license key for your machine, you are ready
+to test your license using the Gurobi Interactive Shell.
+On Windows systems, double-click on the Gurobi icon on your desktop.
+On Linux or Mac OS systems, type <code>gurobi.sh</code>
+in a <EM>Terminal</EM> window.  The shell should produce the following
+output:
+<PRE>
+Gurobi Interactive Shell, Version 5.6.0
+Copyright (c) 2013, Gurobi Optimization, Inc.
+Type "help()" for help
+
+gurobi&gt;
+</PRE>
+
+<P>
+If you are running as a client of a Gurobi compute server, the message
+above will be preceded by a message that looks like the following:
+<PRE>
+Server capacity available on myserver - running now
+</PRE>
+
+<P>
+If you see similar output, your license is functioning correctly.  You
+are now ready to use the Gurobi Optimizer.  The
+<A HREF="solving_a_simple_model_the.html#section:CommandLine">next section</A> will
+show you how to solve a simple optimization model.
+
+<P>
+<SPAN  CLASS="textbf">Possible errors</SPAN>
+
+<P>
+If the Gurobi shell didn't produce the desired output, there's a problem
+with your license.  We'll list a few common errors here.
+
+<P>
+The following message...
+<PRE>
+ERROR: No Gurobi license found (user smith, host mymachine, hostid 9d3128ce)
+</PRE>
+indicates that your <code>gurobi.lic</code> file couldn't be found.
+Read
+<A HREF="where_to_store_your_licens.html#subsubsection:licensefilelocation">this section</A>
+for more information
+on where Gurobi looks for this file.  Note that on Windows systems,
+this error
+is often caused by a hidden file suffix.  Make sure the name of your
+license file is <code>gurobi.lic</code>, and not <code>gurobi.lic.txt</code>.
+
+<P>
+The following message...
+<PRE>
+ERROR: HostID mismatch (licensed to 9d3128ce, hostid is 7de025e9)
+</PRE>
+indicates that your <code>gurobi.lic</code> isn't valid for this machine.
+You should make sure that you are using the right <code>gurobi.lic</code>
+file.
+
+<P>
+If you are running as a client of a Gurobi compute server, the following message...
+<PRE>
+ERROR: No response from servers
+</PRE>
+indicates that the compute server isn't currently running.
+Please consult the section on
+<A HREF="setting_up_a_compute_serve.html#subsection:computeserver">setting up a compute server</A>.
+
+<P>
+Some Windows users have reported that they were unable to launch the
+Gurobi shell after running the installer.  You may need
+to log off and log back in again in order for the environment variable
+changes made by the installer to take effect.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html433"
+  HREF="solving_a_simple_model_the.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html431"
+  HREF="how_to_obtain_and_install_.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html427"
+  HREF="client_license_file_locati.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html434"
+  HREF="solving_a_simple_model_the.html">Solving a Simple Model</A>
+<B> Up:</B> <A NAME="tex2html432"
+  HREF="how_to_obtain_and_install_.html">How to Obtain and</A>
+<B> Previous:</B> <A NAME="tex2html428"
+  HREF="client_license_file_locati.html">Client license file location</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

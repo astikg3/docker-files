@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>NonBlocking</TITLE>
+<META NAME="description" CONTENT="NonBlocking">
+<META NAME="keywords" CONTENT="refman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="refman.css">
+
+<LINK REL="next" HREF="normadjust.html">
+<LINK REL="previous" HREF="nodemethod.html">
+<LINK REL="up" HREF="parameter_descriptions.html">
+<LINK REL="next" HREF="normadjust.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html11245"
+  HREF="normadjust.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html11243"
+  HREF="parameter_descriptions.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html11237"
+  HREF="nodemethod.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html11246"
+  HREF="normadjust.html">NormAdjust</A>
+<B> Up:</B> <A NAME="tex2html11244"
+  HREF="parameter_descriptions.html">Parameter Descriptions</A>
+<B> Previous:</B> <A NAME="tex2html11238"
+  HREF="nodemethod.html">NodeMethod</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION0001425800000000000000"></A>
+<A NAME="parameter:NonBlocking"></A>
+<BR>
+NonBlocking
+</H3>
+Enable/disable non-blocking optimization 
+<BR>
+<BR>
+
+<TABLE CELLPADDING=3>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Type:</SPAN></TH>
+<TD ALIGN="LEFT">int</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Default value:</SPAN></TH>
+<TD ALIGN="LEFT">0</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Minimum value:</SPAN></TH>
+<TD ALIGN="LEFT">0</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Maximum value:</SPAN></TH>
+<TD ALIGN="LEFT">1</TD>
+</TR>
+</TABLE>
+
+<P>
+Enables non-blocking optimization in a Compute Server environment.
+When enabled, a call to the optimize method from a compute server
+client returns immediately, allowing the client program to work on
+something else while the optimization proceeds on the server.  The
+client program can later check on the status of the optimization by
+querying the value of the
+<A HREF="status.html#attr:Status">Status</A>
+attribute of the running model (see the
+<A HREF="optimization_status_codes.html#sec:StatusCodes">Status Code</A> section for further details).
+A value of <code>IN_PROGRESS</code> indicates that the
+non-blocking optimization is still in progress.
+
+<P>
+Note that the client program <EM>must</EM> call the appropriate
+<EM>sync</EM> routine (<A HREF="c_grbsync.html#routine:GRBsync">GRBsync</A> in C,
+<A HREF="cpp_grbmodel_sync.html#cppmethod:GRBModel::sync">GRBModel::sync</A> in C++,
+<A HREF="java_grbmodel_sync.html#javamethod:GRBModel.sync">GRBModel.sync</A> in Java,
+<A HREF="cs_grbmodel_sync.html#dotnetmethod:GRBModel.Sync">GRBModel.Sync</A> in .NET, and
+<A HREF="py_model_sync.html#pythonmethod:Model.sync">Model.sync</A> in Python)
+before the model is freed or garbage collected.
+
+<P>
+
+<SPAN  CLASS="textbf">Note:</SPAN> Only affects optimization in a Gurobi Compute Server environment 
+<BR>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html11245"
+  HREF="normadjust.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html11243"
+  HREF="parameter_descriptions.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html11237"
+  HREF="nodemethod.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html11246"
+  HREF="normadjust.html">NormAdjust</A>
+<B> Up:</B> <A NAME="tex2html11244"
+  HREF="parameter_descriptions.html">Parameter Descriptions</A>
+<B> Previous:</B> <A NAME="tex2html11238"
+  HREF="nodemethod.html">NodeMethod</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

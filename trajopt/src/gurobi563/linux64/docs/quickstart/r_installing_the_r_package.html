@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Installing the R Package</TITLE>
+<META NAME="description" CONTENT="Installing the R Package">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="r_example.html">
+<LINK REL="previous" HREF="r_interface.html">
+<LINK REL="up" HREF="r_interface.html">
+<LINK REL="next" HREF="r_example.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1630"
+  HREF="r_example.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1628"
+  HREF="r_interface.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1622"
+  HREF="r_interface.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1631"
+  HREF="r_example.html">Example</A>
+<B> Up:</B> <A NAME="tex2html1629"
+  HREF="r_interface.html">R Interface</A>
+<B> Previous:</B> <A NAME="tex2html1623"
+  HREF="r_interface.html">R Interface</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000121000000000000000">
+Installing the R Package</A>
+</H2>
+
+<P>
+To begin, you'll need to install the Gurobi package in R.  The
+R command for doing this is:
+<PRE>
+install.packages('&lt;R-package-file&gt;')
+</PRE>
+The Gurobi R package file can be found in the <code>&lt;installdir&gt;/R</code>
+directory of your Gurobi installation
+(e.g., <code>/opt/gurobi560/linux64/R</code> for the 64-bit Linux
+version of Gurobi
+5.6).  You should browse the <code>&lt;installdir&gt;/R</code> directory to find
+the exact name of the file for your platform (the 64-bit Linux
+package is in file
+<code>gurobi_5.6-0_R_x86_64-pc-linux-gnu.tar.gz</code>, while
+the Windows package is in file
+<code>gurobi_5.6-0.zip</code>).
+
+<P>
+You will need to be careful that the R binary and the Gurobi package
+you install both use the same instruction set.  For example, if you
+are using the 64-bit version of R, you'll need to install the 64-bit
+version of Gurobi, and the 64-bit Gurobi R package.  This is
+particularly important on Windows systems, where the error messages
+that result from instruction set mismatches can be quite cryptic.
+
+<P>
+If you are using R from RStudio Server, and you get an error
+indicating that R is unable to load the Gurobi DLL or shared object,
+you may need to set the <code>rsession-ld-library-path</code> entry in the
+server config file.  Please consult the RStudio documentation for more
+information.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1630"
+  HREF="r_example.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1628"
+  HREF="r_interface.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1622"
+  HREF="r_interface.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1631"
+  HREF="r_example.html">Example</A>
+<B> Up:</B> <A NAME="tex2html1629"
+  HREF="r_interface.html">R Interface</A>
+<B> Previous:</B> <A NAME="tex2html1623"
+  HREF="r_interface.html">R Interface</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

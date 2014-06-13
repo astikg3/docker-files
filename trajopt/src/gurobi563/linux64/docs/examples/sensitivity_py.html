@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sensitivity.py</TITLE>
+<META NAME="description" CONTENT="sensitivity.py">
+<META NAME="keywords" CONTENT="examples">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="examples.css">
+
+<LINK REL="next" HREF="sos_py.html">
+<LINK REL="previous" HREF="qp_py.html">
+<LINK REL="up" HREF="python_examples.html">
+<LINK REL="next" HREF="sos_py.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2017"
+  HREF="sos_py.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2015"
+  HREF="python_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2009"
+  HREF="qp_py.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html2018"
+  HREF="sos_py.html">sos.py</A>
+<B> Up:</B> <A NAME="tex2html2016"
+  HREF="python_examples.html">Python Examples</A>
+<B> Previous:</B> <A NAME="tex2html2010"
+  HREF="qp_py.html">qp.py</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000262100000000000000"></A>
+<A NAME="subsubsection:sensitivity.py"></A>
+<BR>
+sensitivity.py
+</H3>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">#!/usr/bin/python
+
+# Copyright 2013, Gurobi Optimization, Inc.
+
+# Simple MIP sensitivity analysis example.
+# For each integer variable, fix it to its lower and upper bound
+# and check the impact on the objective.
+
+import sys
+from gurobipy import *
+
+if len(sys.argv) &lt; 2:
+    print('Usage: sensitivity.py filename')
+    quit()
+
+
+a = gurobi.read(sys.argv[1])
+a.optimize()
+a.params.outputFlag = 0
+
+# Extract variables from model
+
+avars = a.getVars()
+
+# Iterate through binary variables in model
+
+for i in range(len(avars)):
+    v = avars[i]
+    if v.vType == GRB.BINARY:
+
+# Create clone and fix variable
+
+        b = a.copy()
+        bv = b.getVars()[i]
+        if v.x - v.lb &lt; 0.5:
+            bv.lb = bv.ub
+        else:
+            bv.ub = bv.lb
+
+        b.optimize()
+
+        if b.status == GRB.status.OPTIMAL:
+            objchg = b.objVal - a.objVal
+            if objchg &lt; 0:
+                objchg = 0
+            print('Objective sensitivity for variable %s is %g' % \
+                  (v.varName, objchg))
+        else:
+            print('Objective sensitivity for variable %s is infinite' % \
+                  v.varName)
+</PRE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2017"
+  HREF="sos_py.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2015"
+  HREF="python_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2009"
+  HREF="qp_py.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html2018"
+  HREF="sos_py.html">sos.py</A>
+<B> Up:</B> <A NAME="tex2html2016"
+  HREF="python_examples.html">Python Examples</A>
+<B> Previous:</B> <A NAME="tex2html2010"
+  HREF="qp_py.html">qp.py</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

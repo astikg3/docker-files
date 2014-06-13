@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>ServerPool</TITLE>
+<META NAME="description" CONTENT="ServerPool">
+<META NAME="keywords" CONTENT="refman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="refman.css">
+
+<LINK REL="next" HREF="seed.html">
+<LINK REL="previous" HREF="serverpassword.html">
+<LINK REL="up" HREF="parameter_descriptions.html">
+<LINK REL="next" HREF="seed.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html11485"
+  HREF="seed.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html11483"
+  HREF="parameter_descriptions.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html11477"
+  HREF="serverpassword.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html11486"
+  HREF="seed.html">Seed</A>
+<B> Up:</B> <A NAME="tex2html11484"
+  HREF="parameter_descriptions.html">Parameter Descriptions</A>
+<B> Previous:</B> <A NAME="tex2html11478"
+  HREF="serverpassword.html">ServerPassword</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION0001428200000000000000"></A>
+<A NAME="parameter:ServerPool"></A>
+<BR>
+ServerPool
+</H3>
+Pool of compute servers to use for distributed algorithms 
+<BR>
+<BR>
+
+<TABLE CELLPADDING=3>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Type:</SPAN></TH>
+<TD ALIGN="LEFT">string</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Default value:</SPAN></TH>
+<TD ALIGN="LEFT">""</TD>
+</TR>
+</TABLE>
+
+<P>
+When using a distributed algorithm (the distributed concurrent MIP
+solver or distributed tuning), this parameter allows you to specify a
+comma-separated list of compute servers.  You can refer to servers
+using their names or their IP addresses.  You should specify the
+access password, if there is one, in the
+<A HREF="serverpassword.html#parameter:ServerPassword">ServerPassword</A> parameter.
+
+<P>
+To give an example, if you have two servers named
+<TT>server1.mydomain.com</TT> and <TT>server2.mydomain.com</TT>, with IP
+addresses 192.168.1.100 and 192.168.1.101, you could set
+the <code>ServerPool</code> to 
+<TT>"server1.mydomain.com,server2.mydomain.com"</TT> or
+<TT>"192.168.1.100,192.168.1.101"</TT>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html11485"
+  HREF="seed.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html11483"
+  HREF="parameter_descriptions.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html11477"
+  HREF="serverpassword.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html11486"
+  HREF="seed.html">Seed</A>
+<B> Up:</B> <A NAME="tex2html11484"
+  HREF="parameter_descriptions.html">Parameter Descriptions</A>
+<B> Previous:</B> <A NAME="tex2html11478"
+  HREF="serverpassword.html">ServerPassword</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

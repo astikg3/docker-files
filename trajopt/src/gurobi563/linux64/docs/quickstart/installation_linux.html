@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Installation - Linux</TITLE>
+<META NAME="description" CONTENT="Installation - Linux">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="installation_mac_os.html">
+<LINK REL="previous" HREF="installation_windows.html">
+<LINK REL="up" HREF="software_installation_guid.html">
+<LINK REL="next" HREF="installation_mac_os.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html239"
+  HREF="installation_mac_os.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html237"
+  HREF="software_installation_guid.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html231"
+  HREF="installation_windows.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html240"
+  HREF="installation_mac_os.html">Installation - Mac OS</A>
+<B> Up:</B> <A NAME="tex2html238"
+  HREF="software_installation_guid.html">Software Installation Guide</A>
+<B> Previous:</B> <A NAME="tex2html232"
+  HREF="installation_windows.html">Installation - Windows</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00012000000000000000"></A>
+<A NAME="subsection:InstallLinux"></A>
+<BR>
+Installation - Linux
+</H2>
+
+<P>
+The first step in installing the Gurobi Optimizer on a Linux system is
+to choose a destination directory.  We recommend <code>/opt</code> for a
+shared installation, but other directories will work as well.
+
+<P>
+Once a destination directory has been chosen, the next step is to copy
+the Gurobi distribution to the destination directory and extract the
+contents.  Extraction is done with the following command:
+<PRE>
+  tar xvfz gurobi5.6.0_linux64.tar.gz
+</PRE>
+This command will create a sub-directory <code>gurobi560/linux64</code> that
+contains the complete Gurobi distribution, and your
+<code>&lt;installdir&gt;</code> would be <code>/opt/gurobi560/linux64</code>.
+
+<P>
+The Gurobi Optimizer makes use of several executable files.  In order
+to allow these files to be found when needed, you will have to modify
+a few environment variables:
+
+<UL>
+<LI><code>GUROBI_HOME</code> should point to your <code>&lt;installdir&gt;</code>.
+</LI>
+<LI><code>PATH</code> should be extended to include <code>&lt;installdir&gt;/bin</code>.
+</LI>
+<LI><code>LD_LIBRARY_PATH</code> should be extended to include
+    <code>&lt;installdir&gt;/lib</code>.
+</LI>
+</UL>
+Users of the <code>bash</code> shell would add the following lines to their
+<code>.bashrc</code> files...
+<PRE>
+  export GUROBI_HOME="/opt/gurobi560/linux64"
+  export PATH="${PATH}:${GUROBI_HOME}/bin"
+  export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+</PRE>
+Users of the <code>csh</code> shell would add the following lines to their
+<code>.cshrc</code> files...
+<PRE>
+  setenv GUROBI_HOME /opt/gurobi560/linux64
+  setenv PATH ${PATH}:${GUROBI_HOME}/bin
+  setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib
+</PRE>
+If <code>LD_LIBRARY_PATH</code> is not already set, you would use
+the following instead:
+<PRE>
+  export LD_LIBRARY_PATH="${GUROBI_HOME}/lib"
+</PRE>
+or
+<PRE>
+  setenv LD_LIBRARY_PATH ${GUROBI_HOME}/lib
+</PRE>
+These paths should be adjusted to reflect your chosen
+<code>&lt;installdir&gt;</code>.
+
+<P>
+<SPAN  CLASS="textbf">Next steps</SPAN>
+
+<P>
+You are now ready to proceed to the section on
+<A HREF="how_to_obtain_and_install_.html#section:License">How to Obtain and Install a Gurobi License</A>.
+
+<P>
+If you would like an overview of the files included in the Gurobi
+distribution, you can also view the
+<A HREF="file_overview.html#section:Overview">File Overview</A> section.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html239"
+  HREF="installation_mac_os.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html237"
+  HREF="software_installation_guid.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html231"
+  HREF="installation_windows.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html240"
+  HREF="installation_mac_os.html">Installation - Mac OS</A>
+<B> Up:</B> <A NAME="tex2html238"
+  HREF="software_installation_guid.html">Software Installation Guide</A>
+<B> Previous:</B> <A NAME="tex2html232"
+  HREF="installation_windows.html">Installation - Windows</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Setting up a Windows compute server</TITLE>
+<META NAME="description" CONTENT="Setting up a Windows compute server">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="setting_up_a_linux_compute.html">
+<LINK REL="previous" HREF="setting_up_a_compute_serve.html">
+<LINK REL="up" HREF="setting_up_a_compute_serve.html">
+<LINK REL="next" HREF="setting_up_a_linux_compute.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html366"
+  HREF="setting_up_a_linux_compute.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html364"
+  HREF="setting_up_a_compute_serve.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html358"
+  HREF="setting_up_a_compute_serve.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html367"
+  HREF="setting_up_a_linux_compute.html">Setting up a Linux</A>
+<B> Up:</B> <A NAME="tex2html365"
+  HREF="setting_up_a_compute_serve.html">Setting up a compute</A>
+<B> Previous:</B> <A NAME="tex2html359"
+  HREF="setting_up_a_compute_serve.html">Setting up a compute</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00024100000000000000"></A>
+<A NAME="subsection:windowscomputeserver"></A>
+<BR>
+Setting up a Windows compute server
+</H3>
+
+<P>
+On a Windows system, you will need to start the Compute Server service by
+selecting the <EM>Gurobi Compute Server</EM> menu item from the
+<EM>Gurobi</EM> folder of the <EM>Start</EM> menu.  You should only
+do so after you have installed the Gurobi license key file.
+
+<P>
+<SPAN  CLASS="textbf">Firewalls</SPAN>
+
+<P>
+The next step after starting the Gurobi compute server depends on your
+anti-virus software and firewall settings.  Most anti-virus software
+will immediately ask you to confirm that you are allowing programs
+<code>grb_cs.exe</code> and <code>grb_csw.exe</code> to receive network traffic.
+Once you confirm this, the
+compute server will start serving requests.  If you don't receive such a
+prompt, you will need to add <code>grb_cs.exe</code> and
+<code>grb_csw.exe</code> to the firewall
+exceptions list.  You do this by
+selecting <EM>Allow a program through Windows firewall</EM> under the
+<EM>Security</EM> area of the Control Panel (labeled
+<EM>Allow an app through Windows firewall</EM> in Windows 8).
+You should add <code>grb_cs.exe</code> and <code>grb_csw.exe</code>
+to the list of exceptions.
+
+<P>
+Some machines have more restrictive firewalls that may require
+additional action.  The Gurobi compute server uses ports 61000-65000 by
+default.  If you are unable to reach the compute server after taking
+the steps described so far, you should ask your network administrator
+for more information on how to open the required ports.
+
+<P>
+<SPAN  CLASS="textbf">Compute server parameters</SPAN>
+
+<P>
+Note that a compute server has a few user-configurable parameters.
+You can set these by creating a <code>grb_cs.cnf</code> file and placing
+it in the same directory as <code>grb_cs.exe</code>.  Please
+consult the <EM>Gurobi Compute Server</EM> section of the
+<A NAME="tex2html15"
+  HREF="../refman/refman.html">Gurobi Reference Manual</A>
+for details.
+
+<P>
+<SPAN  CLASS="textbf">Starting and stopping the grb_cs Gurobi service</SPAN>
+
+<P>
+Once the compute server service has been started, you should see the
+<code>grb_cs</code> service listed in the <EM>Services</EM> tab of the Task
+Manager.  To start or stop the service, click on the <EM>Services</EM>
+button at the bottom-right of the <EM>Services</EM> tab, and then
+right-click on the <EM>Gurobi Compute Server</EM> item on this screen.
+
+<P>
+You can also start or stop the Gurobi Compute Server service from a
+console window (also known as a <code>cmd</code> window)
+that has administrator privileges.
+Running <code>grb_cs -h</code> lists command-line options.
+Issuing a <code>grb_cs -s</code> command stops a running compute server.
+Issuing a <code>grb_cs -v</code> command starts the compute server in
+verbose mode.  Verbose mode produces a log message (in the
+Windows Event Log) each time a client starts a job.
+
+<P>
+To upgrade from an earlier version of the Gurobi Optimizer, you will
+need to perform the following steps (on all machines running the compute
+server):
+
+<OL>
+<LI>Stop the old compute server.
+</LI>
+<LI>Install the new version of the Gurobi Optimizer.
+</LI>
+<LI>Upgrade your license file (or modify <code>GRB_LICENSE_FILE</code> to
+point to the new license file).
+</LI>
+<LI>Start the new compute server.
+</LI>
+</OL>
+Windows services can be stubborn.  If the new compute server refuses to
+start, you may need to delete the old one manually.  To do so, type
+<code>sc delete grb_cs</code> from a <code>cmd</code> window that has
+administrator privileges.
+
+<P>
+All output from the Gurobi Compute Server goes to the Windows Event
+Log.  You can access this in Windows Vista or Windows 7 through the
+Event Viewer.  Type <EM>Event</EM> in the search box under the
+<EM>Start</EM> menu to launch the viewer.
+
+<P>
+<SPAN  CLASS="textbf">Next steps</SPAN>
+
+<P>
+Clients of a compute server require simple license files.
+Your next step is to set up a
+<A HREF="creating_a_client_license.html#subsection:clientlicense">client license</A>.
+
+<P>
+Once your compute server is running and you've set up a client
+license, you can move on to
+<A HREF="testing_the_license.html#subsection:testlicense">testing the license</A>.
+
+<P>
+You can test the state of the compute server at any time, as well
+as get a list of both running and queued client jobs, by typing
+<code>gurobi_cl ---clients</code> from a <code>cmd</code> window.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html366"
+  HREF="setting_up_a_linux_compute.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html364"
+  HREF="setting_up_a_compute_serve.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html358"
+  HREF="setting_up_a_compute_serve.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html367"
+  HREF="setting_up_a_linux_compute.html">Setting up a Linux</A>
+<B> Up:</B> <A NAME="tex2html365"
+  HREF="setting_up_a_compute_serve.html">Setting up a compute</A>
+<B> Previous:</B> <A NAME="tex2html359"
+  HREF="setting_up_a_compute_serve.html">Setting up a compute</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

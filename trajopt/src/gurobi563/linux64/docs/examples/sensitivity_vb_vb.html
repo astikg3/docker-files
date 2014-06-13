@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sensitivity_vb.vb</TITLE>
+<META NAME="description" CONTENT="sensitivity_vb.vb">
+<META NAME="keywords" CONTENT="examples">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="examples.css">
+
+<LINK REL="next" HREF="sos_vb_vb.html">
+<LINK REL="previous" HREF="qp_vb_vb.html">
+<LINK REL="up" HREF="visual_basic_examples.html">
+<LINK REL="next" HREF="sos_vb_vb.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1690"
+  HREF="sos_vb_vb.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1688"
+  HREF="visual_basic_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1682"
+  HREF="qp_vb_vb.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1691"
+  HREF="sos_vb_vb.html">sos_vb.vb</A>
+<B> Up:</B> <A NAME="tex2html1689"
+  HREF="visual_basic_examples.html">Visual Basic Examples</A>
+<B> Previous:</B> <A NAME="tex2html1683"
+  HREF="qp_vb_vb.html">qp_vb.vb</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000251500000000000000"></A>
+<A NAME="subsubsection:sensitivity_vb.vb"></A>
+<BR>
+sensitivity_vb.vb
+</H3>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">' Copyright 2013, Gurobi Optimization, Inc.
+'
+' Simple MIP sensitivity analysis example.
+' For each integer variable, fix it to its lower and upper bound
+' and check the impact on the objective.
+
+Imports System
+Imports Gurobi
+
+Class sensitivity_vb
+    Shared Sub Main(ByVal args As String())
+
+        If args.Length &lt; 1 Then
+            Console.WriteLine("Usage: sensitivity_vb filename")
+            Return
+        End If
+
+        Try
+            ' Read model
+            Dim env As New GRBEnv()
+            Dim a As New GRBModel(env, args(0))
+            a.Optimize()
+            a.GetEnv().Set(GRB.IntParam.OutputFlag, 0)
+
+            ' Extract variables from model
+            Dim avars As GRBVar() = a.GetVars()
+
+            For i As Integer = 0 To avars.Length - 1
+                Dim v As GRBVar = avars(i)
+                If v.Get(GRB.CharAttr.VType) = GRB.BINARY Then
+
+                    ' Create clone and fix variable
+                    Dim b As New GRBModel(a)
+                    Dim bv As GRBVar = b.GetVars()(i)
+                    If v.Get(GRB.DoubleAttr.X) - v.Get(GRB.DoubleAttr.LB) &lt; 0.5 Then
+                        bv.Set(GRB.DoubleAttr.LB, bv.Get(GRB.DoubleAttr.UB))
+                    Else
+                        bv.Set(GRB.DoubleAttr.UB, bv.Get(GRB.DoubleAttr.LB))
+                    End If
+
+                    b.Optimize()
+
+                    If b.Get(GRB.IntAttr.Status) = GRB.Status.OPTIMAL Then
+                        Dim objchg As Double = b.Get(GRB.DoubleAttr.ObjVal) - _
+                                               a.Get(GRB.DoubleAttr.ObjVal)
+                        If objchg &lt; 0 Then
+                            objchg = 0
+                        End If
+                        Console.WriteLine("Objective sensitivity for variable " &amp; _
+                                          v.Get(GRB.StringAttr.VarName) &amp; _
+                                          " is " &amp; objchg)
+                    Else
+                        Console.WriteLine("Objective sensitivity for variable " &amp; _
+                                          v.Get(GRB.StringAttr.VarName) &amp; _
+                                          " is infinite")
+                    End If
+
+                    ' Dispose of model
+                    b.Dispose()
+                End If
+            Next
+
+            ' Dispose of model and env
+            a.Dispose()
+            env.Dispose()
+
+        Catch e As GRBException
+            Console.WriteLine("Error code: " &amp; e.ErrorCode &amp; ". " + e.Message)
+        End Try
+    End Sub
+End Class
+</PRE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1690"
+  HREF="sos_vb_vb.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1688"
+  HREF="visual_basic_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1682"
+  HREF="qp_vb_vb.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1691"
+  HREF="sos_vb_vb.html">sos_vb.vb</A>
+<B> Up:</B> <A NAME="tex2html1689"
+  HREF="visual_basic_examples.html">Visual Basic Examples</A>
+<B> Previous:</B> <A NAME="tex2html1683"
+  HREF="qp_vb_vb.html">qp_vb.vb</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

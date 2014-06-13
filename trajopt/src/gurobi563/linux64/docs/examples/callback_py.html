@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>callback.py</TITLE>
+<META NAME="description" CONTENT="callback.py">
+<META NAME="keywords" CONTENT="examples">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="examples.css">
+
+<LINK REL="next" HREF="custom_py.html">
+<LINK REL="previous" HREF="python_examples.html">
+<LINK REL="up" HREF="python_examples.html">
+<LINK REL="next" HREF="custom_py.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1817"
+  HREF="custom_py.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1815"
+  HREF="python_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1809"
+  HREF="python_examples.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1818"
+  HREF="custom_py.html">custom.py</A>
+<B> Up:</B> <A NAME="tex2html1816"
+  HREF="python_examples.html">Python Examples</A>
+<B> Previous:</B> <A NAME="tex2html1810"
+  HREF="python_examples.html">Python Examples</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00026100000000000000"></A>
+<A NAME="subsubsection:callback.py"></A>
+<BR>
+callback.py
+</H3>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">#!/usr/bin/python
+
+# Copyright 2013, Gurobi Optimization, Inc.
+
+# This example reads an LP or a MIP from a file, sets a callback
+# to monitor the optimization progress, and outputs progress
+# information to the screen and to the log file. If the input model
+# is a MIP, the callback aborts the optimization after 10000 nodes have
+# been explored.
+
+
+import sys
+from gurobipy import *
+
+
+# Define callback function
+
+def mycallback(model, where):
+    if where == GRB.callback.PRESOLVE:
+        # Presolve callback
+        print('Removed %d columns and %d rows' % \
+              (model.cbGet(GRB.callback.PRE_COLDEL), \
+               model.cbGet(GRB.callback.PRE_ROWDEL)))
+    elif where == GRB.callback.SIMPLEX:
+        # Simplex callback
+        itcnt = model.cbGet(GRB.callback.SPX_ITRCNT)
+        if itcnt - model._lastiter &gt;= 100:
+            model._lastiter = itcnt
+            obj  = model.cbGet(GRB.callback.SPX_OBJVAL)
+            pinf = model.cbGet(GRB.callback.SPX_PRIMINF)
+            dinf = model.cbGet(GRB.callback.SPX_DUALINF)
+            pert = model.cbGet(GRB.callback.SPX_ISPERT)
+            if pert == 0:
+                ch = ' '
+            elif pert == 1:
+                ch = 'S'
+            else:
+                ch = 'P'
+            print('%d %g %s %g %g' % (int(itcnt), obj, ch, pinf, dinf))
+    elif where == GRB.callback.MIP:
+        # General MIP callback
+        nodecnt = model.cbGet(GRB.callback.MIP_NODCNT)
+        if nodecnt - model._lastnode &gt;= 100:
+            model._lastnode = nodecnt
+            objbst = model.cbGet(GRB.callback.MIP_OBJBST)
+            objbnd = model.cbGet(GRB.callback.MIP_OBJBND)
+            print('%d %g %g' % (int(nodecnt), objbst, objbnd))
+        if nodecnt &gt; model._mynodelimit:
+            model.terminate()
+    elif where == GRB.callback.MIPSOL:
+        # MIP solution callback
+        obj     = model.cbGet(GRB.callback.MIPSOL_OBJ)
+        nodecnt = int(model.cbGet(GRB.callback.MIPSOL_NODCNT))
+        print('*** New solution at node %g objective %g' % (nodecnt, obj))
+        print(model.cbGetSolution(model.getVars()))
+    elif where == GRB.callback.MIPNODE:
+        # MIP node callback
+        print('*** New node')
+        if model.cbGet(GRB.callback.MIPNODE_STATUS) == GRB.status.OPTIMAL:
+            x = model.cbGetNodeRel(model.getVars())
+            model.cbSetSolution(model.getVars(), x)
+
+if len(sys.argv) &lt; 2:
+    print('Usage: callback.py filename')
+    quit()
+
+# Read and solve model
+
+model = read(sys.argv[1])
+
+# Pass data into my callback function
+
+model._mynodelimit = 10000
+model._lastnode = -1
+model._lastiter = -1
+
+model.params.heuristics = 0
+
+model.optimize(mycallback)
+</PRE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1817"
+  HREF="custom_py.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1815"
+  HREF="python_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1809"
+  HREF="python_examples.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1818"
+  HREF="custom_py.html">custom.py</A>
+<B> Up:</B> <A NAME="tex2html1816"
+  HREF="python_examples.html">Python Examples</A>
+<B> Previous:</B> <A NAME="tex2html1810"
+  HREF="python_examples.html">Python Examples</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

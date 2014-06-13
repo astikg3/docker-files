@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sensitivity_c++.cpp</TITLE>
+<META NAME="description" CONTENT="sensitivity_c++.cpp">
+<META NAME="keywords" CONTENT="examples">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="examples.css">
+
+<LINK REL="next" HREF="qcp_cpp_cpp.html">
+<LINK REL="previous" HREF="params_cpp_cpp.html">
+<LINK REL="up" HREF="cpp_examples.html">
+<LINK REL="next" HREF="qcp_cpp_cpp.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html887"
+  HREF="qcp_cpp_cpp.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html885"
+  HREF="cpp_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html879"
+  HREF="params_cpp_cpp.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html888"
+  HREF="qcp_cpp_cpp.html">qcp_c++.cpp</A>
+<B> Up:</B> <A NAME="tex2html886"
+  HREF="cpp_examples.html">C++ Examples</A>
+<B> Previous:</B> <A NAME="tex2html880"
+  HREF="params_cpp_cpp.html">params_c++.cpp</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000221300000000000000"></A>
+<A NAME="subsubsection:sensitivity_c++.cpp"></A>
+<BR>
+sensitivity_c++.cpp
+</H3>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">/* Copyright 2013, Gurobi Optimization, Inc. */
+
+/* Simple MIP sensitivity analysis example.
+   For each integer variable, fix it to its lower and upper bound
+   and check the impact on the objective. */
+
+#include "gurobi_c++.h"
+using namespace std;
+
+int
+main(int argc,
+     char *argv[])
+{
+  if (argc &lt; 2)
+  {
+    cout &lt;&lt; "Usage: sensitivity_c++ filename" &lt;&lt; endl;
+    return 1;
+  }
+
+  GRBEnv* env = 0;
+  GRBVar* avars = 0;
+  GRBVar* bv = 0;
+  try
+  {
+    // Read model
+    env = new GRBEnv();
+    GRBModel a = GRBModel(*env, argv[1]);
+    a.optimize();
+    a.getEnv().set(GRB_IntParam_OutputFlag, 0);
+
+    // Extract variables from model
+    avars = a.getVars();
+
+    for (int i = 0; i &lt; a.get(GRB_IntAttr_NumVars); ++i)
+    {
+      GRBVar v = avars[i];
+      if (v.get(GRB_CharAttr_VType) == GRB_BINARY)
+      {
+
+        // Create clone and fix variable
+        GRBModel b = GRBModel(a);
+        bv = b.getVars();
+        if (v.get(GRB_DoubleAttr_X) - v.get(GRB_DoubleAttr_LB) &lt; 0.5)
+        {
+          bv[i].set(GRB_DoubleAttr_LB, bv[i].get(GRB_DoubleAttr_UB));
+        }
+        else
+        {
+          bv[i].set(GRB_DoubleAttr_UB, bv[i].get(GRB_DoubleAttr_LB));
+        }
+        delete[] bv;
+        bv = 0;
+
+        b.optimize();
+
+        if (b.get(GRB_IntAttr_Status) == GRB_OPTIMAL)
+        {
+          double objchg =
+            b.get(GRB_DoubleAttr_ObjVal) - a.get(GRB_DoubleAttr_ObjVal);
+          if (objchg &lt; 0)
+          {
+            objchg = 0;
+          }
+          cout &lt;&lt; "Objective sensitivity for variable " &lt;&lt;
+          v.get(GRB_StringAttr_VarName) &lt;&lt; " is " &lt;&lt; objchg &lt;&lt; endl;
+        }
+        else
+        {
+          cout &lt;&lt; "Objective sensitivity for variable " &lt;&lt;
+          v.get(GRB_StringAttr_VarName) &lt;&lt; " is infinite" &lt;&lt; endl;
+        }
+      }
+    }
+
+  }
+  catch (GRBException e)
+  {
+    cout &lt;&lt; "Error code = " &lt;&lt; e.getErrorCode() &lt;&lt; endl;
+    cout &lt;&lt; e.getMessage() &lt;&lt; endl;
+  }
+  catch (...)
+  {
+    cout &lt;&lt; "Error during optimization" &lt;&lt; endl;
+  }
+
+  delete[] avars;
+  delete[] bv;
+  delete env;
+  return 0;
+}
+</PRE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html887"
+  HREF="qcp_cpp_cpp.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html885"
+  HREF="cpp_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html879"
+  HREF="params_cpp_cpp.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html888"
+  HREF="qcp_cpp_cpp.html">qcp_c++.cpp</A>
+<B> Up:</B> <A NAME="tex2html886"
+  HREF="cpp_examples.html">C++ Examples</A>
+<B> Previous:</B> <A NAME="tex2html880"
+  HREF="params_cpp_cpp.html">params_c++.cpp</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Server Configuration</TITLE>
+<META NAME="description" CONTENT="Server Configuration">
+<META NAME="keywords" CONTENT="refman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="refman.css">
+
+<LINK REL="next" HREF="administrative_commands.html">
+<LINK REL="previous" HREF="setting_up_and_administeri.html">
+<LINK REL="up" HREF="setting_up_and_administeri.html">
+<LINK REL="next" HREF="administrative_commands.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html11954"
+  HREF="administrative_commands.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html11952"
+  HREF="setting_up_and_administeri.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html11946"
+  HREF="setting_up_and_administeri.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html11955"
+  HREF="administrative_commands.html">Administrative Commands</A>
+<B> Up:</B> <A NAME="tex2html11953"
+  HREF="setting_up_and_administeri.html">Setting Up and Administering</A>
+<B> Previous:</B> <A NAME="tex2html11947"
+  HREF="setting_up_and_administeri.html">Setting Up and Administering</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000221100000000000000"></A>
+<A NAME="sec:CSConfig"></A>
+<BR>
+Server Configuration
+</H3>
+
+<P>
+<SPAN  CLASS="textbf">User Parameters</SPAN>
+
+<P>
+The Gurobi compute server provides a number of user-configurable
+parameters that can be set through a <code>grb_cs.cnf</code> file.
+
+<P>
+As noted in the Quick Start Guide, you start a compute server by
+running the <code>grb_cs</code> program on the server machine.  This
+starts a Windows service on Windows systems, and a daemon on Linux or
+Mac OS systems.  When a compute server starts, the first thing it does
+is to look for file <code>grb_cs.cnf</code> in the same directory as the
+<code>grb_cs</code> executable.  You can place a list of
+<code>parameter=value</code> lines in this file to change compute server
+parameters.  Lines that begin with the # symbol are treated as
+comments and are ignored.  Here's an example configuration file:
+<PRE>
+# Configuration file
+JOBLIMIT=2
+PASSWORD=abcd1234
+ADMINPASSWORD=1234abcd
+</PRE>
+You should create this file using your favorite text editor
+(<code>Notepad</code> is a good choice on Windows).
+
+<P>
+Available configuration parameters are:
+<DL>
+<DT><STRONG>JOBLIMIT</STRONG></DT>
+<DD>A limit on the number of client jobs
+that are allowed to run on the server at the same time.
+Client requests beyond this limit are queued.  The default
+limit is 2.
+</DD>
+<DT><STRONG>HARDJOBLIMIT</STRONG></DT>
+<DD>A hard limit on the number of simultaneous
+client jobs.  Priority 100 jobs are allowed to ignore the
+<code>JOBLIMIT</code>, but they aren't allowed to ignore this limit.
+Client requests beyond this limit are queued.  The default hard
+limit is 100.
+</DD>
+<DT><STRONG>THREADLIMIT</STRONG></DT>
+<DD>A limit on the number of threads a
+client job can use.  By default, a client program is allowed
+to create one thread for each core in the server machine.
+</DD>
+<DT><STRONG>IGNOREPRIORITIES</STRONG></DT>
+<DD>When set to 1, the server
+ignores user job priorities.
+</DD>
+<DT><STRONG>PASSWORD</STRONG></DT>
+<DD>The password that the client program must
+supply in order to submit a job.  Note that all user data
+is passed between the client and server using 256-bit AES
+encryption, whether you supply a password or not.  The
+server password simply prevents unauthorized clients from
+submitting jobs to the server.  The default is no password.
+</DD>
+<DT><STRONG>ADMINPASSWORD</STRONG></DT>
+<DD>The password for performing client-server
+administrative tasks.  This is different from the password that client
+programs must provide.  Administrative tasks are performed using the
+<code>gurobi_cl</code> program.  Example tasks include changing the job
+limit and killing jobs
+(<A HREF="administrative_commands.html#sec:CSRemoteAdmin">details will follow</A>).
+Note that the administrator password must be set if you wish
+to enable remote administration.
+</DD>
+</DL>
+
+<P>
+The configuration file is only read once, when the compute server
+first starts.  Subsequent changes to the file won't affect parameter
+values on a running server.
+
+<P>
+<SPAN  CLASS="textbf">Firewalls</SPAN>
+
+<P>
+A Gurobi compute server communicates with clients through a number of
+network ports on the server machine.  By default, it uses ports
+61000-65000.  Most machines will either silently allow the Gurobi
+compute server to use these ports, or they will ask you to confirm that the
+Gurobi compute server can use these ports.  However, some situations
+will require you to manually open these ports.
+
+<P>
+One notable example is Amazon EC2, where most network ports are closed
+by default.  You'll need to create an EC2 <EM>Security Group</EM> (or
+modify your default group) when you start your instance in order to
+open these ports.
+
+<P>
+If for some reason our default port range is unavailable on your
+server, you can include a <code>PORT=</code> statement <EM>in both the
+  client and the server license files</EM> to choose a different range.
+For example, the line:
+<PRE>
+PORT=43000
+</PRE>
+would use ports 43000-47000 instead.
+
+<P>
+If you run into trouble with firewall issues, we suggest you share
+this section with your network administrator.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html11954"
+  HREF="administrative_commands.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html11952"
+  HREF="setting_up_and_administeri.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html11946"
+  HREF="setting_up_and_administeri.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html11955"
+  HREF="administrative_commands.html">Administrative Commands</A>
+<B> Up:</B> <A NAME="tex2html11953"
+  HREF="setting_up_and_administeri.html">Setting Up and Administering</A>
+<B> Previous:</B> <A NAME="tex2html11947"
+  HREF="setting_up_and_administeri.html">Setting Up and Administering</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

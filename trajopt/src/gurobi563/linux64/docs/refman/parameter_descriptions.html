@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Parameter Descriptions</TITLE>
+<META NAME="description" CONTENT="Parameter Descriptions">
+<META NAME="keywords" CONTENT="refman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="refman.css">
+
+<LINK REL="previous" HREF="parameter_guidelines.html">
+<LINK REL="up" HREF="parameters.html">
+<LINK REL="next" HREF="aggfill.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html10564"
+  HREF="aggfill.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html10562"
+  HREF="parameters.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html10558"
+  HREF="mip_models.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html10565"
+  HREF="aggfill.html">AggFill</A>
+<B> Up:</B> <A NAME="tex2html10563"
+  HREF="parameters.html">Parameters</A>
+<B> Previous:</B> <A NAME="tex2html10559"
+  HREF="mip_models.html">MIP Models</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000142000000000000000">
+Parameter Descriptions</A>
+</H2>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html10566"
+  HREF="aggfill.html">AggFill</A>
+<LI><A NAME="tex2html10567"
+  HREF="aggregate.html">Aggregate</A>
+<LI><A NAME="tex2html10568"
+  HREF="barconvtol.html">BarConvTol</A>
+<LI><A NAME="tex2html10569"
+  HREF="barcorrectors.html">BarCorrectors</A>
+<LI><A NAME="tex2html10570"
+  HREF="barhomogeneous.html">BarHomogeneous</A>
+<LI><A NAME="tex2html10571"
+  HREF="barorder.html">BarOrder</A>
+<LI><A NAME="tex2html10572"
+  HREF="barqcpconvtol.html">BarQCPConvTol</A>
+<LI><A NAME="tex2html10573"
+  HREF="bariterlimit.html">BarIterLimit</A>
+<LI><A NAME="tex2html10574"
+  HREF="branchdir.html">BranchDir</A>
+<LI><A NAME="tex2html10575"
+  HREF="cliquecuts.html">CliqueCuts</A>
+<LI><A NAME="tex2html10576"
+  HREF="concurrentmip.html">ConcurrentMIP</A>
+<LI><A NAME="tex2html10577"
+  HREF="concurrentmipjobs.html">ConcurrentMIPJobs</A>
+<LI><A NAME="tex2html10578"
+  HREF="concurrentsettings.html">ConcurrentSettings</A>
+<LI><A NAME="tex2html10579"
+  HREF="covercuts.html">CoverCuts</A>
+<LI><A NAME="tex2html10580"
+  HREF="crossover.html">Crossover</A>
+<LI><A NAME="tex2html10581"
+  HREF="crossoverbasis.html">CrossoverBasis</A>
+<LI><A NAME="tex2html10582"
+  HREF="cutoff.html">Cutoff</A>
+<LI><A NAME="tex2html10583"
+  HREF="cutaggpasses.html">CutAggPasses</A>
+<LI><A NAME="tex2html10584"
+  HREF="cutpasses.html">CutPasses</A>
+<LI><A NAME="tex2html10585"
+  HREF="cuts.html">Cuts</A>
+<LI><A NAME="tex2html10586"
+  HREF="disconnected.html">Disconnected</A>
+<LI><A NAME="tex2html10587"
+  HREF="displayinterval.html">DisplayInterval</A>
+<LI><A NAME="tex2html10588"
+  HREF="dualreductions.html">DualReductions</A>
+<LI><A NAME="tex2html10589"
+  HREF="feasibilitytol.html">FeasibilityTol</A>
+<LI><A NAME="tex2html10590"
+  HREF="feasrelaxbigm.html">FeasRelaxBigM</A>
+<LI><A NAME="tex2html10591"
+  HREF="flowcovercuts.html">FlowCoverCuts</A>
+<LI><A NAME="tex2html10592"
+  HREF="flowpathcuts.html">FlowPathCuts</A>
+<LI><A NAME="tex2html10593"
+  HREF="gomorypasses.html">GomoryPasses</A>
+<LI><A NAME="tex2html10594"
+  HREF="gubcovercuts.html">GUBCoverCuts</A>
+<LI><A NAME="tex2html10595"
+  HREF="heuristics.html">Heuristics</A>
+<LI><A NAME="tex2html10596"
+  HREF="iismethod.html">IISMethod</A>
+<LI><A NAME="tex2html10597"
+  HREF="impliedcuts.html">ImpliedCuts</A>
+<LI><A NAME="tex2html10598"
+  HREF="improvestartgap.html">ImproveStartGap</A>
+<LI><A NAME="tex2html10599"
+  HREF="improvestartnodes.html">ImproveStartNodes</A>
+<LI><A NAME="tex2html10600"
+  HREF="improvestarttime.html">ImproveStartTime</A>
+<LI><A NAME="tex2html10601"
+  HREF="infunbdinfo.html">InfUnbdInfo</A>
+<LI><A NAME="tex2html10602"
+  HREF="inputfile.html">InputFile</A>
+<LI><A NAME="tex2html10603"
+  HREF="intfeastol.html">IntFeasTol</A>
+<LI><A NAME="tex2html10604"
+  HREF="iterationlimit.html">IterationLimit</A>
+<LI><A NAME="tex2html10605"
+  HREF="lazyconstraints.html">LazyConstraints</A>
+<LI><A NAME="tex2html10606"
+  HREF="logfile.html">LogFile</A>
+<LI><A NAME="tex2html10607"
+  HREF="logtoconsole.html">LogToConsole</A>
+<LI><A NAME="tex2html10608"
+  HREF="markowitztol.html">MarkowitzTol</A>
+<LI><A NAME="tex2html10609"
+  HREF="method.html">Method</A>
+<LI><A NAME="tex2html10610"
+  HREF="minrelnodes.html">MinRelNodes</A>
+<LI><A NAME="tex2html10611"
+  HREF="mipfocus.html">MIPFocus</A>
+<LI><A NAME="tex2html10612"
+  HREF="mipgap2.html">MIPGap</A>
+<LI><A NAME="tex2html10613"
+  HREF="mipgapabs.html">MIPGapAbs</A>
+<LI><A NAME="tex2html10614"
+  HREF="mipsepcuts.html">MIPSepCuts</A>
+<LI><A NAME="tex2html10615"
+  HREF="miqcpmethod.html">MIQCPMethod</A>
+<LI><A NAME="tex2html10616"
+  HREF="mircuts.html">MIRCuts</A>
+<LI><A NAME="tex2html10617"
+  HREF="modkcuts.html">ModKCuts</A>
+<LI><A NAME="tex2html10618"
+  HREF="networkcuts.html">NetworkCuts</A>
+<LI><A NAME="tex2html10619"
+  HREF="nodefiledir.html">NodefileDir</A>
+<LI><A NAME="tex2html10620"
+  HREF="nodefilestart.html">NodefileStart</A>
+<LI><A NAME="tex2html10621"
+  HREF="nodelimit.html">NodeLimit</A>
+<LI><A NAME="tex2html10622"
+  HREF="nodemethod.html">NodeMethod</A>
+<LI><A NAME="tex2html10623"
+  HREF="nonblocking.html">NonBlocking</A>
+<LI><A NAME="tex2html10624"
+  HREF="normadjust.html">NormAdjust</A>
+<LI><A NAME="tex2html10625"
+  HREF="numericfocus.html">NumericFocus</A>
+<LI><A NAME="tex2html10626"
+  HREF="objscale.html">ObjScale</A>
+<LI><A NAME="tex2html10627"
+  HREF="optimalitytol.html">OptimalityTol</A>
+<LI><A NAME="tex2html10628"
+  HREF="outputflag.html">OutputFlag</A>
+<LI><A NAME="tex2html10629"
+  HREF="perturbvalue.html">PerturbValue</A>
+<LI><A NAME="tex2html10630"
+  HREF="precrush.html">PreCrush</A>
+<LI><A NAME="tex2html10631"
+  HREF="predeprow.html">PreDepRow</A>
+<LI><A NAME="tex2html10632"
+  HREF="predual.html">PreDual</A>
+<LI><A NAME="tex2html10633"
+  HREF="prepasses.html">PrePasses</A>
+<LI><A NAME="tex2html10634"
+  HREF="preqlinearize.html">PreQLinearize</A>
+<LI><A NAME="tex2html10635"
+  HREF="presolve.html">Presolve</A>
+<LI><A NAME="tex2html10636"
+  HREF="presos1bigm.html">PreSOS1BigM</A>
+<LI><A NAME="tex2html10637"
+  HREF="presos2bigm.html">PreSOS2BigM</A>
+<LI><A NAME="tex2html10638"
+  HREF="presparsify.html">PreSparsify</A>
+<LI><A NAME="tex2html10639"
+  HREF="psdtol.html">PSDTol</A>
+<LI><A NAME="tex2html10640"
+  HREF="pumppasses.html">PumpPasses</A>
+<LI><A NAME="tex2html10641"
+  HREF="qcpdual.html">QCPDual</A>
+<LI><A NAME="tex2html10642"
+  HREF="quad.html">Quad</A>
+<LI><A NAME="tex2html10643"
+  HREF="resultfile.html">ResultFile</A>
+<LI><A NAME="tex2html10644"
+  HREF="rins.html">RINS</A>
+<LI><A NAME="tex2html10645"
+  HREF="scaleflag.html">ScaleFlag</A>
+<LI><A NAME="tex2html10646"
+  HREF="serverpassword.html">ServerPassword</A>
+<LI><A NAME="tex2html10647"
+  HREF="serverpool.html">ServerPool</A>
+<LI><A NAME="tex2html10648"
+  HREF="seed.html">Seed</A>
+<LI><A NAME="tex2html10649"
+  HREF="sifting.html">Sifting</A>
+<LI><A NAME="tex2html10650"
+  HREF="siftmethod.html">SiftMethod</A>
+<LI><A NAME="tex2html10651"
+  HREF="simplexpricing.html">SimplexPricing</A>
+<LI><A NAME="tex2html10652"
+  HREF="solutionlimit.html">SolutionLimit</A>
+<LI><A NAME="tex2html10653"
+  HREF="solutionnumber.html">SolutionNumber</A>
+<LI><A NAME="tex2html10654"
+  HREF="submipcuts.html">SubMIPCuts</A>
+<LI><A NAME="tex2html10655"
+  HREF="submipnodes.html">SubMIPNodes</A>
+<LI><A NAME="tex2html10656"
+  HREF="symmetry.html">Symmetry</A>
+<LI><A NAME="tex2html10657"
+  HREF="threads.html">Threads</A>
+<LI><A NAME="tex2html10658"
+  HREF="timelimit.html">TimeLimit</A>
+<LI><A NAME="tex2html10659"
+  HREF="tunejobs.html">TuneJobs</A>
+<LI><A NAME="tex2html10660"
+  HREF="tuneoutput.html">TuneOutput</A>
+<LI><A NAME="tex2html10661"
+  HREF="tuneresults.html">TuneResults</A>
+<LI><A NAME="tex2html10662"
+  HREF="tunetimelimit.html">TuneTimeLimit</A>
+<LI><A NAME="tex2html10663"
+  HREF="tunetrials.html">TuneTrials</A>
+<LI><A NAME="tex2html10664"
+  HREF="varbranch.html">VarBranch</A>
+<LI><A NAME="tex2html10665"
+  HREF="zerohalfcuts.html">ZeroHalfCuts</A>
+<LI><A NAME="tex2html10666"
+  HREF="zeroobjnodes.html">ZeroObjNodes</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html10564"
+  HREF="aggfill.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html10562"
+  HREF="parameters.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html10558"
+  HREF="mip_models.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html10565"
+  HREF="aggfill.html">AggFill</A>
+<B> Up:</B> <A NAME="tex2html10563"
+  HREF="parameters.html">Parameters</A>
+<B> Previous:</B> <A NAME="tex2html10559"
+  HREF="mip_models.html">MIP Models</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Setting up a Windows token server</TITLE>
+<META NAME="description" CONTENT="Setting up a Windows token server">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="setting_up_a_linux_token_s.html">
+<LINK REL="previous" HREF="setting_up_a_token_server.html">
+<LINK REL="up" HREF="setting_up_a_token_server.html">
+<LINK REL="next" HREF="setting_up_a_linux_token_s.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html335"
+  HREF="setting_up_a_linux_token_s.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html333"
+  HREF="setting_up_a_token_server.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html327"
+  HREF="setting_up_a_token_server.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html336"
+  HREF="setting_up_a_linux_token_s.html">Setting up a Linux</A>
+<B> Up:</B> <A NAME="tex2html334"
+  HREF="setting_up_a_token_server.html">Setting up a token</A>
+<B> Previous:</B> <A NAME="tex2html328"
+  HREF="setting_up_a_token_server.html">Setting up a token</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00023100000000000000"></A>
+<A NAME="subsection:windowstokenserver"></A>
+<BR>
+Setting up a Windows token server
+</H3>
+
+<P>
+On a Windows system, you can start the token service by
+selecting the <EM>Gurobi Token Server</EM> menu item from the
+<EM>Gurobi</EM> folder of the <EM>Start</EM> menu.  You should only
+do so after you have installed the Gurobi license key file.
+
+<P>
+<SPAN  CLASS="textbf">Firewalls</SPAN>
+
+<P>
+The next step after starting the Gurobi token server depends on your
+anti-virus software and firewall settings.  Most anti-virus software
+will immediately ask you to confirm that you are allowing program
+<code>grb_ts.exe</code> to receive network traffic.  Once you confirm this, the
+token server will start serving tokens.  If you don't receive such a
+prompt, you will need to add <code>grb_ts.exe</code> to the firewall
+exceptions list.  You do this by
+selecting <EM>Allow a program through Windows firewall</EM> under the
+<EM>Security</EM> area of the Control Panel (labeled
+<EM>Allow an app through Windows firewall</EM> in Windows 8).
+You should add <code>grb_ts.exe</code> to the list of exceptions.
+
+<P>
+Some machines have more restrictive firewalls that may require
+additional action.  The Gurobi token server uses port 41954 by
+default.  If you are unable to reach the token server after taking the
+steps described so far, you should ask your network administrator for
+more information on how to open the required port.
+
+<P>
+<SPAN  CLASS="textbf">Starting and stopping the grb_ts Windows service</SPAN>
+
+<P>
+Once the token service has been started, you should see the
+<code>grb_ts</code> service listed in the <EM>Services</EM> tab of the Task
+Manager.  To start or stop the service, click on the <EM>Services</EM>
+button at the bottom-right of the <EM>Services</EM> tab, and then
+right-click on the <EM>Gurobi Token Server</EM> item on this screen.
+
+<P>
+You can also start or stop the Gurobi Token Server service from a
+console window (also known as a <code>cmd</code> window)
+that has administrator privileges.
+Running <code>grb_ts -h</code> lists command-line options.
+Issuing a <code>grb_ts -s</code> command stops a running license service.
+Issuing a <code>grb_ts -v</code> command starts the license service in
+verbose mode.  Verbose mode produces a log message (in
+the Windows Event Log) each time a token is checked in or out.
+
+<P>
+To upgrade from an earlier version of the Gurobi Optimizer, you will
+need to perform the following steps (on the machine running the token
+server):
+
+<OL>
+<LI>Stop the old token server.
+</LI>
+<LI>Install the new version of the Gurobi Optimizer.
+</LI>
+<LI>Upgrade your license file (or modify <code>GRB_LICENSE_FILE</code> to
+point to the new license file).
+</LI>
+<LI>Start the new token server.
+</LI>
+</OL>
+Windows services can be stubborn.  If the new token server refuses to
+start, you may need to delete the old one manually.  To do so, type
+<code>sc delete grb_ts</code> from a <code>cmd</code> window that has
+administrator privileges.
+
+<P>
+All output from the Gurobi Token Server goes to the Windows Event
+Log.  You can access this in Windows Vista or Windows 7 through the
+Event Viewer.  Type <EM>Event</EM> in the search box under the
+<EM>Start</EM> menu to launch the viewer.
+
+<P>
+<SPAN  CLASS="textbf">Next steps</SPAN>
+
+<P>
+Clients of the token server also need simple license files.
+Your next step is to set up a
+<A HREF="creating_a_client_license.html#subsection:clientlicense">client license</A>.
+
+<P>
+Once your token server is running and you've set up a client
+license, you can move on to
+<A HREF="testing_the_license.html#subsection:testlicense">testing the license</A>.
+
+<P>
+You can test the state of the token server at any time, as well
+as get a list of the clients that are currently using tokens, by typing
+<code>gurobi_cl --tokens</code> from a <code>cmd</code> window.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html335"
+  HREF="setting_up_a_linux_token_s.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html333"
+  HREF="setting_up_a_token_server.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html327"
+  HREF="setting_up_a_token_server.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html336"
+  HREF="setting_up_a_linux_token_s.html">Setting up a Linux</A>
+<B> Up:</B> <A NAME="tex2html334"
+  HREF="setting_up_a_token_server.html">Setting up a token</A>
+<B> Previous:</B> <A NAME="tex2html328"
+  HREF="setting_up_a_token_server.html">Setting up a token</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Setting up a token server</TITLE>
+<META NAME="description" CONTENT="Setting up a token server">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="setting_up_a_compute_serve.html">
+<LINK REL="previous" HREF="retrieving_a_license_key.html">
+<LINK REL="up" HREF="how_to_obtain_and_install_.html">
+<LINK REL="next" HREF="setting_up_a_windows_token.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html323"
+  HREF="setting_up_a_windows_token.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html321"
+  HREF="how_to_obtain_and_install_.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html315"
+  HREF="academic_validation.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html324"
+  HREF="setting_up_a_windows_token.html">Setting up a Windows</A>
+<B> Up:</B> <A NAME="tex2html322"
+  HREF="how_to_obtain_and_install_.html">How to Obtain and</A>
+<B> Previous:</B> <A NAME="tex2html316"
+  HREF="academic_validation.html">Academic validation</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00023000000000000000"></A>
+<A NAME="subsection:tokenserver"></A>
+<BR>
+Setting up a token server
+</H2>
+
+<P>
+<B>Important note: most Gurobi licenses do not use the token server.
+  You should only follow these instructions if your <code>gurobi.lic</code>
+  file contains the line <code>TYPE=TOKEN</code>.</B>
+
+<P>
+If you are using a floating or single-use license, you will need to
+choose a machine to act as the Gurobi token server before you can use
+the Gurobi Optimizer.  This token server doles out tokens to client
+machines.  A client will request a token from the token server when it
+creates a Gurobi environment, and it will return the token when it
+destroys that environment.  For a single-use license, the client and
+the token server must be the same machine.  For a floating-license,
+the client machine can be any machine that can reach the token server
+over your network (including the token server itself).  The client
+can run any supported operating system.  Thus, for example, a Linux
+client can request tokens from a Windows token server.
+
+<P>
+Your next step depends on the type of machine you will be using as
+your token server.  Instructions for
+<A HREF="setting_up_a_windows_token.html#subsection:windowstokenserver">Windows</A> and
+<A HREF="setting_up_a_linux_token_s.html#subsection:unixtokenserver">Linux</A> token servers follow.
+Note that a Mac OS system cannot currently be used as a token server.
+
+<P>
+Token server clients also require licenses, but you
+can generate the required license files yourself. Consult
+the section on
+<A HREF="creating_a_client_license.html#subsection:clientlicense">client licenses</A>
+for details.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html325"
+  HREF="setting_up_a_windows_token.html">Setting up a Windows token server</A>
+<LI><A NAME="tex2html326"
+  HREF="setting_up_a_linux_token_s.html">Setting up a Linux token server</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html323"
+  HREF="setting_up_a_windows_token.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html321"
+  HREF="how_to_obtain_and_install_.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html315"
+  HREF="academic_validation.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html324"
+  HREF="setting_up_a_windows_token.html">Setting up a Windows</A>
+<B> Up:</B> <A NAME="tex2html322"
+  HREF="how_to_obtain_and_install_.html">How to Obtain and</A>
+<B> Previous:</B> <A NAME="tex2html316"
+  HREF="academic_validation.html">Academic validation</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

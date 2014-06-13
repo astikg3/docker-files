@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Distributed Parallel Algorithms</TITLE>
+<META NAME="description" CONTENT="Distributed Parallel Algorithms">
+<META NAME="keywords" CONTENT="refman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="refman.css">
+
+<LINK REL="next" HREF="copyright_notice_for_3rd_p.html">
+<LINK REL="previous" HREF="developing_for_compute_ser.html">
+<LINK REL="up" HREF="compute_server_usage.html">
+<LINK REL="next" HREF="copyright_notice_for_3rd_p.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html12037"
+  HREF="copyright_notice_for_3rd_p.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html12035"
+  HREF="compute_server_usage.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html12029"
+  HREF="developing_for_compute_ser.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html12038"
+  HREF="copyright_notice_for_3rd_p.html">Copyright Notice for 3rd</A>
+<B> Up:</B> <A NAME="tex2html12036"
+  HREF="compute_server_usage.html">Compute Server Usage</A>
+<B> Previous:</B> <A NAME="tex2html12030"
+  HREF="developing_for_compute_ser.html">Developing for Compute Server</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000222600000000000000"></A>
+<A NAME="sec:CSDistributedAlgorithms"></A>
+<BR>
+Distributed Parallel Algorithms
+</H3>
+
+<P>
+Gurobi Compute Server supports distributed parallel parameter tuning
+and distributed concurrent MIP solving.  These features allow you to
+distribute the associated computation among multiple machines.  The
+optimization model of interest is copied to the available machines,
+and the machines each use different parameter settings to solve the
+model.  In the case of distributed tuning, one machine doles out
+parameter sets among machines, collects the results, compares runtimes
+to those of the best parameter sets found so far, and chooses new
+parameter settings to test.  In the case of distributed concurrent
+MIP, one machine doles our different parameter sets to the available
+machines, starts a single MIP solve on each machine, and then keeps
+track of the best available lower and upper bounds for the model.
+When one machine finds a proven optimal solution, the computation is
+interrupted on other machines and the optimal solution is reported.
+Both of these distributed parallel algorithms are designed to be
+almost entirely transparent to the user.  The user simply modifies a
+few parameters, and the work of distributing the computation to
+multiple machines is handled behind the scenes by the Gurobi library.
+
+<P>
+<SPAN  CLASS="textbf">Specifying the Compute Server Pool</SPAN>
+
+<P>
+The first step when doing distributed tuning or distributed concurrent
+MIP is to provide a list of one or more Compute Servers that are
+running and available.  You should following the instructions for
+<A HREF="setting_up_and_administeri.html#sec:CSAdmin">setting up and administering a Gurobi Compute
+  Server</A> to set these up.
+
+<P>
+Distributed tuning actually only requires a single licensed Compute
+Server, even if you want to use multiple machines for tuning.  We
+allow you to start as many free <EM>restricted</EM> Compute Servers as
+you want.  A restricted Compute Server is a machine that runs Gurobi
+Compute Server, but will only accept jobs that are associated with
+distributed parallel tuning.  By contrast, distributed concurrent MIP
+will only distribute work among fully licensed Compute Servers.
+Again, please refer to the instructions for <A HREF="setting_up_and_administeri.html#sec:CSAdmin">setting up an
+  administering a Gurobi Compute Server</A> for details
+on setting up a restricted or standard Compute Server.
+
+<P>
+Once you've set up a set of one or more Compute Servers, you should
+list their names in the
+<A HREF="serverpool.html#parameter:ServerPool">ServerPool</A> parameter.  You
+can provide either machine names or IP addresses, and they should
+be comma-separated.  For example, you might use the following in
+your <code>gurobi_cl</code> command line:
+<PRE>
+gurobi_cl ServerPool=server1,server2,server3 ...
+</PRE>
+You can provide the Compute Server access password through the
+<A HREF="serverpassword.html#parameter:ServerPassword">ServerPassword</A> parameter.
+All servers in the server pool must have the same access password.
+
+<P>
+We should reiterate that distributed tuning only requires one of the
+machines in the server pool to be a licensed Compute Server.  The rest
+can be restricted Compute Servers.  For distributed concurrent MIP,
+all servers in the list must be licensed Compute Servers.
+
+<P>
+Note that providing a list of available servers is strictly a
+configuration step. It doesn't actually modify any algorithm behavior.
+
+<P>
+<SPAN  CLASS="textbf">Requesting Distributed Algorithms</SPAN>
+
+<P>
+Once you've set up the server pool through the appropriate parameters,
+your next step is to set the
+<A HREF="tunejobs.html#parameter:TuneJobs">TuneJobs</A> or
+<A HREF="concurrentmipjobs.html#parameter:ConcurrentMIPJobs">ConcurrentMIPJobs</A>
+parameter.  These parameters indicate how many distinct
+tuning or concurrent MIP jobs should be started on the available
+Compute Servers.  For example, if you set <code>TuneJobs</code> to 2
+in <code>grbtune</code>...
+<PRE>
+&gt; grbtune ServerPool=server1,server2 TuneJobs=2 misc07.mps
+</PRE>
+...you should see the following output in the log:
+<PRE>
+Server capacity available on server1 - running now
+Server capacity available on server2 - running now
+
+Distributed tuning: launched 2 server jobs
+</PRE>
+This output indicates that two jobs have been launched, one on machine
+<code>server1</code> and the other on machine <code>server2</code>.  These two
+jobs will continue to run on these servers until your tuning run
+completes.
+
+<P>
+Similarly, if you launch distributed concurrent MIP...
+<PRE>
+&gt; gurobi_cl ServerPool=server1,server2 ConcurrentMIPJobs=2 misc07.mps
+</PRE>
+...you should see the following output in the log:
+<PRE>
+Server capacity available on server1 - running now
+Server capacity available on server2 - running now
+
+Distributed concurrent MIP optimizer: launched 2 concurrent instances
+</PRE>
+
+<P>
+If some of the servers in your server pool are running at capacity
+when you launch a distributed algorithm, the algorithm won't queue
+jobs.  Instead, it will launch as many jobs as it can (up to the
+requested value), and it will run with these jobs.
+
+<P>
+While it may be tempting to equate jobs with machines, note that there
+are situations where you may want to run multiple jobs on the same
+server.  For example, if you have an 8-core server and a 4-core
+server, you may wish to limit the thread count on each job to 4 and
+allow two jobs to run on the 8-core server.  You would achieve this
+by using the <A HREF="threads.html#parameter:Threads">Threads</A> parameter to limit
+the thread count per job, and the <code>JOBLIMIT</code> server
+configuration option to limit the number of jobs per Compute Server
+(refer to the section on <A HREF="server_configuration.html#sec:CSConfig">Compute Server configuration</A> for details).  If you set
+the job limit to 2 on the 8-core machine (call it <code>server1</code>) and
+to 1 on the 4-core machine (call it <code>server2</code>), you might see
+output that looks like the following when you run distributed tuning:
+<PRE>
+Server capacity available on server1 - running now
+Server capacity available on server2 - running now
+Server capacity available on server1 - running now
+</PRE>
+Since Gurobi Compute Server assigns a new job to the machine with the
+most available capacity, then assuming that the two servers are
+otherwise idle, the first job would be assigned to <code>server1</code>, the
+second to <code>server2</code>, and the third to <code>server1</code>.
+
+<P>
+As for the actual behavior of the distributed tuning and concurrent
+MIP algorithms, they are designed to be nearly indistinguishable from
+the single machine versions.  In particular, distributed tuning
+respects all of the usual tuning parameters, including
+<A HREF="tunetimelimit.html#parameter:TuneTimeLimit">TuneTimeLimit</A>,
+<A HREF="tunetrials.html#parameter:TuneTrials">TuneTrials</A>, and
+<A HREF="tuneoutput.html#parameter:TuneOutput">TuneOutput</A>.  Similarly,
+concurrent MIP respects all of the usual MIP parameters.  Like the
+version that runs on a single machine, distributed concurrent MIP can
+be controlled using <A HREF="concurrent_optimizer.html#sec:ConcurrentControl">concurrent
+  environments</A>.  The only major
+difference you should notice between the distributed and
+single-machines versions is in the aggregate performance.
+
+<P>
+One important thing we should note is that distributed algorithms can
+be affected by differences in machine speed.  Consider tuning, for
+example.  If one machine in your server pool is much slower than the
+others, any parameter sets that are run on the slower machine will
+appear to be less effective than if they were run on a faster machine.
+For this reason, we recommend that you use machines with similar
+performance when running distributed parallel algorithms.  Similarly,
+if your machines have different core counts, we suggest that you use
+the <A HREF="threads.html#parameter:Threads">Threads</A> parameter to make sure
+that all tests use the same number of cores (since, by default, Gurobi
+will use all cores in the machine).
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html12037"
+  HREF="copyright_notice_for_3rd_p.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html12035"
+  HREF="compute_server_usage.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html12029"
+  HREF="developing_for_compute_ser.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html12038"
+  HREF="copyright_notice_for_3rd_p.html">Copyright Notice for 3rd</A>
+<B> Up:</B> <A NAME="tex2html12036"
+  HREF="compute_server_usage.html">Compute Server Usage</A>
+<B> Previous:</B> <A NAME="tex2html12030"
+  HREF="developing_for_compute_ser.html">Developing for Compute Server</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

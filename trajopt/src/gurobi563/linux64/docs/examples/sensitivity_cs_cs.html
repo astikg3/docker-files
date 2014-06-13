@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sensitivity_cs.cs</TITLE>
+<META NAME="description" CONTENT="sensitivity_cs.cs">
+<META NAME="keywords" CONTENT="examples">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="examples.css">
+
+<LINK REL="next" HREF="sos_cs_cs.html">
+<LINK REL="previous" HREF="qp_cs_cs.html">
+<LINK REL="up" HREF="cs_examples.html">
+<LINK REL="next" HREF="sos_cs_cs.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1429"
+  HREF="sos_cs_cs.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1427"
+  HREF="cs_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1421"
+  HREF="qp_cs_cs.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1430"
+  HREF="sos_cs_cs.html">sos_cs.cs</A>
+<B> Up:</B> <A NAME="tex2html1428"
+  HREF="cs_examples.html">C# Examples</A>
+<B> Previous:</B> <A NAME="tex2html1422"
+  HREF="qp_cs_cs.html">qp_cs.cs</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000241500000000000000"></A>
+<A NAME="subsubsection:sensitivity_cs.cs"></A>
+<BR>
+sensitivity_cs.cs
+</H3>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">/* Copyright 2013, Gurobi Optimization, Inc. */
+
+/* Simple MIP sensitivity analysis example.
+   For each integer variable, fix it to its lower and upper bound
+   and check the impact on the objective. */
+
+using System;
+using Gurobi;
+
+class sensitivity_cs
+{
+  static void Main(string[] args)
+  {
+    if (args.Length &lt; 1) {
+      Console.Out.WriteLine("Usage: sensitivity_cs filename");
+      return;
+    }
+
+    try {
+      // Read model
+      GRBEnv env = new GRBEnv();
+      GRBModel a = new GRBModel(env, args[0]);
+      a.Optimize();
+      a.GetEnv().Set(GRB.IntParam.OutputFlag, 0);
+
+      // Extract variables from model
+      GRBVar[] avars = a.GetVars();
+
+      for (int i = 0; i &lt; avars.Length; ++i) {
+        GRBVar v = avars[i];
+        if (v.Get(GRB.CharAttr.VType) == GRB.BINARY) {
+
+          // Create clone and fix variable
+          GRBModel b = new GRBModel(a);
+          GRBVar bv = b.GetVars()[i];
+          if (v.Get(GRB.DoubleAttr.X) - v.Get(GRB.DoubleAttr.LB) &lt; 0.5) {
+            bv.Set(GRB.DoubleAttr.LB, bv.Get(GRB.DoubleAttr.UB));
+          } else {
+            bv.Set(GRB.DoubleAttr.UB, bv.Get(GRB.DoubleAttr.LB));
+          }
+
+          b.Optimize();
+
+          if (b.Get(GRB.IntAttr.Status) == GRB.Status.OPTIMAL) {
+            double objchg =
+                b.Get(GRB.DoubleAttr.ObjVal) - a.Get(GRB.DoubleAttr.ObjVal);
+            if (objchg &lt; 0) {
+              objchg = 0;
+            }
+            Console.WriteLine("Objective sensitivity for variable " +
+                v.Get(GRB.StringAttr.VarName) + " is " + objchg);
+          } else {
+            Console.WriteLine("Objective sensitivity for variable " +
+                v.Get(GRB.StringAttr.VarName) + " is infinite");
+          }
+
+          // Dispose of model
+          b.Dispose();
+        }
+      }
+
+      // Dispose of model and env
+      a.Dispose();
+      env.Dispose();
+
+    } catch (GRBException e) {
+      Console.WriteLine("Error code: " + e.ErrorCode + ". " +
+          e.Message);
+    }
+  }
+}
+</PRE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1429"
+  HREF="sos_cs_cs.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1427"
+  HREF="cs_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1421"
+  HREF="qp_cs_cs.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1430"
+  HREF="sos_cs_cs.html">sos_cs.cs</A>
+<B> Up:</B> <A NAME="tex2html1428"
+  HREF="cs_examples.html">C# Examples</A>
+<B> Previous:</B> <A NAME="tex2html1422"
+  HREF="qp_cs_cs.html">qp_cs.cs</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

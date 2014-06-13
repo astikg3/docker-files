@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Installation - Windows</TITLE>
+<META NAME="description" CONTENT="Installation - Windows">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="installation_linux.html">
+<LINK REL="previous" HREF="software_installation_guid.html">
+<LINK REL="up" HREF="software_installation_guid.html">
+<LINK REL="next" HREF="installation_linux.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html229"
+  HREF="installation_linux.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html227"
+  HREF="software_installation_guid.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html221"
+  HREF="software_installation_guid.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html230"
+  HREF="installation_linux.html">Installation - Linux</A>
+<B> Up:</B> <A NAME="tex2html228"
+  HREF="software_installation_guid.html">Software Installation Guide</A>
+<B> Previous:</B> <A NAME="tex2html222"
+  HREF="software_installation_guid.html">Software Installation Guide</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00011000000000000000"></A>
+<A NAME="subsection:InstallWindows"></A>
+<BR>
+Installation - Windows
+</H2>
+
+<P>
+To install the Gurobi optimizer on your Windows machine, double-click
+on the Gurobi installer that you downloaded from our website (e.g.,
+<code>Gurobi-5.6.0-win32.msi</code> for the 32-bit version of Gurobi 5.6.0).
+You may have selected <EM>Run</EM> when downloading the installer, in
+which case you've already run the installer and don't need to do it
+again.
+
+<P>
+By default, the installer will place the Gurobi 5.6.0 files in
+directory <code>c:\gurobi560\win32</code> (or
+<code>c:\gurobi560\win64</code> for 64-bit
+Windows installs).  The installer gives you the option to change the
+installation target.  We'll refer to the installation directory as
+<code>&lt;installdir&gt;</code>.
+
+<P>
+<SPAN  CLASS="textbf">Installation for all users</SPAN>
+
+<P>
+By default, Gurobi is installed for use by the current Windows user
+only.  If you would like to install Gurobi for all users, you may do
+so using the command line interface to the Windows Installer: open a
+<code>cmd</code> prompt, use <code>cd</code> to go to the directory that
+contains the Gurobi installer image, and enter the following command:
+<PRE>
+  msiexec /i Gurobi-5.6.0-win32.msi allusers=1
+</PRE>
+
+<P>
+You should normally only install the Gurobi version that is targeted
+to your platform (32-bit or 64-bit Windows).  You do have the option
+of installing both on the same machine, but note that the Gurobi
+installer sets a few Windows environment variables that will point to
+one particular version.  This can cause some confusion, particularly
+when a program asks Windows to load the Gurobi DLL.  If you understand
+the implications, then feel free to install both.
+
+<P>
+<SPAN  CLASS="textbf">Helpful tools</SPAN>
+
+<P>
+If you would like to work with compressed files from within the Gurobi
+Optimizer, we recommend that you also install <code>gzip</code>
+and/or <code>7zip</code>.  They can be
+downloaded from
+<A NAME="tex2html5"
+  HREF="http://www.gzip.org">www.gzip.org</A>
+and
+<A NAME="tex2html6"
+  HREF="http://www.7-zip.org">www.7-zip.org</A>, respectively.
+
+<P>
+<SPAN  CLASS="textbf">Next steps</SPAN>
+
+<P>
+Once installation is complete, you should see a Gurobi desktop
+shortcut that can be used to launch the Gurobi Interactive Shell.  You
+shouldn't try to launch Gurobi quite yet.  Doing so will produce a
+lengthy error message indicating that you haven't yet installed a license
+key.
+
+<P>
+You are now ready to proceed to the section on
+<A HREF="how_to_obtain_and_install_.html#section:License">How to Obtain and Install a Gurobi License</A>.
+
+<P>
+If you would like an overview of the files included in the Gurobi
+distribution, you can also view the
+<A HREF="file_overview.html#section:Overview">File Overview</A> section.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html229"
+  HREF="installation_linux.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html227"
+  HREF="software_installation_guid.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html221"
+  HREF="software_installation_guid.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html230"
+  HREF="installation_linux.html">Installation - Linux</A>
+<B> Up:</B> <A NAME="tex2html228"
+  HREF="software_installation_guid.html">Software Installation Guide</A>
+<B> Previous:</B> <A NAME="tex2html222"
+  HREF="software_installation_guid.html">Software Installation Guide</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

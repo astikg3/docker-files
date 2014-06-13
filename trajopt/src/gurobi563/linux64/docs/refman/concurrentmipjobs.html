@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>ConcurrentMIPJobs</TITLE>
+<META NAME="description" CONTENT="ConcurrentMIPJobs">
+<META NAME="keywords" CONTENT="refman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="refman.css">
+
+<LINK REL="next" HREF="concurrentsettings.html">
+<LINK REL="previous" HREF="concurrentmip.html">
+<LINK REL="up" HREF="parameter_descriptions.html">
+<LINK REL="next" HREF="concurrentsettings.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html10785"
+  HREF="concurrentsettings.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html10783"
+  HREF="parameter_descriptions.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html10777"
+  HREF="concurrentmip.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html10786"
+  HREF="concurrentsettings.html">ConcurrentSettings</A>
+<B> Up:</B> <A NAME="tex2html10784"
+  HREF="parameter_descriptions.html">Parameter Descriptions</A>
+<B> Previous:</B> <A NAME="tex2html10778"
+  HREF="concurrentmip.html">ConcurrentMIP</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION0001421200000000000000"></A>
+<A NAME="parameter:ConcurrentMIPJobs"></A>
+<BR>
+ConcurrentMIPJobs
+</H3>
+Distributed concurrent MIP job count 
+<BR>
+<BR>
+
+<TABLE CELLPADDING=3>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Type:</SPAN></TH>
+<TD ALIGN="LEFT">int</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Default value:</SPAN></TH>
+<TD ALIGN="LEFT">0</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Minimum value:</SPAN></TH>
+<TD ALIGN="LEFT">0</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><SPAN  CLASS="textbf">Maximum value:</SPAN></TH>
+<TD ALIGN="LEFT">MAXINT</TD>
+</TR>
+</TABLE>
+
+<P>
+Enables distributed concurrent MIP.  A value of <code>n</code> causes the
+MIP solver to create <code>n</code> independent MIP models, using different
+parameter settings for each.  Each of these models is sent to a
+compute server for processing.  Optimization terminates when the first
+solve completes.  Use the
+<A HREF="serverpool.html#parameter:ServerPool">ServerPool</A> parameter to
+provide a list of available compute servers.
+
+<P>
+By default, Gurobi chooses the parameter settings used for each
+independent solve automatically.  You can create concurrent
+environments to choose your own parameter settings (refer to
+the <A HREF="concurrent_optimizer.html#sec:ConcurrentControl">concurrent optimization</A>
+section for details).  The intent of concurrent MIP solving is to
+introduce additional diversity into the MIP search.  By bringing the
+resources of multiple machines to bear on a single model, this
+approach can sometimes solve models much faster than a single machine.
+
+<P>
+The distributed concurrent MIP solver produces a slightly different
+log from the standard MIP solver, and provides different callbacks as
+well.  Please refer to the
+<A HREF="gurobi_compute_server.html#sec:ComputeServer">Compute Server</A>
+discussion for additional details.
+
+<P>
+
+<SPAN  CLASS="textbf">Note:</SPAN> Only affects mixed integer programming (MIP) models 
+<BR>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html10785"
+  HREF="concurrentsettings.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html10783"
+  HREF="parameter_descriptions.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html10777"
+  HREF="concurrentmip.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html10786"
+  HREF="concurrentsettings.html">ConcurrentSettings</A>
+<B> Up:</B> <A NAME="tex2html10784"
+  HREF="parameter_descriptions.html">Parameter Descriptions</A>
+<B> Previous:</B> <A NAME="tex2html10778"
+  HREF="concurrentmip.html">ConcurrentMIP</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

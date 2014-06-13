@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Setting up a compute server</TITLE>
+<META NAME="description" CONTENT="Setting up a compute server">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="creating_a_client_license.html">
+<LINK REL="previous" HREF="setting_up_a_token_server.html">
+<LINK REL="up" HREF="how_to_obtain_and_install_.html">
+<LINK REL="next" HREF="setting_up_a_windows_compu.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html353"
+  HREF="setting_up_a_windows_compu.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html351"
+  HREF="how_to_obtain_and_install_.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html345"
+  HREF="setting_up_a_linux_token_s.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html354"
+  HREF="setting_up_a_windows_compu.html">Setting up a Windows</A>
+<B> Up:</B> <A NAME="tex2html352"
+  HREF="how_to_obtain_and_install_.html">How to Obtain and</A>
+<B> Previous:</B> <A NAME="tex2html346"
+  HREF="setting_up_a_linux_token_s.html">Setting up a Linux</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00024000000000000000"></A>
+<A NAME="subsection:computeserver"></A>
+<BR>
+Setting up a compute server
+</H2>
+
+<P>
+<B>Important note: most Gurobi licenses do not use the compute server.
+  You should only follow these instructions if your <code>gurobi.lic</code>
+  file contains the line <code>CSENABLED=1</code>.</B>
+
+<P>
+If you have purchased one or more Gurobi compute server licenses,
+you'll need to perform a few setup steps in order to start your
+compute servers.  Once started, client machines will be able to
+offload the work of solving an optimization model onto these servers.
+The clients and the compute servers can run any mix of supported
+operating systems.  Thus, for example, multiple Linux machines could
+submit jobs to a pair of compute servers, one running Windows and the
+other running Linux.  Any machine that can reach the compute server(s)
+over your network can be a client (including the compute servers
+themselves).
+
+<P>
+We should note that our distributed parallel tuning feature allows any
+machine to be configured as a <EM>restricted compute server</EM>.
+These special Gurobi compute servers don't require a Gurobi license.
+The only jobs they will accept are tuning jobs.  To set up a
+restricted compute server, you should follow the instructions for
+setting up a standard compute server, but you can ignore any step that
+involves a license file.
+
+<P>
+Your next step depends on the types of machines you will be using
+as your compute servers.  Instructions are available for
+<A HREF="setting_up_a_windows_compu.html#subsection:windowscomputeserver">Windows</A>,
+<A HREF="setting_up_a_linux_compute.html#subsection:unixcomputeserver">Linux</A>, or
+<A HREF="setting_up_a_mac_os_comput.html#subsection:macoscomputeserver">Mac OS</A>.
+
+<P>
+Compute server clients also require licenses, but you
+can generate the required license files yourself. Consult
+<A HREF="creating_a_client_license.html#subsection:clientlicense">the client license section</A>
+for details.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html355"
+  HREF="setting_up_a_windows_compu.html">Setting up a Windows compute server</A>
+<LI><A NAME="tex2html356"
+  HREF="setting_up_a_linux_compute.html">Setting up a Linux compute server</A>
+<LI><A NAME="tex2html357"
+  HREF="setting_up_a_mac_os_comput.html">Setting up a Mac OS compute server</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html353"
+  HREF="setting_up_a_windows_compu.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html351"
+  HREF="how_to_obtain_and_install_.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html345"
+  HREF="setting_up_a_linux_token_s.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html354"
+  HREF="setting_up_a_windows_compu.html">Setting up a Windows</A>
+<B> Up:</B> <A NAME="tex2html352"
+  HREF="how_to_obtain_and_install_.html">How to Obtain and</A>
+<B> Previous:</B> <A NAME="tex2html346"
+  HREF="setting_up_a_linux_token_s.html">Setting up a Linux</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

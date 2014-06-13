@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sensitivity_c.c</TITLE>
+<META NAME="description" CONTENT="sensitivity_c.c">
+<META NAME="keywords" CONTENT="examples">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="examples.css">
+
+<LINK REL="next" HREF="sos_c_c.html">
+<LINK REL="previous" HREF="qp_c_c.html">
+<LINK REL="up" HREF="c_examples.html">
+<LINK REL="next" HREF="sos_c_c.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html646"
+  HREF="sos_c_c.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html644"
+  HREF="c_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html638"
+  HREF="qp_c_c.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html647"
+  HREF="sos_c_c.html">sos_c.c</A>
+<B> Up:</B> <A NAME="tex2html645"
+  HREF="c_examples.html">C Examples</A>
+<B> Previous:</B> <A NAME="tex2html639"
+  HREF="qp_c_c.html">qp_c.c</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000211500000000000000"></A>
+<A NAME="subsubsection:sensitivity_c.c"></A>
+<BR>
+sensitivity_c.c
+</H3>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">/* Copyright 2013, Gurobi Optimization, Inc. */
+
+/* Simple MIP sensitivity analysis example.
+   For each integer variable, fix it to its lower and upper bound
+   and check the impact on the objective. */
+
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include "gurobi_c.h"
+
+int
+main(int   argc,
+     char *argv[])
+{
+  GRBenv   *env = NULL, *aenv;
+  GRBmodel *a = NULL, *b = NULL;
+  int       error = 0;
+  int       i, numvars, status;
+  char      vtype, *vname;
+  double    x, bnd, aobj, bobj, objchg;
+
+  if (argc &lt; 2)
+  {
+    fprintf(stderr, "Usage: sensitivity_c filename\n");
+    exit(1);
+  }
+
+  error = GRBloadenv(&amp;env, "sensitivity.log");
+  if (error) goto QUIT;
+
+  /* Read model */
+  error = GRBreadmodel(env, argv[1], &amp;a);
+  if (error) goto QUIT;
+  error = GRBoptimize(a);
+  if (error) goto QUIT;
+  error = GRBgetdblattr(a, "ObjVal", &amp;aobj);
+  if (error) goto QUIT;
+  aenv = GRBgetenv(a);
+  if (!aenv) goto QUIT;
+  error = GRBsetintparam(aenv, "OutputFlag", 0);
+  if (error) goto QUIT;
+
+  /* Iterate over all variables */
+  error = GRBgetintattr(a, "NumVars", &amp;numvars);
+  if (error) goto QUIT;
+  for (i = 0; i &lt; numvars; ++i)
+  {
+    error = GRBgetcharattrelement(a, "VType", i, &amp;vtype);
+    if (error) goto QUIT;
+
+    if (vtype == GRB_BINARY)
+    {
+
+      /* Create clone and fix variable */
+      b = GRBcopymodel(a);
+      if (!b) goto QUIT;
+      error = GRBgetstrattrelement(a, "VarName", i, &amp;vname);
+      if (error) goto QUIT;
+      error = GRBgetdblattrelement(a, "X", i, &amp;x);
+      if (error) goto QUIT;
+      error = GRBgetdblattrelement(a, "LB", i, &amp;bnd);
+      if (error) goto QUIT;
+      if (x - bnd &lt; 0.5)
+      {
+        error = GRBgetdblattrelement(b, "UB", i, &amp;bnd);
+        if (error) goto QUIT;
+        error = GRBsetdblattrelement(b, "LB", i, bnd);
+        if (error) goto QUIT;
+      }
+      else
+      {
+        error = GRBgetdblattrelement(b, "LB", i, &amp;bnd);
+        if (error) goto QUIT;
+        error = GRBsetdblattrelement(b, "UB", i, bnd);
+        if (error) goto QUIT;
+      }
+
+      error = GRBoptimize(b);
+      if (error) goto QUIT;
+
+      error = GRBgetintattr(b, "Status", &amp;status);
+      if (error) goto QUIT;
+      if (status == GRB_OPTIMAL)
+      {
+        error = GRBgetdblattr(b, "ObjVal", &amp;bobj);
+        if (error) goto QUIT;
+        objchg = bobj - aobj;
+        if (objchg &lt; 0)
+        {
+          objchg = 0;
+        }
+        printf("Objective sensitivity for variable %s is %f\n", vname, objchg);
+      }
+      else
+      {
+        printf("Objective sensitivity for variable %s is infinite\n", vname);
+      }
+
+      GRBfreemodel(b);
+      b = NULL;
+    }
+  }
+
+
+QUIT:
+
+  /* Error reporting */
+
+  if (error)
+  {
+    printf("ERROR: %s\n", GRBgeterrormsg(env));
+    exit(1);
+  }
+
+  /* Free models */
+
+  GRBfreemodel(a);
+  GRBfreemodel(b);
+
+  /* Free environment */
+
+  GRBfreeenv(env);
+
+  return 0;
+}
+</PRE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html646"
+  HREF="sos_c_c.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html644"
+  HREF="c_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html638"
+  HREF="qp_c_c.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html647"
+  HREF="sos_c_c.html">sos_c.c</A>
+<B> Up:</B> <A NAME="tex2html645"
+  HREF="c_examples.html">C Examples</A>
+<B> Previous:</B> <A NAME="tex2html639"
+  HREF="qp_c_c.html">qp_c.c</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

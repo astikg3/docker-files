@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Attribute Descriptions - Model Attributes</TITLE>
+<META NAME="description" CONTENT="Attribute Descriptions - Model Attributes">
+<META NAME="keywords" CONTENT="refman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="refman.css">
+
+<LINK REL="next" HREF="attribute_descriptions_var.html">
+<LINK REL="previous" HREF="attributes.html">
+<LINK REL="up" HREF="attributes.html">
+<LINK REL="next" HREF="numconstrs.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html9143"
+  HREF="numconstrs.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html9141"
+  HREF="attributes.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html9135"
+  HREF="attributes.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html9144"
+  HREF="numconstrs.html">NumConstrs</A>
+<B> Up:</B> <A NAME="tex2html9142"
+  HREF="attributes.html">Attributes</A>
+<B> Previous:</B> <A NAME="tex2html9136"
+  HREF="attributes.html">Attributes</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000131000000000000000">
+Attribute Descriptions - Model Attributes</A>
+</H2>
+
+<P>
+These are model attributes, meaning that they are associated with the
+overall model (as opposed to being associated with a particular
+variable or constraint of the model).  You should use one of the
+various <code>get</code> routines to retrieve the value of an attribute.
+These are described at the beginning of
+<A HREF="attributes.html#sec:Attributes">this section</A>).
+For the object-oriented interfaces, model attributes are retrieved by
+invoking the <code>get</code> method on the model object itself.  For
+attributes that can be modified directly by the user, you can use one
+of the various <code>set</code> methods.
+
+<P>
+Attempting to query an attribute that is not available will produce an
+error.  In C, the attribute query routine will return a
+<code>GRB_ERROR_DATA_NOT_AVAILABLE</code>
+error code.  The object-oriented
+interfaces will throw an exception.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html9145"
+  HREF="numconstrs.html">NumConstrs</A>
+<LI><A NAME="tex2html9146"
+  HREF="numvars.html">NumVars</A>
+<LI><A NAME="tex2html9147"
+  HREF="numsos.html">NumSOS</A>
+<LI><A NAME="tex2html9148"
+  HREF="numqconstrs.html">NumQConstrs</A>
+<LI><A NAME="tex2html9149"
+  HREF="numnzs.html">NumNZs</A>
+<LI><A NAME="tex2html9150"
+  HREF="numqnzs.html">NumQNZs</A>
+<LI><A NAME="tex2html9151"
+  HREF="numqcnzs.html">NumQCNZs</A>
+<LI><A NAME="tex2html9152"
+  HREF="numintvars.html">NumIntVars</A>
+<LI><A NAME="tex2html9153"
+  HREF="numbinvars.html">NumBinVars</A>
+<LI><A NAME="tex2html9154"
+  HREF="modelname.html">ModelName</A>
+<LI><A NAME="tex2html9155"
+  HREF="modelsense.html">ModelSense</A>
+<LI><A NAME="tex2html9156"
+  HREF="objcon.html">ObjCon</A>
+<LI><A NAME="tex2html9157"
+  HREF="objval.html">ObjVal</A>
+<LI><A NAME="tex2html9158"
+  HREF="objbound.html">ObjBound</A>
+<LI><A NAME="tex2html9159"
+  HREF="mipgap.html">MIPGap</A>
+<LI><A NAME="tex2html9160"
+  HREF="runtime.html">Runtime</A>
+<LI><A NAME="tex2html9161"
+  HREF="status.html">Status</A>
+<LI><A NAME="tex2html9162"
+  HREF="solcount.html">SolCount</A>
+<LI><A NAME="tex2html9163"
+  HREF="itercount.html">IterCount</A>
+<LI><A NAME="tex2html9164"
+  HREF="baritercount.html">BarIterCount</A>
+<LI><A NAME="tex2html9165"
+  HREF="nodecount.html">NodeCount</A>
+<LI><A NAME="tex2html9166"
+  HREF="ismip.html">IsMIP</A>
+<LI><A NAME="tex2html9167"
+  HREF="isqp.html">IsQP</A>
+<LI><A NAME="tex2html9168"
+  HREF="isqcp.html">IsQCP</A>
+<LI><A NAME="tex2html9169"
+  HREF="iisminimal.html">IISMinimal</A>
+<LI><A NAME="tex2html9170"
+  HREF="maxcoeff.html">MaxCoeff</A>
+<LI><A NAME="tex2html9171"
+  HREF="mincoeff.html">MinCoeff</A>
+<LI><A NAME="tex2html9172"
+  HREF="maxbound.html">MaxBound</A>
+<LI><A NAME="tex2html9173"
+  HREF="minbound.html">MinBound</A>
+<LI><A NAME="tex2html9174"
+  HREF="maxobjcoeff.html">MaxObjCoeff</A>
+<LI><A NAME="tex2html9175"
+  HREF="minobjcoeff.html">MinObjCoeff</A>
+<LI><A NAME="tex2html9176"
+  HREF="maxrhs.html">MaxRHS</A>
+<LI><A NAME="tex2html9177"
+  HREF="minrhs.html">MinRHS</A>
+<LI><A NAME="tex2html9178"
+  HREF="kappa.html">Kappa</A>
+<LI><A NAME="tex2html9179"
+  HREF="kappaexact.html">KappaExact</A>
+<LI><A NAME="tex2html9180"
+  HREF="farkasproof.html">FarkasProof</A>
+<LI><A NAME="tex2html9181"
+  HREF="tuneresultcount.html">TuneResultCount</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html9143"
+  HREF="numconstrs.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html9141"
+  HREF="attributes.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html9135"
+  HREF="attributes.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html9144"
+  HREF="numconstrs.html">NumConstrs</A>
+<B> Up:</B> <A NAME="tex2html9142"
+  HREF="attributes.html">Attributes</A>
+<B> Previous:</B> <A NAME="tex2html9136"
+  HREF="attributes.html">Attributes</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

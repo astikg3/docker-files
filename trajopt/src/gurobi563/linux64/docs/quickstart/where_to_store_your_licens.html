@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Where to store your license key file</TITLE>
+<META NAME="description" CONTENT="Where to store your license key file">
+<META NAME="keywords" CONTENT="quickstart">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="quickstart.css">
+
+<LINK REL="next" HREF="academic_validation.html">
+<LINK REL="previous" HREF="retrieving_a_license_key.html">
+<LINK REL="up" HREF="retrieving_a_license_key.html">
+<LINK REL="next" HREF="academic_validation.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html305"
+  HREF="academic_validation.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html303"
+  HREF="retrieving_a_license_key.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html297"
+  HREF="retrieving_a_license_key.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html306"
+  HREF="academic_validation.html">Academic validation</A>
+<B> Up:</B> <A NAME="tex2html304"
+  HREF="retrieving_a_license_key.html">Retrieving a license key</A>
+<B> Previous:</B> <A NAME="tex2html298"
+  HREF="retrieving_a_license_key.html">Retrieving a license key</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00022100000000000000"></A>
+<A NAME="subsubsection:licensefilelocation"></A>
+<BR>
+Where to store your license key file
+</H3>
+
+<P>
+When you run the Gurobi Optimizer, it will look for the
+<code>gurobi.lic</code> key file in three different default locations.  It
+will always look in your home directory.  In
+addition, on a Windows system, Gurobi Optimizer 5.6.0 will also look
+in <code>c:\gurobi</code> and <code>c:\gurobi560</code>.
+On a Linux system, it will also look in
+<code>/opt/gurobi</code> and <code>/opt/gurobi560</code>.
+On a Mac system, it will also look in
+<code>/Library/gurobi</code> and <code>/Library/gurobi560</code>.
+Note that these
+default paths are absolute, so for example Gurobi will look for the
+license key file in <code>c:\gurobi</code>, even if the
+software is installed in <code>d:\gurobi560</code>.
+
+<P>
+The <code>grbgetkey</code> program will suggest a location in which to store
+your license key file, but it also allows you to choose an alternate
+location.  If you accept its suggestion, there is nothing else to do.
+Otherwise, please read on.
+
+<P>
+While we allow you to store your license key file in a non-default
+location, we'd like to strongly recommend that you use the default
+location, particularly if you are settting up a token server or a
+compute server.  Setting up a non-default location is quite
+error-prone and a frequent source of trouble.
+
+<P>
+If you would still like to use a non-default license key file
+location, you can do so by setting environment variable
+<code>GRB_LICENSE_FILE</code> to point to the license key file.  <EM>  Important note: the environment variable should point to the license
+  key file itself, not to the directory that contains the file.</EM>
+
+<P>
+<SPAN  CLASS="textbf">Setting an environment variable - Windows</SPAN>
+
+<P>
+On Windows systems, environment variables are created and modified
+through the Control Panel.  Searching for
+<EM>Environment Variables</EM> from the Control Panel search box will lead you to the
+appropriate screen.  You will need to add a new
+<EM>System variable</EM> named <code>GRB_LICENSE_FILE</code>, and set it to the
+location of your license file (e.g., <code>d:\gurobi\gurobi.lic</code>).
+<EM>Important note: your new environment
+variable must be a System variable, not a User variable.</EM>
+
+<P>
+<SPAN  CLASS="textbf">Setting an environment variable - Linux</SPAN>
+
+<P>
+On Linux systems, if you choose to put the license key file in a
+non-default location, you should add a line like the following to your
+<code>.bashrc</code> file:
+<PRE>
+  export GRB_LICENSE_FILE=/usr/home/jones/gurobi.lic
+</PRE>
+For Linux <code>csh</code> shell users, you should add the following to
+your <code>.cshrc</code> file:
+<PRE>
+  setenv GRB_LICENSE_FILE /usr/home/jones/gurobi.lic
+</PRE>
+You should of course set the variable to point to the actual location
+of your license key file.
+
+<P>
+<SPAN  CLASS="textbf">Setting an environment variable - Mac</SPAN>
+
+<P>
+On Mac systems, you can set the optional <code>GRB_LICENSE_FILE</code>
+environment variable through <code>environment.plist</code>, as explained
+in <A NAME="tex2html13"
+  HREF="
+  https://developer.apple.com/mac/library/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/EnvironmentVars.html">Apple's Runtime configuration Guidelines</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html305"
+  HREF="academic_validation.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html303"
+  HREF="retrieving_a_license_key.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html297"
+  HREF="retrieving_a_license_key.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html306"
+  HREF="academic_validation.html">Academic validation</A>
+<B> Up:</B> <A NAME="tex2html304"
+  HREF="retrieving_a_license_key.html">Retrieving a license key</A>
+<B> Previous:</B> <A NAME="tex2html298"
+  HREF="retrieving_a_license_key.html">Retrieving a license key</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

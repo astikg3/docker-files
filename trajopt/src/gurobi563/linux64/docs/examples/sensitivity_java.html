@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sensitivity.java</TITLE>
+<META NAME="description" CONTENT="Sensitivity.java">
+<META NAME="keywords" CONTENT="examples">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="examples.css">
+
+<LINK REL="next" HREF="sos_java.html">
+<LINK REL="previous" HREF="qp_java.html">
+<LINK REL="up" HREF="java_examples.html">
+<LINK REL="next" HREF="sos_java.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1168"
+  HREF="sos_java.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1166"
+  HREF="java_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1160"
+  HREF="qp_java.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1169"
+  HREF="sos_java.html">Sos.java</A>
+<B> Up:</B> <A NAME="tex2html1167"
+  HREF="java_examples.html">Java Examples</A>
+<B> Previous:</B> <A NAME="tex2html1161"
+  HREF="qp_java.html">Qp.java</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000231500000000000000"></A>
+<A NAME="subsubsection:Sensitivity.java"></A>
+<BR>
+Sensitivity.java
+</H3>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">/* Copyright 2013, Gurobi Optimization, Inc. */
+
+/* Simple MIP sensitivity analysis example.
+ For each integer variable, fix it to its lower and upper bound
+ and check the impact on the objective. */
+
+import gurobi.*;
+
+public class Sensitivity {
+
+  public static void main(String[] args) {
+
+    if (args.length &lt; 1) {
+      System.out.println("Usage: java Sensitivity filename");
+      System.exit(1);
+    }
+
+    try {
+      // Read model
+      GRBEnv env = new GRBEnv();
+      GRBModel a = new GRBModel(env, args[0]);
+      a.optimize();
+      a.getEnv().set(GRB.IntParam.OutputFlag, 0);
+
+      // Extract variables from model
+      GRBVar[] avars = a.getVars();
+
+      for (int i = 0; i &lt; avars.length; ++i) {
+        GRBVar v = avars[i];
+        if (v.get(GRB.CharAttr.VType) == GRB.BINARY) {
+
+          // Create clone and fix variable
+          GRBModel b = new GRBModel(a);
+          GRBVar bv = b.getVars()[i];
+          if (v.get(GRB.DoubleAttr.X) - v.get(GRB.DoubleAttr.LB) &lt; 0.5) {
+            bv.set(GRB.DoubleAttr.LB, bv.get(GRB.DoubleAttr.UB));
+          } else {
+            bv.set(GRB.DoubleAttr.UB, bv.get(GRB.DoubleAttr.LB));
+          }
+
+          b.optimize();
+
+          if (b.get(GRB.IntAttr.Status) == GRB.Status.OPTIMAL) {
+            double objchg =
+                b.get(GRB.DoubleAttr.ObjVal) - a.get(GRB.DoubleAttr.ObjVal);
+            if (objchg &lt; 0) {
+              objchg = 0;
+            }
+            System.out.println("Objective sensitivity for variable " +
+                v.get(GRB.StringAttr.VarName) + " is " + objchg);
+          } else {
+            System.out.println("Objective sensitivity for variable " +
+                v.get(GRB.StringAttr.VarName) + " is infinite");
+          }
+
+          // Dispose of model
+          b.dispose();
+        }
+      }
+
+      // Dispose of model and environment
+      a.dispose();
+      env.dispose();
+
+    } catch (GRBException e) {
+      System.out.println("Error code: " + e.getErrorCode() + ". " +
+          e.getMessage());
+    }
+  }
+}
+</PRE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1168"
+  HREF="sos_java.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1166"
+  HREF="java_examples.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1160"
+  HREF="qp_java.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html1169"
+  HREF="sos_java.html">Sos.java</A>
+<B> Up:</B> <A NAME="tex2html1167"
+  HREF="java_examples.html">Java Examples</A>
+<B> Previous:</B> <A NAME="tex2html1161"
+  HREF="qp_java.html">Qp.java</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>
