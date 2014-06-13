@@ -1,0 +1,2040 @@
+Step 0 : FROM dibyo/openrave
+ ---> c1d9f0ebd3fd
+Step 1 : MAINTAINER Dibyo Majumdar <dibyo.majumdar@gmail.com>
+ ---> Using cache
+ ---> 3a6dff124740
+Step 2 : RUN apt-get install -y libopenscenegraph-dev cmake libboost-all-dev libeigen3-dev
+ ---> Using cache
+ ---> 30f6215c6aee
+Step 3 : RUN git clone https://github.com/joschu/trajopt.git /usr/local/src/trajopt
+ ---> Using cache
+ ---> 17afc9561bf1
+Step 4 : RUN cd /usr/local/src/trajopt; mkdir build; cd build; cmake ..; make -j
+ ---> Using cache
+ ---> f99fdcbacfc5
+Step 5 : ENV PYTHONPATH $PYTHONPATH:/usr/local/src/trajopt:/usr/local/src/trajopt/build/lib
+ ---> Using cache
+ ---> 9fd96cef3bcb
+Step 6 : RUN cd /usr/local/src/trajopt/build; ctest -V
+ ---> Running in 04b1bd6fb4e8
+UpdateCTestConfiguration  from :/usr/local/src/trajopt/build/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/usr/local/src/trajopt/build/DartConfiguration.tcl
+Test project /usr/local/src/trajopt/build
+Constructing a list of tests
+Done constructing a list of tests
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+      Start  1: arm_to_joint_target.py
+
+1: Test command: /usr/bin/python "/usr/local/src/trajopt/python_examples/arm_to_joint_target.py"
+1: Test timeout computed to be: 9.99988e+06
+1: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+1: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+1: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:wide_stereo_optical_sensor
+1: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+1: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:narrow_stereo_optical_sensor
+1: [m[0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+1: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+1: [INFO] creating bullet collision checker for environment[0m
+1: [INFO] iteration 1[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.610e+00 | -9.265e-02 | -9.265e-02 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  1.255e+00 |  8.545e-01 |  1.156e+00 |  1.353e+00
+1:     collision_4 |  7.205e+00 |  1.612e+00 |  2.691e+00 |  1.670e+00
+1:     collision_5 |  7.108e+00 |  1.519e+00 |  1.767e+00 |  1.163e+00
+1:     collision_6 |  1.184e+01 | -5.447e+00 | -5.383e+00 |  9.881e-01
+1:     collision_7 |  1.263e+01 |  9.225e+00 |  9.023e+00 |  9.780e-01
+1:     collision_8 |  5.410e-01 |  5.410e-01 |  5.410e-01 |  1.000e+00
+1:           TOTAL |  4.219e+01 |  8.212e+00 |  9.703e+00 |  1.182e+00
+1: [INFO] expanded trust region. new box size: 0.1500[0m
+1: [INFO] iteration 2[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.703e+00 | -3.682e-01 | -3.682e-01 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  9.936e-02 |  9.936e-02 |  9.936e-02 |  1.000e+00
+1:     collision_4 |  4.514e+00 |  2.885e+00 |  3.373e+00 |  1.169e+00
+1:     collision_5 |  5.341e+00 |  1.709e+00 |  2.088e+00 |  1.222e+00
+1:     collision_6 |  1.722e+01 |  1.077e+00 |  5.736e-01 |  5.325e-01
+1:     collision_7 |  3.606e+00 |  1.080e+00 | -5.346e-01 | -4.951e-01
+1:     collision_8 |  0.000e+00 | -7.923e-11 |  0.000e+00 |   ------  
+1:           TOTAL |  3.249e+01 |  6.482e+00 |  5.232e+00 |  8.071e-01
+1: [INFO] expanded trust region. new box size: 0.2250[0m
+1: [INFO] iteration 3[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  2.071e+00 |  1.299e-01 |  1.299e-01 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_4 |  1.141e+00 |  1.141e+00 |  1.141e+00 |  1.000e+00
+1:     collision_5 |  3.252e+00 |  3.077e+00 |  2.693e+00 |  8.754e-01
+1:     collision_6 |  1.665e+01 | -5.660e-01 |  1.111e+01 | -1.962e+01
+1:     collision_7 |  4.141e+00 |  2.247e+00 |  1.683e+00 |  7.491e-01
+1:     collision_8 |  0.000e+00 | -2.360e-09 |  0.000e+00 |   ------  
+1:           TOTAL |  2.726e+01 |  6.029e+00 |  1.675e+01 |  2.779e+00
+1: [INFO] expanded trust region. new box size: 0.3375[0m
+1: [INFO] iteration 4[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.941e+00 |  1.765e-01 |  1.765e-01 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_4 |  0.000e+00 | -3.044e-11 |  0.000e+00 |   ------  
+1:     collision_5 |  5.593e-01 |  5.593e-01 |  5.593e-01 |  1.000e+00
+1:     collision_6 |  5.543e+00 |  5.543e+00 |  5.543e+00 |  1.000e+00
+1:     collision_7 |  2.457e+00 |  2.457e+00 |  2.457e+00 |  1.000e+00
+1:     collision_8 |  0.000e+00 | -1.786e-10 |  0.000e+00 |   ------  
+1:           TOTAL |  1.050e+01 |  8.736e+00 |  8.736e+00 |  1.000e+00
+1: [INFO] expanded trust region. new box size: 0.5063[0m
+1: [INFO] iteration 5[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.765e+00 |  2.219e-02 |  2.219e-02 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_4 |  0.000e+00 | -4.533e-10 |  0.000e+00 |   ------  
+1:     collision_5 |  0.000e+00 | -6.535e-10 |  0.000e+00 |   ------  
+1:     collision_6 |  0.000e+00 | -1.908e-09 |  0.000e+00 |   ------  
+1:     collision_7 |  0.000e+00 | -1.414e-09 |  0.000e+00 |   ------  
+1:     collision_8 |  0.000e+00 | -5.329e-10 |  0.000e+00 |   ------  
+1:           TOTAL |  1.765e+00 |  2.219e-02 |  2.219e-02 |  1.000e+00
+1: [INFO] expanded trust region. new box size: 0.7594[0m
+1: [INFO] iteration 6[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.743e+00 |  9.137e-03 |  9.137e-03 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_4 |  0.000e+00 | -5.807e-13 |  0.000e+00 |   ------  
+1:     collision_5 |  0.000e+00 | -2.036e-12 |  0.000e+00 |   ------  
+1:     collision_6 |  0.000e+00 | -1.843e-12 |  0.000e+00 |   ------  
+1:     collision_7 |  0.000e+00 | -1.211e-12 |  0.000e+00 |   ------  
+1:     collision_8 |  0.000e+00 | -6.256e-13 |  0.000e+00 |   ------  
+1:           TOTAL |  1.743e+00 |  9.137e-03 |  9.137e-03 |  1.000e+00
+1: [INFO] expanded trust region. new box size: 1.1391[0m
+1: [INFO] iteration 7[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.734e+00 |  1.618e-02 |  1.618e-02 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1: No handlers could be found for logger "openravepy"
+1:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_4 |  0.000e+00 | -1.983e-10 |  0.000e+00 |   ------  
+1:     collision_5 |  0.000e+00 | -3.341e-10 | -5.407e-02 |   ------  
+1:     collision_6 |  0.000e+00 | -6.350e-10 | -2.631e-02 |   ------  
+1:     collision_7 |  0.000e+00 | -6.366e-10 |  0.000e+00 |   ------  
+1:     collision_8 |  0.000e+00 | -2.169e-10 |  0.000e+00 |   ------  
+1:           TOTAL |  1.734e+00 |  1.618e-02 | -6.420e-02 | -3.968e+00
+1: [INFO] shrunk trust region. new box size: 0.1139[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.734e+00 |  1.618e-02 |  1.618e-02 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_4 |  0.000e+00 | -3.519e-13 |  0.000e+00 |   ------  
+1:     collision_5 |  0.000e+00 | -4.110e-13 | -5.407e-02 |   ------  
+1:     collision_6 |  0.000e+00 | -1.004e-12 | -2.631e-02 |   ------  
+1:     collision_7 |  0.000e+00 | -1.013e-12 |  0.000e+00 |   ------  
+1:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:           TOTAL |  1.734e+00 |  1.618e-02 | -6.419e-02 | -3.968e+00
+1: [INFO] shrunk trust region. new box size: 0.0114[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.734e+00 |  5.437e-03 |  5.437e-03 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_4 |  0.000e+00 | -3.542e-13 |  0.000e+00 |   ------  
+1:     collision_5 |  0.000e+00 | -3.753e-13 | -1.350e-02 |   ------  
+1:     collision_6 |  0.000e+00 | -3.589e-13 | -8.975e-03 |   ------  
+1:     collision_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:           TOTAL |  1.734e+00 |  5.437e-03 | -1.704e-02 | -3.134e+00
+1: [INFO] shrunk trust region. new box size: 0.0011[0m
+1: [INFO]  [0m
+1:                 |   oldexact |    dapprox |     dexact |      ratio
+1:           COSTS | -------------------------------------------------
+1:       joint_vel |  1.734e+00 |  1.008e-03 |  1.008e-03 |  1.000e+00
+1:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_5 |  0.000e+00 | -2.774e-11 | -1.492e-03 |   ------  
+1:     collision_6 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+1:           TOTAL |  1.734e+00 |  1.008e-03 | -4.847e-04 | -4.811e-01
+1: [INFO] converged because improvement ratio was small (5.812e-04 < 1.000e-03)[0m
+1: [INFO] 
+1: ==================
+1: Optimization results:
+1: status: CONVERGED
+1: cost values: (1.7336, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+1: constraint violations: ()
+1: n func evals: 11
+1: n qp solves: 10
+1: ==================[0m
+1: [('joint_vel', 1.7336046292353078), ('collision_0', 0.0), ('collision_1', 0.0), ('collision_2', 0.0), ('collision_3', 0.0), ('collision_4', 0.0), ('collision_5', 0.0), ('collision_6', 0.0), ('collision_7', 0.0), ('collision_8', 0.0)][]
+1: optimization took 0.054 seconds
+ 1/10 Test  #1: arm_to_joint_target.py .............   Passed    1.31 sec
+test 2
+      Start  2: arm_to_cart_target.py
+
+2: Test command: /usr/bin/python "/usr/local/src/trajopt/python_examples/arm_to_cart_target.py"
+2: Test timeout computed to be: 9.99988e+06
+2: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+2: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+2: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:wide_stereo_optical_sensor
+2: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+2: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:narrow_stereo_optical_sensor
+2: [m[0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+2: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+2: [INFO] creating bullet collision checker for environment[0m
+2: [INFO] iteration 1[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  1.611e+00 | -9.201e-02 | -9.201e-02 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  1.256e+00 |  8.546e-01 |  1.156e+00 |  1.353e+00
+2:     cont_coll_4 |  7.206e+00 |  1.611e+00 |  2.690e+00 |  1.669e+00
+2:     cont_coll_5 |  7.109e+00 |  1.518e+00 |  1.766e+00 |  1.164e+00
+2:     cont_coll_6 |  1.184e+01 | -5.442e+00 | -5.375e+00 |  9.877e-01
+2:     cont_coll_7 |  1.263e+01 |  9.221e+00 |  9.017e+00 |  9.779e-01
+2:     cont_coll_8 |  5.436e-01 |  5.436e-01 |  5.436e-01 |  1.000e+00
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  5.365e-05 |  5.365e-05 | -8.786e-04 | -1.638e+01
+2:           TOTAL |  4.220e+01 |  8.214e+00 |  9.705e+00 |  1.181e+00
+2: [INFO] expanded trust region. new box size: 0.1500[0m
+2: [INFO] iteration 2[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  1.703e+00 | -3.616e-01 | -3.616e-01 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  9.982e-02 |  9.982e-02 |  9.982e-02 |  1.000e+00
+2:     cont_coll_4 |  4.516e+00 |  2.885e+00 |  3.372e+00 |  1.169e+00
+2:     cont_coll_5 |  5.342e+00 |  1.711e+00 |  2.087e+00 |  1.219e+00
+2:     cont_coll_6 |  1.722e+01 |  1.079e+00 |  5.768e-01 |  5.345e-01
+2:     cont_coll_7 |  3.615e+00 |  1.080e+00 | -5.324e-01 | -4.928e-01
+2:     cont_coll_8 |  0.000e+00 | -4.304e-11 |  0.000e+00 |   ------  
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  9.323e-04 |  9.323e-04 | -3.938e-03 | -4.224e+00
+2:           TOTAL |  3.249e+01 |  6.495e+00 |  5.237e+00 |  8.063e-01
+2: [INFO] expanded trust region. new box size: 0.2250[0m
+2: [INFO] iteration 3[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  2.065e+00 |  1.254e-01 |  1.254e-01 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_4 |  1.144e+00 |  1.144e+00 |  1.144e+00 |  1.000e+00
+2:     cont_coll_5 |  3.255e+00 |  3.080e+00 |  2.694e+00 |  8.746e-01
+2:     cont_coll_6 |  1.664e+01 | -5.589e-01 |  1.127e+01 | -2.017e+01
+2:     cont_coll_7 |  4.148e+00 |  2.239e+00 |  1.671e+00 |  7.462e-01
+2:     cont_coll_8 |  0.000e+00 | -2.464e-09 |  0.000e+00 |   ------  
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  4.870e-03 |  4.870e-03 |  3.858e-03 |  7.923e-01
+2:           TOTAL |  2.726e+01 |  6.035e+00 |  1.691e+01 |  2.802e+00
+2: [INFO] expanded trust region. new box size: 0.3375[0m
+2: [INFO] iteration 4[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  1.939e+00 |  1.752e-01 |  1.752e-01 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_4 |  0.000e+00 | -2.510e-12 |  0.000e+00 |   ------  
+2:     cont_coll_5 |  5.614e-01 |  5.614e-01 |  5.614e-01 |  1.000e+00
+2:     cont_coll_6 |  5.366e+00 |  5.366e+00 |  5.366e+00 |  1.000e+00
+2:     cont_coll_7 |  2.477e+00 |  2.477e+00 |  2.477e+00 |  1.000e+00
+2:     cont_coll_8 |  0.000e+00 | -1.537e-11 |  0.000e+00 |   ------  
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  1.012e-03 |  1.012e-03 |  4.663e-04 |  4.610e-01
+2:           TOTAL |  1.034e+01 |  8.580e+00 |  8.580e+00 |  9.999e-01
+2: [INFO] expanded trust region. new box size: 0.5063[0m
+2: [INFO] iteration 5[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  1.764e+00 |  2.097e-02 |  2.097e-02 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_4 |  0.000e+00 | -6.127e-11 |  0.000e+00 |   ------  
+2:     cont_coll_5 |  0.000e+00 | -7.039e-11 |  0.000e+00 |   ------  
+2:     cont_coll_6 |  0.000e+00 | -1.333e-10 |  0.000e+00 |   ------  
+2:     cont_coll_7 |  0.000e+00 | -1.828e-10 |  0.000e+00 |   ------  
+2:     cont_coll_8 |  0.000e+00 | -6.611e-11 |  0.000e+00 |   ------  
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  5.452e-04 |  5.452e-04 |  5.268e-04 |  9.663e-01
+2:           TOTAL |  1.765e+00 |  2.151e-02 |  2.149e-02 |  9.991e-01
+2: [INFO] expanded trust region. new box size: 0.7594[0m
+2: [INFO] iteration 6[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  1.743e+00 |  9.906e-03 |  9.906e-03 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_4 |  0.000e+00 | -3.268e-13 |  0.000e+00 |   ------  
+2:     cont_coll_5 |  0.000e+00 | -4.076e-13 | -3.524e-02 |   ------  
+2:     cont_coll_6 |  0.000e+00 | -6.537e-13 |  0.000e+00 |   ------  
+2:     cont_coll_7 |  0.000e+00 | -3.269e-13 |  0.000e+00 |   ------  
+2:     cont_coll_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  1.835e-05 |  1.835e-05 | -7.055e-03 | -3.844e+02
+2:           TOTAL |  1.743e+00 |  9.924e-03 | -3.239e-02 | -3.264e+00
+2: [INFO] shrunk trust region. new box size: 0.0759[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  1.743e+00 |  9.906e-03 |  9.906e-03 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_4 |  0.000e+00 | -1.477e-13 |  0.000e+00 |   ------  
+2:     cont_coll_5 |  0.000e+00 | -1.766e-13 | -3.529e-02 |   ------  
+2:     cont_coll_6 |  0.000e+00 | -2.955e-13 |  0.000e+00 |   ------  
+2:     cont_coll_7 |  0.000e+00 | -1.484e-13 |  0.000e+00 |   ------  
+2:     cont_coll_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  1.835e-05 |  1.835e-05 | -7.056e-03 | -3.844e+02
+2:           TOTAL |  1.743e+00 |  9.924e-03 | -3.244e-02 | -3.268e+00
+2: [INFO] shrunk trust region. new box size: 0.0076[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  1.743e+00 |  4.361e-03 |  4.361e-03 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_5 |  0.000e+00 | -1.597e-11 | -2.009e-02 |   ------  
+2:     cont_coll_6 |  0.000e+00 | -1.708e-11 |  0.000e+00 |   ------  
+2:     cont_coll_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  1.835e-05 |  1.835e-05 |  1.289e-05 |  7.024e-01
+2:           TOTAL |  1.743e+00 |  4.380e-03 | -1.571e-02 | -3.588e+00
+2: [INFO] shrunk trust region. new box size: 0.0008[0m
+2: [INFO]  [0m
+2:                 |   oldexact |    dapprox |     dexact |      ratio
+2:           COSTS | -------------------------------------------------
+2:       joint_vel |  1.743e+00 |  7.968e-04 |  7.968e-04 |  1.000e+00
+2:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_5 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_6 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     cont_coll_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+2:     CONSTRAINTS | -------------------------------------------------
+2:            pose |  1.835e-05 |  1.835e-05 |  1.161e-05 |  6.325e-01
+2:           TOTAL |  1.743e+00 |  8.151e-04 |  8.084e-04 |  9.917e-01
+2: [INFO] converged because improvement ratio was small (4.676e-04 < 1.000e-03)[0m
+2: [INFO] woo-hoo! constraints are satisfied (to tolerance 1.00e-04)[0m
+2: [INFO] 
+2: ==================
+2: Optimization results:
+2: status: CONVERGED
+2: cost values: (1.74324, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+2: constraint violations: (9.17721e-07)
+2: n func evals: 10
+2: n qp solves: 9
+2: ==================[0m
+2: No handlers could be found for logger "openravepy"
+2: [('joint_vel', 1.7432374252528788), ('cont_coll_0', 0.0), ('cont_coll_1', 0.0), ('cont_coll_2', 0.0), ('cont_coll_3', 0.0), ('cont_coll_4', 0.0), ('cont_coll_5', 0.0), ('cont_coll_6', 0.0), ('cont_coll_7', 0.0), ('cont_coll_8', 0.0)][('pose', 9.177205950223191e-07)]
+ 2/10 Test  #2: arm_to_cart_target.py ..............   Passed    1.23 sec
+test 3
+      Start  3: fullbody_plan.py
+
+3: Test command: /usr/bin/python "/usr/local/src/trajopt/python_examples/fullbody_plan.py"
+3: Test timeout computed to be: 9.99988e+06
+3: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+3: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+3: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:wide_stereo_optical_sensor
+3: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+3: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:narrow_stereo_optical_sensor
+3: [m[0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+3: [1;31mERROR couldn't find a feasible point. there's probably a problem with variable bounds (e.g. joint limits). wrote to /tmp/fail.lp[0m
+3: at /usr/local/src/trajopt/src/sco/modeling.cpp:224
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+3: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+3: [INFO] creating bullet collision checker for environment[0m
+3: Traceback (most recent call last):
+3:   File "/usr/local/src/trajopt/python_examples/fullbody_plan.py", line 105, in <module>
+3:     main()
+3:   File "/usr/local/src/trajopt/python_examples/fullbody_plan.py", line 89, in main
+3:     result = trajoptpy.OptimizeProblem(prob) # do optimization
+3: TypeError: No to_python (by-value) converter found for C++ type: std::runtime_error
+ 3/10 Test  #3: fullbody_plan.py ...................***Failed    1.18 sec
+test 4
+      Start  4: position_base.py
+
+4: Test command: /usr/bin/python "/usr/local/src/trajopt/python_examples/position_base.py"
+4: Test timeout computed to be: 9.99988e+06
+4: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+4: Traceback (most recent call last):
+4:   File "/usr/local/src/trajopt/python_examples/position_base.py", line 15, in <module>
+4:     raise Exception("this example only works with openrave >= 0.9 due to recent jacobian bugfix")
+4: Exception: this example only works with openrave >= 0.9 due to recent jacobian bugfix
+ 4/10 Test  #4: position_base.py ...................***Failed    0.22 sec
+test 5
+      Start  5: this_side_up.py
+
+5: Test command: /usr/bin/python "/usr/local/src/trajopt/python_examples/this_side_up.py"
+5: Test timeout computed to be: 9.99988e+06
+5: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+5: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+5: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:wide_stereo_optical_sensor
+5: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+5: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:narrow_stereo_optical_sensor
+5: [m[0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+5: [1;31mERROR couldn't find a feasible point. there's probably a problem with variable bounds (e.g. joint limits). wrote to /tmp/fail.lp[0m
+5: at /usr/local/src/trajopt/src/sco/modeling.cpp:224
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+5: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+5: [INFO] creating bullet collision checker for environment[0m
+5: Traceback (most recent call last):
+5:   File "/usr/local/src/trajopt/python_examples/this_side_up.py", line 119, in <module>
+5:     result = trajoptpy.OptimizeProblem(prob) # do optimization
+5: TypeError: No to_python (by-value) converter found for C++ type: std::runtime_error
+ 5/10 Test  #5: this_side_up.py ....................***Failed    1.17 sec
+test 6
+      Start  6: arm_to_cart_target_position_only
+
+6: Test command: /usr/bin/python "/usr/local/src/trajopt/python_examples/arm_to_cart_target.py" "--position_only"
+6: Test timeout computed to be: 9.99988e+06
+6: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+6: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+6: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:wide_stereo_optical_sensor
+6: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+6: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:narrow_stereo_optical_sensor
+6: [m[0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_range[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/distance_range[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/angle_increment[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/measurement_time[m
+6: [0;33;48m[colladareader.cpp:2725] [0;38;48m[0;33;48munprocessed tag: sensor/interface_type[m
+6: [INFO] creating bullet collision checker for environment[0m
+6: [INFO] iteration 1[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  1.611e+00 |  3.113e-02 |  3.113e-02 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  1.256e+00 |  8.546e-01 |  1.156e+00 |  1.353e+00
+6:     cont_coll_4 |  7.206e+00 |  1.611e+00 |  2.690e+00 |  1.669e+00
+6:     cont_coll_5 |  7.109e+00 |  1.518e+00 |  1.766e+00 |  1.164e+00
+6:     cont_coll_6 |  1.184e+01 | -5.442e+00 | -5.375e+00 |  9.877e-01
+6:     cont_coll_7 |  1.263e+01 |  9.221e+00 |  9.004e+00 |  9.765e-01
+6:     cont_coll_8 |  5.436e-01 |  5.436e-01 |  5.436e-01 |  1.000e+00
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  3.403e-05 |  3.403e-05 | -6.565e-02 | -1.929e+03
+6:           TOTAL |  4.220e+01 |  8.338e+00 |  9.751e+00 |  1.170e+00
+6: [INFO] expanded trust region. new box size: 0.1500[0m
+6: [INFO] iteration 2[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  1.580e+00 | -2.414e-01 | -2.414e-01 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  9.982e-02 |  9.982e-02 |  9.982e-02 |  1.000e+00
+6:     cont_coll_4 |  4.516e+00 |  2.885e+00 |  3.372e+00 |  1.169e+00
+6:     cont_coll_5 |  5.342e+00 |  1.711e+00 |  2.087e+00 |  1.219e+00
+6:     cont_coll_6 |  1.722e+01 | -2.534e-01 | -5.407e-01 |  2.133e+00
+6:     cont_coll_7 |  3.628e+00 |  2.240e+00 |  7.967e-01 |  3.556e-01
+6:     cont_coll_8 |  0.000e+00 | -1.065e-10 |  0.000e+00 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  6.568e-02 |  6.568e-02 | -3.555e-02 | -5.413e-01
+6:           TOTAL |  3.245e+01 |  6.508e+00 |  5.538e+00 |  8.509e-01
+6: [INFO] expanded trust region. new box size: 0.2250[0m
+6: [INFO] iteration 3[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  1.822e+00 |  2.957e-01 |  2.957e-01 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  1.144e+00 |  1.144e+00 |  1.144e+00 |  1.000e+00
+6:     cont_coll_5 |  3.255e+00 |  3.080e+00 |  2.697e+00 |  8.757e-01
+6:     cont_coll_6 |  1.776e+01 |  1.929e+00 |  1.501e+01 |  7.784e+00
+6:     cont_coll_7 |  2.831e+00 | -4.500e-01 | -6.571e-01 |  1.460e+00
+6:     cont_coll_8 |  0.000e+00 | -2.443e-10 |  0.000e+00 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  1.012e-01 |  1.012e-01 | -1.354e-01 | -1.338e+00
+6:           TOTAL |  2.691e+01 |  6.100e+00 |  1.836e+01 |  3.009e+00
+6: [INFO] expanded trust region. new box size: 0.3375[0m
+6: [INFO] iteration 4[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  1.526e+00 |  5.166e-01 |  5.166e-01 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 | -5.151e-13 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  5.580e-01 |  5.580e-01 |  5.580e-01 |  1.000e+00
+6:     cont_coll_6 |  2.744e+00 |  2.744e+00 |  2.693e+00 |  9.816e-01
+6:     cont_coll_7 |  3.488e+00 |  3.488e+00 |  3.488e+00 |  1.000e+00
+6:     cont_coll_8 |  0.000e+00 | -2.994e-12 | -2.386e-01 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  2.366e-01 |  2.366e-01 | -9.746e-01 | -4.118e+00
+6:           TOTAL |  8.553e+00 |  7.543e+00 |  6.043e+00 |  8.011e-01
+6: [INFO] expanded trust region. new box size: 0.5063[0m
+6: [INFO] iteration 5[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  1.009e+00 |  3.028e-01 |  3.028e-01 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -1.403e-14 |  0.000e+00 |   ------  
+6:     cont_coll_6 |  5.044e-02 |  5.044e-02 | -6.354e-02 | -1.260e+00
+6:     cont_coll_7 |  0.000e+00 | -2.797e-14 | -2.063e-01 |   ------  
+6:     cont_coll_8 |  2.386e-01 |  2.386e-01 |  2.386e-01 |  1.000e+00
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  1.211e+00 |  1.211e+00 |  5.075e-01 |  4.190e-01
+6:           TOTAL |  2.509e+00 |  1.803e+00 |  7.791e-01 |  4.321e-01
+6: [INFO] expanded trust region. new box size: 0.7594[0m
+6: [INFO] iteration 6[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  7.064e-01 |  1.333e-01 |  1.333e-01 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -7.260e-12 | -3.243e+00 |   ------  
+6:     cont_coll_6 |  1.140e-01 |  1.140e-01 | -2.316e+00 | -2.032e+01
+6:     cont_coll_7 |  2.063e-01 |  2.063e-01 |  2.063e-01 |  1.000e+00
+6:     cont_coll_8 |  0.000e+00 | -3.509e-11 |  0.000e+00 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  7.038e-01 |  7.038e-01 | -5.774e-01 | -8.203e-01
+6:           TOTAL |  1.730e+00 |  1.157e+00 | -5.797e+00 | -5.009e+00
+6: [INFO] shrunk trust region. new box size: 0.0759[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  7.064e-01 |  1.263e-02 |  1.263e-02 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -5.940e-12 |  0.000e+00 |   ------  
+6:     cont_coll_6 |  1.140e-01 |  1.140e-01 |  9.420e-03 |  8.265e-02
+6:     cont_coll_7 |  2.063e-01 |  2.063e-01 |  2.063e-01 |  1.000e+00
+6:     cont_coll_8 |  0.000e+00 | -3.361e-11 |  0.000e+00 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  7.038e-01 |  7.038e-01 |  6.590e-01 |  9.364e-01
+6:           TOTAL |  1.730e+00 |  1.037e+00 |  8.873e-01 |  8.559e-01
+6: [INFO] expanded trust region. new box size: 0.1139[0m
+6: [INFO] iteration 7[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.938e-01 |  3.781e-02 |  3.781e-02 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 | -9.370e-14 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -3.749e-13 |  0.000e+00 |   ------  
+6:     cont_coll_6 |  1.046e-01 |  1.046e-01 |  1.046e-01 |  1.000e+00
+6:     cont_coll_7 |  0.000e+00 | -2.823e-13 |  0.000e+00 |   ------  
+6:     cont_coll_8 |  0.000e+00 | -4.762e-13 |  0.000e+00 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  4.478e-02 |  4.478e-02 | -2.595e-02 | -5.795e-01
+6:           TOTAL |  8.431e-01 |  1.872e-01 |  1.164e-01 |  6.220e-01
+6: [INFO] expanded trust region. new box size: 0.1709[0m
+6: [INFO] iteration 8[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.559e-01 |  4.085e-02 |  4.085e-02 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 | -1.268e-12 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -2.125e-12 | -6.214e-04 |   ------  
+6:     cont_coll_6 |  0.000e+00 | -2.114e-12 | -5.221e-02 |   ------  
+6:     cont_coll_7 |  0.000e+00 | -1.275e-12 |  0.000e+00 |   ------  
+6:     cont_coll_8 |  0.000e+00 | -2.176e-12 | -1.349e-02 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  7.074e-02 |  7.074e-02 | -9.272e-03 | -1.311e-01
+6:           TOTAL |  7.267e-01 |  1.116e-01 | -3.475e-02 | -3.115e-01
+6: [INFO] shrunk trust region. new box size: 0.0171[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.559e-01 |  8.595e-03 |  8.595e-03 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -1.213e-12 |  0.000e+00 |   ------  
+6:     cont_coll_6 |  0.000e+00 | -1.280e-12 | -7.012e-02 |   ------  
+6:     cont_coll_7 |  0.000e+00 | -1.404e-12 |  0.000e+00 |   ------  
+6:     cont_coll_8 |  0.000e+00 | -2.388e-12 | -4.999e-03 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  7.074e-02 |  7.074e-02 |  6.798e-02 |  9.610e-01
+6:           TOTAL |  7.267e-01 |  7.933e-02 |  1.453e-03 |  1.832e-02
+6: [INFO] shrunk trust region. new box size: 0.0017[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.559e-01 |  1.059e-03 |  1.059e-03 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -1.078e-11 |  0.000e+00 |   ------  
+6:     cont_coll_6 |  0.000e+00 | -1.064e-11 |  0.000e+00 |   ------  
+6:     cont_coll_7 |  0.000e+00 | -1.046e-11 |  0.000e+00 |   ------  
+6:     cont_coll_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  7.074e-02 |  4.099e-02 |  4.091e-02 |  9.980e-01
+6:           TOTAL |  7.267e-01 |  4.205e-02 |  4.196e-02 |  9.980e-01
+6: [INFO] expanded trust region. new box size: 0.0026[0m
+6: [INFO] iteration 9[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.549e-01 | -3.249e-04 | -3.249e-04 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -2.932e-13 |  0.000e+00 |   ------  
+6:     cont_coll_6 |  0.000e+00 | -2.940e-13 | -1.874e-03 |   ------  
+6:     cont_coll_7 |  0.000e+00 | -2.819e-13 |  0.000e+00 |   ------  
+6:     cont_coll_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  2.983e-02 |  2.612e-02 |  2.603e-02 |  9.967e-01
+6:           TOTAL |  6.847e-01 |  2.580e-02 |  2.384e-02 |  9.240e-01
+6: [INFO] expanded trust region. new box size: 0.0038[0m
+6: [INFO] iteration 10[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.552e-01 |  3.255e-03 |  3.255e-03 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -3.801e-13 | -6.070e-04 |   ------  
+6:     cont_coll_6 |  1.874e-03 |  1.874e-03 | -3.305e-03 | -1.764e+00
+6:     cont_coll_7 |  0.000e+00 | -3.168e-13 |  0.000e+00 |   ------  
+6:     cont_coll_8 |  0.000e+00 | -2.888e-13 | -8.212e-04 |   ------  
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  3.797e-03 |  3.797e-03 |  3.608e-03 |  9.503e-01
+6:           TOTAL |  6.609e-01 |  8.925e-03 |  2.130e-03 |  2.386e-01
+6: [INFO] expanded trust region. new box size: 0.0058[0m
+6: [INFO] iteration 11[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6: No handlers could be found for logger "openravepy"
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.520e-01 |  1.613e-03 |  1.613e-03 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  6.070e-04 |  6.070e-04 | -2.187e-05 | -3.603e-02
+6:     cont_coll_6 |  5.178e-03 |  5.178e-03 | -1.675e-02 | -3.234e+00
+6:     cont_coll_7 |  0.000e+00 | -1.990e-12 | -6.718e-04 |   ------  
+6:     cont_coll_8 |  8.212e-04 |  8.212e-04 |  8.212e-04 |  1.000e+00
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  1.886e-04 |  1.886e-04 |  3.109e-05 |  1.649e-01
+6:           TOTAL |  6.588e-01 |  8.409e-03 | -1.497e-02 | -1.781e+00
+6: [INFO] shrunk trust region. new box size: 0.0006[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.520e-01 | -8.771e-05 | -8.771e-05 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  6.070e-04 |  6.070e-04 |  6.070e-04 |  1.000e+00
+6:     cont_coll_6 |  5.178e-03 |  5.178e-03 |  5.178e-03 |  1.000e+00
+6:     cont_coll_7 |  0.000e+00 | -1.571e-11 | -1.303e-05 |   ------  
+6:     cont_coll_8 |  8.212e-04 |  8.212e-04 |  8.210e-04 |  9.997e-01
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  1.886e-04 |  1.886e-04 |  1.873e-04 |  9.931e-01
+6:           TOTAL |  6.588e-01 |  6.708e-03 |  6.693e-03 |  9.978e-01
+6: [INFO] expanded trust region. new box size: 0.0009[0m
+6: [INFO] iteration 12[0m
+6: [INFO]  [0m
+6:                 |   oldexact |    dapprox |     dexact |      ratio
+6:           COSTS | -------------------------------------------------
+6:       joint_vel |  6.520e-01 |  2.904e-04 |  2.904e-04 |  1.000e+00
+6:     cont_coll_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+6:     cont_coll_5 |  0.000e+00 | -1.809e-11 | -6.586e-06 |   ------  
+6:     cont_coll_6 |  0.000e+00 | -4.353e-11 | -2.968e-03 |   ------  
+6:     cont_coll_7 |  1.303e-05 |  1.303e-05 | -3.837e-06 | -2.945e-01
+6:     cont_coll_8 |  2.533e-07 |  2.533e-07 |  2.533e-07 |  1.000e+00
+6:     CONSTRAINTS | -------------------------------------------------
+6:            pose |  1.294e-06 |  1.294e-06 | -2.692e-06 | -2.080e+00
+6:           TOTAL |  6.521e-01 |  3.050e-04 | -2.691e-03 | -8.822e+00
+6: [INFO] converged because improvement ratio was small (4.677e-04 < 1.000e-03)[0m
+6: [INFO] woo-hoo! constraints are satisfied (to tolerance 1.00e-04)[0m
+6: [INFO] 
+6: ==================
+6: Optimization results:
+6: status: CONVERGED
+6: cost values: (0.652048, 0, 0, 0, 0, 0, 0, 0, 1.30311e-05, 2.5332e-07)
+6: constraint violations: (6.47049e-08)
+6: n func evals: 17
+6: n qp solves: 16
+6: ==================[0m
+6: [('joint_vel', 0.6520478918754415), ('cont_coll_0', 0.0), ('cont_coll_1', 0.0), ('cont_coll_2', 0.0), ('cont_coll_3', 0.0), ('cont_coll_4', 0.0), ('cont_coll_5', 0.0), ('cont_coll_6', 0.0), ('cont_coll_7', 1.3031065464047531e-05), ('cont_coll_8', 2.5331974032316573e-07)][('pose', 6.470486227372341e-08)]
+ 6/10 Test  #6: arm_to_cart_target_position_only ...   Passed    1.34 sec
+test 7
+      Start  7: sco-unit
+
+7: Test command: /usr/local/src/trajopt/build/bin/sco-unit
+7: Test timeout computed to be: 9.99988e+06
+7: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+7: [==========] Running 7 tests from 2 test cases.
+7: [----------] Global test environment set-up.
+7: [----------] 6 tests from SQP
+7: [ RUN      ] SQP.QuadraticSeparable
+7: [INFO] iteration 1[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  2.700e+01 |  2.700e+01 |  2.700e+01 |  1.000e+00
+7:           TOTAL |  2.700e+01 |  2.700e+01 |  2.700e+01 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 150.0000[0m
+7: [INFO] iteration 2[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  8.599e-09 |  8.599e-09 |  8.599e-09 |   ------  
+7:           TOTAL |  8.599e-09 |  8.599e-09 |  8.599e-09 |  1.000e+00
+7: [INFO] converged because improvement was small (8.599e-09 < 1.000e-04)[0m
+7: [INFO] 
+7: ==================
+7: Optimization results:
+7: status: CONVERGED
+7: cost values: (8.59892e-09)
+7: constraint violations: ()
+7: n func evals: 3
+7: n qp solves: 2
+7: ==================[0m
+7: [INFO] checking (5.35379e-05, 1.00005, 2.00005) ?= (0, 1, 2)[0m
+7: [       OK ] SQP.QuadraticSeparable (4 ms)
+7: [ RUN      ] SQP.QuadraticNonseparable
+7: [INFO] iteration 1[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  2.090e+02 |  2.090e+02 |  2.090e+02 |  1.000e+00
+7:           TOTAL |  2.090e+02 |  2.090e+02 |  2.090e+02 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 150.0000[0m
+7: [INFO] iteration 2[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.655e-06 |  1.822e-06 |  1.650e-06 |  9.056e-01
+7:           TOTAL |  1.655e-06 |  1.822e-06 |  1.650e-06 |  9.056e-01
+7: [INFO] expanded trust region. new box size: 225.0000[0m
+7: [INFO] iteration 3[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  4.475e-09 |  2.403e-15 | -5.983e-16 |   ------  
+7:           TOTAL |  4.475e-09 |  2.403e-15 | -5.983e-16 | -2.490e-01
+7: [INFO] converged because improvement was small (2.403e-15 < 1.000e-06)[0m
+7: [INFO] 
+7: ==================
+7: Optimization results:
+7: status: CONVERGED
+7: cost values: (4.475e-09)
+7: constraint violations: ()
+7: n func evals: 4
+7: n qp solves: 3
+7: ==================[0m
+7: [INFO] checking (0.999985, 6.99978, 1.99993) ?= (1, 7, 2)[0m
+7: [       OK ] SQP.QuadraticNonseparable (2 ms)
+7: [ RUN      ] SQP.TP1
+7: [INFO] iteration 1[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.800e+01 |  3.280e+00 |  3.290e+00 |  1.003e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  1.800e+01 |  3.280e+00 |  3.290e+00 |  1.003e+00
+7: [INFO] expanded trust region. new box size: 0.1500[0m
+7: [INFO] iteration 2[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.471e+01 |  3.831e+00 |  3.862e+00 |  1.008e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  1.471e+01 |  3.831e+00 |  3.862e+00 |  1.008e+00
+7: [INFO] expanded trust region. new box size: 0.2250[0m
+7: [INFO] iteration 3[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.085e+01 |  3.648e+00 |  3.748e+00 |  1.027e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  1.085e+01 |  3.648e+00 |  3.748e+00 |  1.027e+00
+7: [INFO] expanded trust region. new box size: 0.3375[0m
+7: [INFO] iteration 4[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  7.099e+00 |  2.120e+00 |  2.301e+00 |  1.085e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  7.099e+00 |  2.120e+00 |  2.301e+00 |  1.085e+00
+7: [INFO] expanded trust region. new box size: 0.5063[0m
+7: [INFO] iteration 5[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  4.798e+00 |  1.574e+00 |  1.865e+00 |  1.185e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  4.798e+00 |  1.574e+00 |  1.865e+00 |  1.185e+00
+7: [INFO] expanded trust region. new box size: 0.7594[0m
+7: [INFO] iteration 6[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  2.933e+00 |  2.097e+00 |  2.082e+00 |  9.928e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  2.933e+00 |  2.097e+00 |  2.082e+00 |  9.928e-01
+7: [INFO] expanded trust region. new box size: 1.1391[0m
+7: [INFO] iteration 7[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  8.505e-01 |  8.943e-01 | -3.491e-02 | -3.904e-02
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  8.505e-01 |  8.943e-01 | -3.491e-02 | -3.904e-02
+7: [INFO] shrunk trust region. new box size: 0.1139[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  8.505e-01 |  1.983e-01 |  1.975e-01 |  9.959e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  8.505e-01 |  1.983e-01 |  1.975e-01 |  9.959e-01
+7: [INFO] expanded trust region. new box size: 0.1709[0m
+7: [INFO] iteration 8[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  6.530e-01 |  2.463e-01 |  2.462e-01 |  9.996e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  6.530e-01 |  2.463e-01 |  2.462e-01 |  9.996e-01
+7: [INFO] expanded trust region. new box size: 0.2563[0m
+7: [INFO] iteration 9[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  4.068e-01 |  2.579e-01 |  2.574e-01 |  9.982e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  4.068e-01 |  2.579e-01 |  2.574e-01 |  9.982e-01
+7: [INFO] expanded trust region. new box size: 0.3844[0m
+7: [INFO] iteration 10[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.493e-01 |  1.284e-01 |  1.253e-01 |  9.760e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  1.493e-01 |  1.284e-01 |  1.253e-01 |  9.760e-01
+7: [INFO] expanded trust region. new box size: 0.5767[0m
+7: [INFO] iteration 11[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  2.402e-02 |  2.239e-02 |  2.367e-02 |  1.057e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  2.402e-02 |  2.239e-02 |  2.367e-02 |  1.057e+00
+7: [INFO] expanded trust region. new box size: 0.8650[0m
+7: [INFO] iteration 12[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  3.555e-04 |  3.509e-04 |  3.554e-04 |  1.013e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  3.555e-04 |  3.509e-04 |  3.554e-04 |  1.013e+00
+7: [INFO] expanded trust region. new box size: 1.2975[0m
+7: [INFO] iteration 13[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.546e-07 |  1.372e-07 |  1.533e-07 |  1.118e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  1.546e-07 |  1.372e-07 |  1.533e-07 |  1.118e+00
+7: [INFO] expanded trust region. new box size: 1.9462[0m
+7: [INFO] iteration 14[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.259e-09 |  1.682e-14 |  9.153e-12 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  1.259e-09 |  1.682e-14 |  9.153e-12 |  5.441e+02
+7: [INFO] converged because improvement was small (1.682e-14 < 1.000e-10)[0m
+7: [INFO] woo-hoo! constraints are satisfied (to tolerance 1.00e-04)[0m
+7: [INFO] 
+7: ==================
+7: Optimization results:
+7: status: CONVERGED
+7: cost values: (1.25905e-09)
+7: constraint violations: (0)
+7: n func evals: 16
+7: n qp solves: 15
+7: ==================[0m
+7: [INFO] checking (0.999965, 0.999925) ?= (1, 1)[0m
+7: [       OK ] SQP.TP1 (10 ms)
+7: [ RUN      ] SQP.TP3
+7: [INFO] iteration 1[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.001e+00 |  1.000e-01 |  1.000e-01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  1.001e+00 |  1.000e-01 |  1.000e-01 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 0.1500[0m
+7: [INFO] iteration 2[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  9.008e-01 |  1.500e-01 |  1.500e-01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  9.008e-01 |  1.500e-01 |  1.500e-01 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 0.2250[0m
+7: [INFO] iteration 3[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  7.508e-01 |  2.250e-01 |  2.250e-01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  7.508e-01 |  2.250e-01 |  2.250e-01 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 0.3375[0m
+7: [INFO] iteration 4[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  5.258e-01 |  3.375e-01 |  3.375e-01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  5.258e-01 |  3.375e-01 |  3.375e-01 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 0.5063[0m
+7: [INFO] iteration 5[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.883e-01 |  1.876e-01 |  1.876e-01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 | -5.024e-08 | -5.023e-08 |  1.000e+00
+7:           TOTAL |  1.883e-01 |  1.876e-01 |  1.876e-01 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 0.7594[0m
+7: [INFO] iteration 6[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  7.536e-04 |  1.261e-04 |  1.261e-04 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  5.023e-08 | -4.513e-08 | -4.513e-08 |  1.000e+00
+7:           TOTAL |  7.537e-04 |  1.261e-04 |  1.261e-04 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 1.1391[0m
+7: [INFO] iteration 7[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  6.275e-04 |  1.679e-04 |  1.679e-04 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  9.537e-08 | -3.714e-07 | -3.714e-07 |  1.000e+00
+7:           TOTAL |  6.276e-04 |  1.675e-04 |  1.675e-04 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 1.7086[0m
+7: [INFO] iteration 8[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  4.596e-04 |  2.070e-04 |  2.070e-04 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  4.668e-07 | -4.437e-06 | -4.437e-06 |  1.000e+00
+7:           TOTAL |  4.601e-04 |  2.026e-04 |  2.026e-04 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 2.5629[0m
+7: [INFO] iteration 9[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  2.526e-04 |  5.609e-04 |  5.609e-04 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  4.903e-06 | -3.666e-04 | -3.666e-04 |  1.000e+00
+7:           TOTAL |  2.575e-04 |  1.944e-04 |  1.944e-04 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 3.8443[0m
+7: [INFO] iteration 10[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -3.083e-04 |  3.323e-01 |  3.323e-01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  3.715e-04 | -3.322e-01 | -3.322e-01 |  1.000e+00
+7:           TOTAL |  6.314e-05 |  6.314e-05 |  6.314e-05 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 5.7665[0m
+7: [INFO] iteration 11[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -3.326e-01 |  4.562e-02 |  4.562e-02 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  3.326e-01 | -4.562e-02 | -4.562e-02 |  1.000e+00
+7:           TOTAL |  1.094e-14 | -5.538e-10 | -1.509e-11 |  2.725e-02
+7: [INFO] converged because improvement was small (-5.538e-10 < 1.000e-10)[0m
+7: [INFO] not all constraints are satisfied. increasing penalties[0m
+7: [INFO] iteration 1[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -3.326e-01 | -3.326e-01 | -3.326e-01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  3.326e+00 |  3.326e+00 |  3.326e+00 |  1.000e+00
+7:           TOTAL |  2.993e+00 |  2.993e+00 |  2.993e+00 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 8.6498[0m
+7: [INFO] iteration 2[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.130e-09 |  8.431e-10 |  8.440e-10 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  1.130e-09 |  8.431e-10 |  8.440e-10 |  1.001e+00
+7: [INFO] expanded trust region. new box size: 12.9746[0m
+7: [INFO] iteration 3[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  2.856e-10 | -1.406e-10 | -1.406e-10 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+7:           TOTAL |  2.856e-10 | -1.406e-10 | -1.406e-10 |  1.000e+00
+7: [INFO] converged because improvement was small (-1.406e-10 < 1.000e-10)[0m
+7: [INFO] woo-hoo! constraints are satisfied (to tolerance 1.00e-04)[0m
+7: [INFO] 
+7: ==================
+7: Optimization results:
+7: status: CONVERGED
+7: cost values: (2.85601e-10)
+7: constraint violations: (0)
+7: n func evals: 15
+7: n qp solves: 14
+7: ==================[0m
+7: [INFO] checking (-5.03262e-06, 2.85601e-10) ?= (0, 0)[0m
+7: [       OK ] SQP.TP3 (8 ms)
+7: [ RUN      ] SQP.TP6
+7: [INFO] iteration 1[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  8.100e+01 |  1.790e+00 |  1.790e+00 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  9.900e+02 |  2.100e+01 |  2.090e+01 |  9.952e-01
+7:           TOTAL |  1.071e+03 |  2.279e+01 |  2.269e+01 |  9.956e-01
+7: [INFO] expanded trust region. new box size: 0.1500[0m
+7: [INFO] iteration 2[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  7.921e+01 |  2.648e+00 |  2.647e+00 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  9.691e+02 |  3.120e+01 |  3.097e+01 |  9.928e-01
+7:           TOTAL |  1.048e+03 |  3.385e+01 |  3.362e+01 |  9.934e-01
+7: [INFO] expanded trust region. new box size: 0.2250[0m
+7: [INFO] iteration 3[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  7.656e+01 |  3.887e+00 |  3.887e+00 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  9.381e+02 |  4.613e+01 |  4.562e+01 |  9.890e-01
+7:           TOTAL |  1.015e+03 |  5.001e+01 |  4.951e+01 |  9.899e-01
+7: [INFO] expanded trust region. new box size: 0.3375[0m
+7: [INFO] iteration 4[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  7.268e+01 |  5.640e+00 |  5.640e+00 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  8.925e+02 |  6.767e+01 |  6.653e+01 |  9.832e-01
+7:           TOTAL |  9.652e+02 |  7.331e+01 |  7.217e+01 |  9.845e-01
+7: [INFO] expanded trust region. new box size: 0.5063[0m
+7: [INFO] iteration 5[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  6.704e+01 |  8.034e+00 |  8.034e+00 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  8.260e+02 |  9.809e+01 |  9.552e+01 |  9.739e-01
+7:           TOTAL |  8.930e+02 |  1.061e+02 |  1.036e+02 |  9.758e-01
+7: [INFO] expanded trust region. new box size: 0.7594[0m
+7: [INFO] iteration 6[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  5.900e+01 |  1.109e+01 |  1.109e+01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  7.305e+02 |  1.394e+02 |  1.337e+02 |  9.586e-01
+7:           TOTAL |  7.895e+02 |  1.505e+02 |  1.448e+02 |  9.617e-01
+7: [INFO] expanded trust region. new box size: 1.1391[0m
+7: [INFO] iteration 7[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  4.791e+01 |  1.447e+01 |  1.447e+01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  5.968e+02 |  1.919e+02 |  1.789e+02 |  9.324e-01
+7:           TOTAL |  6.447e+02 |  2.063e+02 |  1.934e+02 |  9.371e-01
+7: [INFO] expanded trust region. new box size: 1.7086[0m
+7: [INFO] iteration 8[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  3.344e+01 |  1.684e+01 |  1.684e+01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  4.179e+02 |  2.489e+02 |  2.197e+02 |  8.827e-01
+7:           TOTAL |  4.513e+02 |  2.657e+02 |  2.365e+02 |  8.901e-01
+7: [INFO] expanded trust region. new box size: 2.5629[0m
+7: [INFO] iteration 9[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.660e+01 |  1.311e+01 |  1.311e+01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.982e+02 |  1.982e+02 |  1.496e+02 |  7.545e-01
+7:           TOTAL |  2.148e+02 |  2.113e+02 |  1.627e+02 |  7.698e-01
+7: [INFO] expanded trust region. new box size: 3.8443[0m
+7: [INFO] iteration 10[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  3.491e+00 |  3.369e+00 |  3.368e+00 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  4.865e+01 |  4.865e+01 |  2.560e+01 |  5.263e-01
+7:           TOTAL |  5.214e+01 |  5.202e+01 |  2.897e+01 |  5.569e-01
+7: [INFO] expanded trust region. new box size: 5.7665[0m
+7: [INFO] iteration 11[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  1.227e-01 |  1.227e-01 |  1.227e-01 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  2.305e+01 |  2.305e+01 |  2.182e+01 |  9.467e-01
+7:           TOTAL |  2.317e+01 |  2.317e+01 |  2.194e+01 |  9.470e-01
+7: [INFO] expanded trust region. new box size: 8.6498[0m
+7: [INFO] iteration 12[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  2.495e-11 |  1.742e-17 | -4.640e-14 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.227e+00 |  1.227e+00 |  1.227e+00 |  1.000e+00
+7:           TOTAL |  1.227e+00 |  1.227e+00 |  1.227e+00 |  1.000e+00
+7: [INFO] expanded trust region. new box size: 12.9746[0m
+7: [INFO] iteration 13[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f |  2.500e-11 |  5.328e-18 | -2.189e-17 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  3.157e-11 | -2.396e-11 | -2.396e-11 |   ------  
+7:           TOTAL |  5.657e-11 | -2.396e-11 | -2.396e-11 |  1.000e+00
+7: [INFO] converged because improvement was small (-2.396e-11 < 1.000e-10)[0m
+7: [INFO] woo-hoo! constraints are satisfied (to tolerance 1.00e-04)[0m
+7: [INFO] 
+7: ==================
+7: Optimization results:
+7: status: CONVERGED
+7: cost values: (2.50001e-11)
+7: constraint violations: (3.15692e-11)
+7: n func evals: 14
+7: n qp solves: 13
+7: ==================[0m
+7: [INFO] checking (0.999995, 0.99999) ?= (1, 1)[0m
+7: [       OK ] SQP.TP6 (8 ms)
+7: [ RUN      ] SQP.TP7
+7: [INFO] iteration 1[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -3.906e-01 | -2.000e-02 | -1.879e-02 |  9.395e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  2.500e+01 |  4.400e+00 |  4.138e+00 |  9.404e-01
+7:           TOTAL |  2.461e+01 |  4.380e+00 |  4.119e+00 |  9.404e-01
+7: [INFO] expanded trust region. new box size: 0.1500[0m
+7: [INFO] iteration 2[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -3.718e-01 | -2.636e-02 | -2.357e-02 |  8.943e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  2.086e+01 |  5.825e+00 |  5.296e+00 |  9.091e-01
+7:           TOTAL |  2.049e+01 |  5.799e+00 |  5.272e+00 |  9.091e-01
+7: [INFO] expanded trust region. new box size: 0.2250[0m
+7: [INFO] iteration 3[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -3.482e-01 | -3.115e-02 | -2.486e-02 |  7.979e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.557e+01 |  7.186e+00 |  6.181e+00 |  8.601e-01
+7:           TOTAL |  1.522e+01 |  7.155e+00 |  6.156e+00 |  8.604e-01
+7: [INFO] expanded trust region. new box size: 0.3375[0m
+7: [INFO] iteration 4[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -3.233e-01 | -2.797e-02 | -1.553e-02 |  5.553e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  9.385e+00 |  7.876e+00 |  6.166e+00 |  7.829e-01
+7:           TOTAL |  9.062e+00 |  7.848e+00 |  6.151e+00 |  7.837e-01
+7: [INFO] expanded trust region. new box size: 0.5063[0m
+7: [INFO] iteration 5[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -3.078e-01 |  8.868e-01 |  8.900e-01 |  1.004e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  3.219e+00 |  3.219e+00 |  1.654e+00 |  5.138e-01
+7:           TOTAL |  2.911e+00 |  4.106e+00 |  2.544e+00 |  6.196e-01
+7: [INFO] expanded trust region. new box size: 0.7594[0m
+7: [INFO] iteration 6[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.198e+00 |  1.382e+00 |  1.212e+00 |  8.768e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.565e+00 |  1.565e+00 | -1.254e+00 | -8.011e-01
+7:           TOTAL |  3.674e-01 |  2.948e+00 | -4.188e-02 | -1.421e-02
+7: [INFO] shrunk trust region. new box size: 0.0759[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.198e+00 | -2.591e-03 | -2.721e-03 |  1.050e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.565e+00 |  6.569e-01 |  6.188e-01 |  9.419e-01
+7:           TOTAL |  3.674e-01 |  6.543e-01 |  6.160e-01 |  9.415e-01
+7: [INFO] expanded trust region. new box size: 0.1139[0m
+7: [INFO] iteration 7[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.195e+00 | -8.269e-03 | -8.796e-03 |  1.064e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  9.465e-01 |  8.729e-01 |  7.972e-01 |  9.132e-01
+7:           TOTAL | -2.486e-01 |  8.647e-01 |  7.884e-01 |  9.118e-01
+7: [INFO] expanded trust region. new box size: 0.1709[0m
+7: [INFO] iteration 8[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.186e+00 |  2.837e-01 |  2.815e-01 |  9.923e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.493e-01 |  1.493e-01 |  1.679e-02 |  1.125e-01
+7:           TOTAL | -1.037e+00 |  4.329e-01 |  2.983e-01 |  6.890e-01
+7: [INFO] expanded trust region. new box size: 0.2563[0m
+7: [INFO] iteration 9[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.468e+00 |  2.757e-01 |  2.677e-01 |  9.710e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.325e-01 |  1.325e-01 | -6.533e-02 | -4.931e-01
+7:           TOTAL | -1.335e+00 |  4.082e-01 |  2.023e-01 |  4.957e-01
+7: [INFO] expanded trust region. new box size: 0.3844[0m
+7: [INFO] iteration 10[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.735e+00 |  3.460e-02 |  2.836e-02 |  8.196e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.978e-01 |  1.978e-01 | -9.776e-03 | -4.942e-02
+7:           TOTAL | -1.538e+00 |  2.324e-01 |  1.859e-02 |  7.996e-02
+7: [INFO] shrunk trust region. new box size: 0.0384[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.735e+00 | -2.607e-02 | -2.609e-02 |  1.001e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.978e-01 |  1.653e-01 |  1.606e-01 |  9.716e-01
+7:           TOTAL | -1.538e+00 |  1.392e-01 |  1.345e-01 |  9.661e-01
+7: [INFO] expanded trust region. new box size: 0.0577[0m
+7: [INFO] iteration 11[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.709e+00 |  1.253e-02 |  1.248e-02 |  9.962e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  3.721e-02 |  3.721e-02 |  3.023e-02 |  8.125e-01
+7:           TOTAL | -1.672e+00 |  4.974e-02 |  4.272e-02 |  8.588e-01
+7: [INFO] expanded trust region. new box size: 0.0865[0m
+7: [INFO] iteration 12[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.722e+00 |  1.471e-02 |  1.462e-02 |  9.942e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  6.976e-03 |  6.976e-03 | -8.213e-03 | -1.177e+00
+7:           TOTAL | -1.715e+00 |  2.168e-02 |  6.407e-03 |  2.955e-01
+7: [INFO] expanded trust region. new box size: 0.1297[0m
+7: [INFO] iteration 13[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.736e+00 | -4.367e-03 | -4.367e-03 |  1.000e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.519e-02 |  1.519e-02 |  1.516e-02 |  9.978e-01
+7:           TOTAL | -1.721e+00 |  1.082e-02 |  1.079e-02 |  9.969e-01
+7: [INFO] expanded trust region. new box size: 0.1946[0m
+7: [INFO] iteration 14[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 | -7.308e-06 | -7.292e-06 |  9.979e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  3.365e-05 |  3.364e-05 |  2.887e-05 |  8.580e-01
+7:           TOTAL | -1.732e+00 |  2.634e-05 |  2.157e-05 |  8.192e-01
+7: [INFO] expanded trust region. new box size: 0.2919[0m
+7: [INFO] iteration 15[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 | -5.752e-07 | -5.842e-07 |  1.016e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  4.783e-06 |  4.769e-06 |  3.148e-06 |  6.601e-01
+7:           TOTAL | -1.732e+00 |  4.194e-06 |  2.564e-06 |  6.114e-01
+7: [INFO] expanded trust region. new box size: 0.4379[0m
+7: [INFO] iteration 16[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 | -2.047e-07 | -1.995e-07 |  9.748e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.634e-06 |  1.634e-06 |  1.110e-06 |  6.794e-01
+7:           TOTAL | -1.732e+00 |  1.430e-06 |  9.109e-07 |  6.371e-01
+7: [INFO] expanded trust region. new box size: 0.6568[0m
+7: [INFO] iteration 17[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 | -6.220e-08 | -6.518e-08 |  1.048e+00
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  5.240e-07 |  5.239e-07 |  3.399e-07 |  6.487e-01
+7:           TOTAL | -1.732e+00 |  4.617e-07 |  2.747e-07 |  5.949e-01
+7: [INFO] expanded trust region. new box size: 0.9853[0m
+7: [INFO] iteration 18[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 | -2.264e-08 | -2.092e-08 |  9.239e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  1.841e-07 |  1.812e-07 |  1.253e-07 |  6.915e-01
+7:           TOTAL | -1.732e+00 |  1.586e-07 |  1.044e-07 |  6.583e-01
+7: [INFO] expanded trust region. new box size: 1.4779[0m
+7: [INFO] iteration 19[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 |  1.239e-09 |  2.446e-10 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  5.877e-08 |  2.998e-08 |  8.203e-09 |  2.736e-01
+7:           TOTAL | -1.732e+00 |  3.122e-08 |  8.448e-09 |  2.706e-01
+7: [INFO] expanded trust region. new box size: 2.2168[0m
+7: [INFO] iteration 20[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 | -1.126e-08 | -1.069e-08 |  9.490e-01
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  5.056e-08 |  5.044e-08 |  4.499e-08 |  8.920e-01
+7:           TOTAL | -1.732e+00 |  3.918e-08 |  3.431e-08 |  8.756e-01
+7: [INFO] expanded trust region. new box size: 3.3253[0m
+7: [INFO] iteration 21[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 | -3.975e-10 | -7.291e-10 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  5.570e-09 |  5.185e-09 |  2.323e-09 |   ------  
+7:           TOTAL | -1.732e+00 |  4.788e-09 |  1.594e-09 |  3.330e-01
+7: [INFO] expanded trust region. new box size: 4.9879[0m
+7: [INFO] iteration 22[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 | -4.057e-10 | -2.143e-10 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  3.247e-09 |  2.675e-09 |  2.325e-09 |   ------  
+7:           TOTAL | -1.732e+00 |  2.269e-09 |  2.110e-09 |  9.301e-01
+7: [INFO] expanded trust region. new box size: 7.4818[0m
+7: [INFO] iteration 23[0m
+7: [INFO]  [0m
+7:                 |   oldexact |    dapprox |     dexact |      ratio
+7:           COSTS | -------------------------------------------------
+7:               f | -1.732e+00 |  3.862e-09 |  3.752e-09 |   ------  
+7:     CONSTRAINTS | -------------------------------------------------
+7:               g |  9.218e-10 | -1.296e-08 | -1.342e-08 |  1.036e+00
+7:           TOTAL | -1.732e+00 | -9.094e-09 | -9.670e-09 |  1.063e+00
+7: [INFO] converged because improvement was small (-9.094e-09 < 1.000e-10)[0m
+7: [INFO] woo-hoo! constraints are satisfied (to tolerance 1.00e-04)[0m
+7: [INFO] 
+7: ==================
+7: Optimization results:
+7: status: CONVERGED
+7: cost values: (-1.73205)
+7: constraint violations: (9.21785e-10)
+7: n func evals: 26
+7: n qp solves: 25
+7: ==================[0m
+7: [INFO] checking (2.00669e-06, 1.73205) ?= (0, 1.73205)[0m
+7: [       OK ] SQP.TP7 (14 ms)
+7: [----------] 6 tests from SQP (46 ms total)
+7: 
+7: [----------] 1 test from solver_interface
+7: [ RUN      ] solver_interface.setup_problem
+7: 0
+7: -3 + 1*v0 + 1*v1 + 1*v2
+7: [INFO] objective: 9 + -6*v0 + -6*v1 + -6*v2 + 1*v0*v0 + 2*v0*v1 + 2*v0*v2 + 1*v1*v1 + 2*v1*v2 + 1*v2*v2[0m
+7: [INFO] please manually check that /tmp/solver-interface-test.lp matches this[0m
+7: [       OK ] solver_interface.setup_problem (0 ms)
+7: [----------] 1 test from solver_interface (0 ms total)
+7: 
+7: [----------] Global test environment tear-down
+7: [==========] 7 tests from 2 test cases ran. (46 ms total)
+7: [  PASSED  ] 7 tests.
+ 7/10 Test  #7: sco-unit ...........................   Passed    0.05 sec
+test 8
+      Start  8: collision-checker-unit
+
+8: Test command: /usr/local/src/trajopt/build/bin/collision-checker-unit
+8: Test timeout computed to be: 9.99988e+06
+8: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+8: [==========] Running 2 tests from 2 test cases.
+8: [----------] Global test environment set-up.
+8: [----------] 1 test from collision_checker
+8: [ RUN      ] collision_checker.box_distance
+8: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name ode, interface collisionchecker
+8: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name bullet, interface collisionchecker
+8: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name pqp, interface collisionchecker
+8: [0;38;48m[33m[WARN] WARNING: AllVsAll seems to be broken! (since a8f8da01)[0m
+8: [33m[WARN] WARNING: AllVsAll seems to be broken! (since a8f8da01)[0m
+8: [33m[WARN] WARNING: AllVsAll seems to be broken! (since a8f8da01)[0m
+8: [33m[WARN] WARNING: AllVsAll seems to be broken! (since a8f8da01)[0m
+8: [33m[WARN] WARNING: AllVsAll seems to be broken! (since a8f8da01)[0m
+8: [33m[WARN] WARNING: AllVsAll seems to be broken! (since a8f8da01)[0m
+8: [       OK ] collision_checker.box_distance (2 ms)
+8: [----------] 1 test from collision_checker (2 ms total)
+8: 
+8: [----------] 1 test from continuous_collisions
+8: [ RUN      ] continuous_collisions.boxes
+8: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name ode, interface collisionchecker
+8: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name bullet, interface collisionchecker
+8: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name pqp, interface collisionchecker
+8: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name IdealController, interface controller
+8: [0;38;48m[       OK ] continuous_collisions.boxes (2 ms)
+8: [----------] 1 test from continuous_collisions (2 ms total)
+8: 
+8: [----------] Global test environment tear-down
+8: [==========] 2 tests from 2 test cases ran. (4 ms total)
+8: [  PASSED  ] 2 tests.
+ 8/10 Test  #8: collision-checker-unit .............   Passed    0.04 sec
+test 9
+      Start  9: planning-unit
+
+9: Test command: /usr/local/src/trajopt/build/bin/planning-unit
+9: Test timeout computed to be: 9.99988e+06
+9: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+9: [==========] Running 2 tests from 1 test case.
+9: [----------] Global test environment set-up.
+9: [----------] 2 tests from PlanningTest
+9: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name ode, interface collisionchecker
+9: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name bullet, interface collisionchecker
+9: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name pqp, interface collisionchecker
+9: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+9: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:wide_stereo_optical_sensor
+9: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_stereo_camera, interface sensor
+9: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:narrow_stereo_optical_sensor
+9: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_pinhole_camera, interface sensor
+9: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:r_forearm_cam_optical_sensor
+9: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_pinhole_camera, interface sensor
+9: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:l_forearm_cam_optical_sensor
+9: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_laser2d, interface sensor
+9: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:tilt_laser
+9: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name base_laser2d, interface sensor
+9: [0;38;48m[0;33;48m[colladareader.cpp:2584] [0;38;48m[0;33;48mcannot find instance_sensor for attached sensor pr2:base_laser
+9: [m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name IdealController, interface controller
+9: [0;38;48m[ RUN      ] PlanningTest.numerical_ik1
+9: [INFO] iteration 1[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  1.748e+01 |  5.936e-01 |  6.922e-01 |  1.166e+00
+9:           TOTAL |  1.748e+01 |  5.936e-01 |  6.922e-01 |  1.166e+00
+9: [INFO] expanded trust region. new box size: 0.1500[0m
+9: [INFO] iteration 2[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  1.679e+01 |  9.137e-01 |  1.026e+00 |  1.123e+00
+9:           TOTAL |  1.679e+01 |  9.137e-01 |  1.026e+00 |  1.123e+00
+9: [INFO] expanded trust region. new box size: 0.2250[0m
+9: [INFO] iteration 3[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  1.576e+01 |  1.216e+00 |  5.524e-01 |  4.544e-01
+9:           TOTAL |  1.576e+01 |  1.216e+00 |  5.524e-01 |  4.544e-01
+9: [INFO] expanded trust region. new box size: 0.3375[0m
+9: [INFO] iteration 4[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  1.521e+01 |  2.331e+00 |  1.093e+00 |  4.687e-01
+9:           TOTAL |  1.521e+01 |  2.331e+00 |  1.093e+00 |  4.687e-01
+9: [INFO] expanded trust region. new box size: 0.5063[0m
+9: [INFO] iteration 5[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  1.412e+01 |  5.428e+00 |  3.332e+00 |  6.139e-01
+9:           TOTAL |  1.412e+01 |  5.428e+00 |  3.332e+00 |  6.139e-01
+9: [INFO] expanded trust region. new box size: 0.7594[0m
+9: [INFO] iteration 6[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  1.079e+01 |  7.306e+00 |  4.699e+00 |  6.431e-01
+9:           TOTAL |  1.079e+01 |  7.306e+00 |  4.699e+00 |  6.431e-01
+9: [INFO] expanded trust region. new box size: 1.1391[0m
+9: [INFO] iteration 7[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  6.088e+00 |  6.088e+00 |  3.257e+00 |  5.350e-01
+9:           TOTAL |  6.088e+00 |  6.088e+00 |  3.257e+00 |  5.350e-01
+9: [INFO] expanded trust region. new box size: 1.7086[0m
+9: [INFO] iteration 8[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  2.831e+00 |  2.831e+00 |  2.505e+00 |  8.851e-01
+9:           TOTAL |  2.831e+00 |  2.831e+00 |  2.505e+00 |  8.851e-01
+9: [INFO] expanded trust region. new box size: 2.5629[0m
+9: [INFO] iteration 9[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  3.254e-01 |  3.254e-01 | -3.841e-02 | -1.180e-01
+9:           TOTAL |  3.254e-01 |  3.254e-01 | -3.841e-02 | -1.180e-01
+9: [INFO] shrunk trust region. new box size: 0.2563[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  3.254e-01 |  3.254e-01 |  3.236e-01 |  9.947e-01
+9:           TOTAL |  3.254e-01 |  3.254e-01 |  3.236e-01 |  9.947e-01
+9: [INFO] expanded trust region. new box size: 0.3844[0m
+9: [INFO] iteration 10[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  1.729e-03 |  1.729e-03 |  1.423e-03 |  8.229e-01
+9:           TOTAL |  1.729e-03 |  1.729e-03 |  1.423e-03 |  8.229e-01
+9: [INFO] expanded trust region. new box size: 0.5767[0m
+9: [INFO] iteration 11[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  3.064e-04 |  3.064e-04 | -1.496e-03 | -4.883e+00
+9:           TOTAL |  3.064e-04 |  3.064e-04 | -1.496e-03 | -4.883e+00
+9: [INFO] shrunk trust region. new box size: 0.0577[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  3.064e-04 |  3.064e-04 |  3.064e-04 |  1.000e+00
+9:           TOTAL |  3.064e-04 |  3.064e-04 |  3.064e-04 |  1.000e+00
+9: [INFO] expanded trust region. new box size: 0.0865[0m
+9: [INFO] iteration 12[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:            pose |  7.571e-09 | -2.404e-08 | -5.985e-09 |  2.490e-01
+9:           TOTAL |  7.571e-09 | -2.404e-08 | -5.985e-09 |  2.490e-01
+9: [INFO] converged because improvement was small (-2.404e-08 < 1.000e-04)[0m
+9: [INFO] 
+9: ==================
+9: Optimization results:
+9: status: CONVERGED
+9: cost values: (7.57117e-09)
+9: constraint violations: ()
+9: n func evals: 15
+9: n qp solves: 14
+9: ==================[0m
+9: [planning-unit.cpp:90] planning time: 0.022
+9: [       OK ] PlanningTest.numerical_ik1 (24 ms)
+9: [ RUN      ] PlanningTest.arm_around_table
+9: [INFO] creating bullet collision checker for environment[0m
+9: [INFO] iteration 1[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.610e+00 | -9.247e-02 | -9.247e-02 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  1.262e+00 |  8.585e-01 |  1.160e+00 |  1.352e+00
+9:     collision_4 |  7.198e+00 |  1.607e+00 |  2.683e+00 |  1.670e+00
+9:     collision_5 |  7.114e+00 |  1.516e+00 |  1.767e+00 |  1.165e+00
+9:     collision_6 |  1.183e+01 | -5.464e+00 | -5.400e+00 |  9.883e-01
+9:     collision_7 |  1.266e+01 |  9.254e+00 |  9.054e+00 |  9.783e-01
+9:     collision_8 |  5.431e-01 |  5.431e-01 |  5.431e-01 |  1.000e+00
+9:           TOTAL |  4.221e+01 |  8.223e+00 |  9.715e+00 |  1.181e+00
+9: [INFO] expanded trust region. new box size: 0.1500[0m
+9: [INFO] iteration 2[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.703e+00 | -3.680e-01 | -3.680e-01 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  1.019e-01 |  1.019e-01 |  1.019e-01 |  1.000e+00
+9:     collision_4 |  4.514e+00 |  2.884e+00 |  3.378e+00 |  1.171e+00
+9:     collision_5 |  5.348e+00 |  1.716e+00 |  2.096e+00 |  1.222e+00
+9:     collision_6 |  1.723e+01 |  1.080e+00 |  5.768e-01 |  5.341e-01
+9:     collision_7 |  3.601e+00 |  1.077e+00 | -5.362e-01 | -4.977e-01
+9:     collision_8 |  0.000e+00 | -7.359e-11 |  0.000e+00 |   ------  
+9:           TOTAL |  3.250e+01 |  6.491e+00 |  5.248e+00 |  8.085e-01
+9: [INFO] expanded trust region. new box size: 0.2250[0m
+9: [INFO] iteration 3[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  2.071e+00 |  1.291e-01 |  1.291e-01 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  1.136e+00 |  1.136e+00 |  1.136e+00 |  1.000e+00
+9:     collision_5 |  3.252e+00 |  3.075e+00 |  2.692e+00 |  8.755e-01
+9:     collision_6 |  1.665e+01 | -5.741e-01 |  1.112e+01 | -1.936e+01
+9:     collision_7 |  4.138e+00 |  2.256e+00 |  1.697e+00 |  7.523e-01
+9:     collision_8 |  0.000e+00 | -1.469e-11 |  0.000e+00 |   ------  
+9:           TOTAL |  2.725e+01 |  6.021e+00 |  1.677e+01 |  2.785e+00
+9: [INFO] expanded trust region. new box size: 0.3375[0m
+9: [INFO] iteration 4[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.942e+00 |  1.770e-01 |  1.770e-01 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 | -2.846e-12 |  0.000e+00 |   ------  
+9:     collision_5 |  5.602e-01 |  5.602e-01 |  5.602e-01 |  1.000e+00
+9:     collision_6 |  5.535e+00 |  5.535e+00 |  5.535e+00 |  1.000e+00
+9:     collision_7 |  2.441e+00 |  2.441e+00 |  2.441e+00 |  1.000e+00
+9:     collision_8 |  0.000e+00 | -1.733e-11 |  0.000e+00 |   ------  
+9:           TOTAL |  1.048e+01 |  8.714e+00 |  8.714e+00 |  1.000e+00
+9: [INFO] expanded trust region. new box size: 0.5063[0m
+9: [INFO] iteration 5[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.765e+00 |  2.215e-02 |  2.215e-02 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 | -9.007e-13 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 | -1.232e-12 |  0.000e+00 |   ------  
+9:     collision_6 |  0.000e+00 | -4.063e-12 |  0.000e+00 |   ------  
+9:     collision_7 |  0.000e+00 | -2.729e-12 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 | -9.462e-13 |  0.000e+00 |   ------  
+9:           TOTAL |  1.765e+00 |  2.215e-02 |  2.215e-02 |  1.000e+00
+9: [INFO] expanded trust region. new box size: 0.7594[0m
+9: [INFO] iteration 6[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.743e+00 |  9.124e-03 |  9.124e-03 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 | -7.325e-15 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 | -2.034e-14 |  0.000e+00 |   ------  
+9:     collision_6 |  0.000e+00 | -2.584e-14 |  0.000e+00 |   ------  
+9:     collision_7 |  0.000e+00 | -1.802e-14 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 | -9.504e-15 |  0.000e+00 |   ------  
+9:           TOTAL |  1.743e+00 |  9.124e-03 |  9.124e-03 |  1.000e+00
+9: [INFO] expanded trust region. new box size: 1.1391[0m
+9: [INFO] iteration 7[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.734e+00 |  1.617e-02 |  1.617e-02 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 | -7.818e-13 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 | -1.212e-12 | -5.424e-02 |   ------  
+9:     collision_6 |  0.000e+00 | -2.511e-12 | -2.641e-02 |   ------  
+9:     collision_7 |  0.000e+00 | -2.514e-12 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 | -8.522e-13 |  0.000e+00 |   ------  
+9:           TOTAL |  1.734e+00 |  1.617e-02 | -6.448e-02 | -3.986e+00
+9: [INFO] shrunk trust region. new box size: 0.1139[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.734e+00 |  1.617e-02 |  1.617e-02 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 | -6.969e-13 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 | -7.985e-13 | -5.424e-02 |   ------  
+9:     collision_6 |  0.000e+00 | -1.989e-12 | -2.641e-02 |   ------  
+9:     collision_7 |  0.000e+00 | -1.996e-12 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:           TOTAL |  1.734e+00 |  1.617e-02 | -6.448e-02 | -3.986e+00
+9: [INFO] shrunk trust region. new box size: 0.0114[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.734e+00 |  5.438e-03 |  5.438e-03 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 | -3.446e-13 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 | -3.648e-13 | -1.349e-02 |   ------  
+9:     collision_6 |  0.000e+00 | -3.490e-13 | -8.982e-03 |   ------  
+9:     collision_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:           TOTAL |  1.734e+00 |  5.438e-03 | -1.704e-02 | -3.133e+00
+9: [INFO] shrunk trust region. new box size: 0.0011[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.734e+00 |  1.010e-03 |  1.010e-03 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 | -2.500e-11 | -1.486e-03 |   ------  
+9:     collision_6 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:           TOTAL |  1.734e+00 |  1.010e-03 | -4.761e-04 | -4.714e-01
+9: [INFO] shrunk trust region. new box size: 0.0001[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.734e+00 |  1.123e-04 |  1.123e-04 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_6 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:           TOTAL |  1.734e+00 |  1.123e-04 |  1.123e-04 |  1.000e+00
+9: [INFO] expanded trust region. new box size: 0.0002[0m
+9: [INFO] iteration 8[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.733e+00 |  1.684e-04 |  1.684e-04 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_6 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:           TOTAL |  1.733e+00 |  1.684e-04 |  1.684e-04 |  1.000e+00
+9: [INFO] expanded trust region. new box size: 0.0003[0m
+9: [INFO] iteration 9[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.733e+00 |  2.522e-04 |  2.522e-04 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_6 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:           TOTAL |  1.733e+00 |  2.522e-04 |  2.522e-04 |  1.000e+00
+9: [INFO] expanded trust region. new box size: 0.0004[0m
+9: [INFO] iteration 10[0m
+9: [INFO]  [0m
+9:                 |   oldexact |    dapprox |     dexact |      ratio
+9:           COSTS | -------------------------------------------------
+9:       joint_vel |  1.733e+00 |  3.221e-04 |  3.221e-04 |  1.000e+00
+9:     collision_0 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_2 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_3 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_4 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_5 |  0.000e+00 | -8.060e-10 | -5.514e-04 |   ------  
+9:     collision_6 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_7 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:     collision_8 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+9:           TOTAL |  1.733e+00 |  3.221e-04 | -2.293e-04 | -7.120e-01
+9: [INFO] shrunk trust region. new box size: 0.0000[0m
+9: [INFO] converged because trust region is tiny[0m
+9: [INFO] 
+9: ==================
+9: Optimization results:
+9: status: CONVERGED
+9: cost values: (1.73306, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+9: constraint violations: ()
+9: n func evals: 15
+9: n qp solves: 14
+9: ==================[0m
+9: [planning-unit.cpp:117] planning time: 0.089
+9: [planning-unit.cpp:121] number of continuous collisions: 0
+9: [       OK ] PlanningTest.arm_around_table (146 ms)
+9: [----------] 2 tests from PlanningTest (170 ms total)
+9: 
+9: [----------] Global test environment tear-down
+9: [==========] 2 tests from 1 test case ran. (943 ms total)
+9: [  PASSED  ] 2 tests.
+ 9/10 Test  #9: planning-unit ......................   Passed    0.97 sec
+test 10
+      Start 10: cast-cost-unit
+
+10: Test command: /usr/local/src/trajopt/build/bin/cast-cost-unit
+10: Test timeout computed to be: 9.99988e+06
+10: You can set logging level with TRAJOPT_LOG_THRESH. Valid values: FATAL ERROR WARN INFO DEBUG TRACE. Defaulting to INFO
+10: [==========] Running 1 test from 1 test case.
+10: [----------] Global test environment set-up.
+10: [----------] 1 test from cast
+10: [ RUN      ] cast.boxes
+10: [0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name ode, interface collisionchecker
+10: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name bullet, interface collisionchecker
+10: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name pqp, interface collisionchecker
+10: [0;38;48m[0;33;48m[plugindatabase.h:573] [0;38;48m[0;33;48mFailed to create name IdealController, interface controller
+10: [0;38;48m[INFO] creating bullet collision checker for environment[0m
+10: [INFO] iteration 1[0m
+10: [INFO]  [0m
+10:                 |   oldexact |    dapprox |     dexact |      ratio
+10:           COSTS | -------------------------------------------------
+10:           jvel0 |  1.444e+01 | -4.000e-02 | -4.000e-02 |  1.000e+00
+10:            cc_0 |  2.707e+00 |  7.071e-01 |  7.071e-01 |  1.000e+00
+10:            cc_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+10:           TOTAL |  1.715e+01 |  6.671e-01 |  6.671e-01 |  1.000e+00
+10: [INFO] expanded trust region. new box size: 0.1500[0m
+10: [INFO] iteration 2[0m
+10: [INFO]  [0m
+10:                 |   oldexact |    dapprox |     dexact |      ratio
+10:           COSTS | -------------------------------------------------
+10:           jvel0 |  1.448e+01 | -2.072e-01 | -2.072e-01 |  1.000e+00
+10:            cc_0 |  2.000e+00 |  2.000e+00 |  1.043e+00 |  5.216e-01
+10:            cc_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+10:           TOTAL |  1.648e+01 |  1.793e+00 |  8.360e-01 |  4.663e-01
+10: [INFO] expanded trust region. new box size: 0.2250[0m
+10: [INFO] iteration 3[0m
+10: [INFO]  [0m
+10:                 |   oldexact |    dapprox |     dexact |      ratio
+10:           COSTS | -------------------------------------------------
+10:           jvel0 |  1.469e+01 | -3.404e-01 | -3.404e-01 |  1.000e+00
+10:            cc_0 |  9.568e-01 |  9.568e-01 |  9.568e-01 |  1.000e+00
+10:            cc_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+10:           TOTAL |  1.564e+01 |  6.164e-01 |  6.164e-01 |  1.000e+00
+10: [INFO] expanded trust region. new box size: 0.3375[0m
+10: [INFO] iteration 4[0m
+10: [INFO]  [0m
+10:                 |   oldexact |    dapprox |     dexact |      ratio
+10:           COSTS | -------------------------------------------------
+10:           jvel0 |  1.503e+01 |  7.586e-03 |  7.586e-03 |  1.000e+00
+10:            cc_0 |  0.000e+00 | -8.757e-10 | -1.540e-04 |   ------  
+10:            cc_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+10:           TOTAL |  1.503e+01 |  7.586e-03 |  7.432e-03 |  9.797e-01
+10: [INFO] expanded trust region. new box size: 0.5063[0m
+10: [INFO] iteration 5[0m
+10: [INFO]  [0m
+10:                 |   oldexact |    dapprox |     dexact |      ratio
+10:           COSTS | -------------------------------------------------
+10:           jvel0 |  1.502e+01 | -6.529e-05 | -6.529e-05 |  1.000e+00
+10:            cc_0 |  1.540e-04 |  1.540e-04 |  1.533e-04 |  9.954e-01
+10:            cc_1 |  0.000e+00 |  0.000e+00 |  0.000e+00 |   ------  
+10:           TOTAL |  1.502e+01 |  8.876e-05 |  8.805e-05 |  9.920e-01
+10: [INFO] converged because improvement was small (8.876e-05 < 1.000e-04)[0m
+10: [INFO] 
+10: ==================
+10: Optimization results:
+10: status: CONVERGED
+10: cost values: (15.02, 0.000154048, 0)
+10: constraint violations: ()
+10: n func evals: 6
+10: n qp solves: 5
+10: ==================[0m
+10: [cast-cost-unit.cpp:76] number of continuous collisions: 0
+10: [       OK ] cast.boxes (6 ms)
+10: [----------] 1 test from cast (6 ms total)
+10: 
+10: [----------] Global test environment tear-down
+10: [==========] 1 test from 1 test case ran. (6 ms total)
+10: [  PASSED  ] 1 test.
+10/10 Test #10: cast-cost-unit .....................   Passed    0.04 sec
+
+70% tests passed, 3 tests failed out of 10
+
+Total Test time (real) =   7.55 sec
+
+The following tests FAILED:
+	  3 - fullbody_plan.py (Failed)
+	  4 - position_base.py (Failed)
+	  5 - this_side_up.py (Failed)
+[91mErrors while running CTest
+[0m
