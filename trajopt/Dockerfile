@@ -17,4 +17,4 @@ RUN cd /usr/local/src/trajopt; \
 	cd build; \
 	cmake ..; \
 	make -j
-
+ENV PYTHONPATH $PYTHONPATH:/usr/local/src/trajopt:/usr/local/src/trajopt/build/lib
