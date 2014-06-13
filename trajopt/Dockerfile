@@ -6,5 +6,10 @@ RUN apt-get install -y libopenscenegraph-dev cmake libboost-all-dev libeigen3-de
 
 # add gurobi
 ADD ./src/gurobi563 /usr/local/src/gurobi563
-RUN cd /usr/local/src/gurobi563/linux64; python setup.py install
+RUN cd /usr/local/src/gurobi563/linux64; \
+	python setup.py install
 ENV GUROBI_HOME /usr/local/src/gurobi563/linux64
+
+# trajopt
+RUN git clone https://github.com/joschu/trajopt.git /usr/local/src/trajopt
+
