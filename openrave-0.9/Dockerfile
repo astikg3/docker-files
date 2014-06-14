@@ -24,6 +24,7 @@ RUN apt-get install -y libqt4-dev qt4-dev-tools libxml2-dev libode-dev
 RUN apt-get install -y libsoqt4-dev libcoin60-dev
 # RUN apt-get install -y collada-dom  # Optional collada support.
 
+RUN apt-get install -y libboost-all-dev
 RUN apt-get install -y libpcre3 libpcrecpp0
 RUN apt-get install -y libexif-dev
 
