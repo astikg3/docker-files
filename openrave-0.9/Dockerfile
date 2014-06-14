@@ -19,5 +19,5 @@ RUN easy_install pytz
 RUN apt-get install -y libboost-dev  libboost-date-time-dev libboost-thread-dev
 RUN apt-get install -y libqt4-dev qt4-dev-tools libxml2-dev libode-dev
 RUN apt-get install -y libsoqt4-dev libcoin60-dev
-RUN apt-get install -y collada-dom  # Optional collada support.
+# RUN apt-get install -y collada-dom  # Optional collada support.
 
