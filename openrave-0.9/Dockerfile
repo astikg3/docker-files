@@ -21,3 +21,11 @@ RUN apt-get install -y libqt4-dev qt4-dev-tools libxml2-dev libode-dev
 RUN apt-get install -y libsoqt4-dev libcoin60-dev
 # RUN apt-get install -y collada-dom  # Optional collada support.
 
+# OpenRAVE
+RUN git clone --branch master https://github.com/rdiankov/openrave.git /usr/local/src/openrave
+RUN cd /usr/local/src/openrave; \
+	mkdir build; \
+	cd build; \
+	cmake ..; \
+	make -j3; \
+	make install
