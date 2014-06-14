@@ -11,20 +11,15 @@ RUN cd /usr/local/src/gurobi563/linux64; \
 ENV GUROBI_HOME /usr/local/src/gurobi563/linux64
 ENV PATH ${PATH}:${GUROBI_HOME}/bin 
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib 
-# RUN	grbgetkey c8e62080-0fc1-7665-e7ca-539b91f53fcf
 ADD ./scr /bin
 RUN chmod 755 /bin/gurobi.sh
-RUN gurobi.sh
 
 # trajopt
 RUN git clone https://github.com/joschu/trajopt.git /usr/local/src/trajopt
 RUN cd /usr/local/src/trajopt; \
-	mkdir build; \
-	cd build; \
-	cmake ..; \
-	make -j
+	mkdir build
 ENV PYTHONPATH $PYTHONPATH:/usr/local/src/trajopt:/usr/local/src/trajopt/build/lib
 
-# test
-RUN cd /usr/local/src/trajopt/build; \
-	ctest -V
+# Now execute the following commands inside the docker container
+# grbgetkey c8e62080-0fc1-7665-e7ca-539b91f53fcf
+# trajopt.sh

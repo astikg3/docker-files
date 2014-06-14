@@ -1,0 +1,27 @@
+Step 0 : FROM dibyo/openrave
+ ---> c1d9f0ebd3fd
+Step 1 : MAINTAINER Dibyo Majumdar <dibyo.majumdar@gmail.com>
+ ---> Using cache
+ ---> 3a6dff124740
+Step 2 : RUN apt-get install -y libopenscenegraph-dev cmake libboost-all-dev libeigen3-dev
+ ---> Using cache
+ ---> 30f6215c6aee
+Step 3 : ADD ./src/gurobi563 /usr/local/src/gurobi563
+ ---> Using cache
+ ---> ae50d98da00b
+Step 4 : RUN cd /usr/local/src/gurobi563/linux64; python setup.py install
+ ---> Using cache
+ ---> 8a1bd0cefa6c
+Step 5 : ENV GUROBI_HOME /usr/local/src/gurobi563/linux64
+ ---> Using cache
+ ---> 55914b36f500
+Step 6 : ENV PATH ${PATH}:${GUROBI_HOME}/bin
+ ---> Using cache
+ ---> 17571ac1d8f7
+Step 7 : ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib
+ ---> Using cache
+ ---> cc4e1d17a047
+Step 8 : RUN su -c "grbgetkey c18afa10-e600-65d5-c8ac-539b7df13bbd"
+ ---> Running in ad0b9c6c7fcf
+[91mbash: grbgetkey: command not found
+[0m
