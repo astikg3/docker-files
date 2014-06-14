@@ -1,4 +1,4 @@
-FROM dibyo/openrave
+FROM dibyo/openrave-v0.9
 
 MAINTAINER Dibyo Majumdar <dibyo.majumdar@gmail.com>
 
@@ -11,7 +11,7 @@ RUN cd /usr/local/src/gurobi563/linux64; \
 ENV GUROBI_HOME /usr/local/src/gurobi563/linux64
 ENV PATH ${PATH}:${GUROBI_HOME}/bin 
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib 
-RUN	grbgetkey c8e62080-0fc1-7665-e7ca-539b91f53fcf
+# RUN	grbgetkey c8e62080-0fc1-7665-e7ca-539b91f53fcf
 
 # trajopt
 RUN git clone https://github.com/joschu/trajopt.git /usr/local/src/trajopt
