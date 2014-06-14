@@ -35,14 +35,6 @@ RUN cd /usr/local/src/pcre-8.35; \
         make; \
         make install
 
-ADD ./src/collada-dom-2.4.0 /usr/local/src/collada-dom-2.4.0
-RUN cd /usr/local/src/collada-dom-2.4.0; \
-	mkdir build; \
-	cd build; \
-	cmake ..; \
-	make; \
-	make install
-
 # OpenRAVE
 RUN git clone --branch master https://github.com/rdiankov/openrave.git /usr/local/src/openrave
 ADD ./src/sympy-0.7.5 /usr/local/src/openrave/sympy
