@@ -25,7 +25,9 @@ RUN apt-get install -y libsoqt4-dev libcoin60-dev
 # RUN apt-get install -y collada-dom  # Optional collada support.
 
 RUN apt-get install -y libpcre3 libpcrecpp0
+RUN apt-get install -y libexif-dev
 
+# latest pcre 
 ADD ./src/pcre-8.35 /usr/local/src/pcre-8.35
 RUN cd /usr/local/src/pcre-8.35; \
         ./configure; \
