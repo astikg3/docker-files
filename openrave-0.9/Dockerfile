@@ -26,6 +26,12 @@ RUN apt-get install -y libsoqt4-dev libcoin60-dev
 
 RUN apt-get install -y libpcre3 libpcrecpp0
 
+ADD ./src/pcre-8.35 /usr/local/src/pcre-8.35
+RUN cd /usr/local/src/pcre-8.35; \
+        ./configure; \
+        make; \
+        make install
+
 # OpenRAVE
 RUN git clone --branch master https://github.com/rdiankov/openrave.git /usr/local/src/openrave
 RUN cd /usr/local/src/openrave; \
