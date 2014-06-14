@@ -31,5 +31,5 @@ RUN cd /usr/local/src/openrave; \
 	mkdir build; \
 	cd build; \
 	cmake ..; \
-	make -j3; \
+	make; \
 	make install
