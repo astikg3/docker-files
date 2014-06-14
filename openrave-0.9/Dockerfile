@@ -5,7 +5,6 @@ MAINTAINER Dibyo Majumdar <dibyo.majumdar@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get install -y make cmake
-
 RUN apt-get install -y apt-utils
 RUN apt-get install -y python-numpy python-setuptools
 RUN easy_install pytz
