@@ -18,11 +18,13 @@ RUN easy_install pytz
 # RUN apt-get install -y openrave
 
 # install dependencies
-RUN apt-get -y install libpcre++-dev libpcrepp-dev libreadline-dev
+RUN apt-get install -y libpcre++-dev libreadline-dev
 RUN apt-get install -y libboost-dev  libboost-date-time-dev libboost-thread-dev
 RUN apt-get install -y libqt4-dev qt4-dev-tools libxml2-dev libode-dev
 RUN apt-get install -y libsoqt4-dev libcoin60-dev
 # RUN apt-get install -y collada-dom  # Optional collada support.
+
+RUN apt-get install -y libpcre3 libpcrecpp0
 
 # OpenRAVE
 RUN git clone --branch master https://github.com/rdiankov/openrave.git /usr/local/src/openrave
