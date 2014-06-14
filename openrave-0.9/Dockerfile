@@ -5,6 +5,8 @@ MAINTAINER Dibyo Majumdar <dibyo.majumdar@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 # ENV PYTHONPATH /usr/local/raas/src:/usr/local/raas/src/raas_example
 
+RUN apt-get install -y make cmake
+
 RUN apt-get install -y apt-utils
 RUN apt-get install -y python-numpy python-setuptools
 RUN easy_install pytz
@@ -16,6 +18,7 @@ RUN easy_install pytz
 # RUN apt-get install -y openrave
 
 # install dependencies
+RUN apt-get -y install libpcre++-dev libpcrepp-dev libreadline-dev
 RUN apt-get install -y libboost-dev  libboost-date-time-dev libboost-thread-dev
 RUN apt-get install -y libqt4-dev qt4-dev-tools libxml2-dev libode-dev
 RUN apt-get install -y libsoqt4-dev libcoin60-dev
