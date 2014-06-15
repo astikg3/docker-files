@@ -13,6 +13,7 @@ ENV PATH ${PATH}:${GUROBI_HOME}/bin
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib 
 ADD ./scr /bin
 RUN chmod 755 /bin/gurobi.sh
+RUN chmod 755 /bin/trajopt.sh
 
 # trajopt
 RUN git clone https://github.com/joschu/trajopt.git /usr/local/src/trajopt
