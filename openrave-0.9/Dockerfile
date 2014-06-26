@@ -8,6 +8,7 @@ RUN apt-get install -y make cmake
 RUN apt-get install -y apt-utils
 RUN apt-get install -y python-numpy python-setuptools
 RUN easy_install pytz
+RUN pip install scipy
 
 # install dependencies
 RUN apt-get install -y libpcre++-dev libreadline-dev
