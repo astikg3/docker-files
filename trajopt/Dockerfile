@@ -22,5 +22,5 @@ RUN cd /usr/local/src/trajopt; \
 ENV PYTHONPATH $PYTHONPATH:/usr/local/src/trajopt:/usr/local/src/trajopt/build/lib
 
 # Now execute the following commands inside the docker container
-# grbgetkey c8e62080-0fc1-7665-e7ca-539b91f53fcf
+# grbgetkey c8e62080-0fc1-7665-e7ca-539b91f53fcf # licence key obtained from GUROBI
 # trajopt.sh

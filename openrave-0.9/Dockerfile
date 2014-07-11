@@ -17,12 +17,21 @@ RUN apt-get install -y libsoqt4-dev libcoin60-dev
 RUN apt-get install -y libboost-all-dev
 RUN apt-get install -y libpcre3 libpcrecpp0
 
-# latest pcre 
+latest pcre 
 ADD ./src/pcre-8.35 /usr/local/src/pcre-8.35
 RUN cd /usr/local/src/pcre-8.35; \
     ./configure; \
     make; \
     make install
+
+# collada-dom
+# ADD ./src/collada-dom-2.4.0 /usr/local/src/collada-dom-2.4.0
+# RUN cd /usr/local/src/collada-dom-2.4.0; \
+#     mkdir -p build; \
+#     cd build; \
+#     cmake ..; \
+#     make; \
+#     make install
 
 # OpenRAVE
 RUN git clone --branch master https://github.com/rdiankov/openrave.git /usr/local/src/openrave
