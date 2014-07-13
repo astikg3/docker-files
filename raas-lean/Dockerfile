@@ -1,4 +1,4 @@
-FROM dibyo/trajopt
+FROM ubuntu:14.04
 
 MAINTAINER Dibyo Majumdar <dibyo.majumdar@gmail.com>
 
@@ -9,4 +9,3 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y python-numpy python-setuptools rabbitmq-server
 RUN easy_install pytz
 RUN pip install tornado celery scipy
-
