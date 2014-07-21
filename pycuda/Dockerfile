@@ -28,30 +28,36 @@ RUN cd pycuda-2013.1.1
 RUN ./configure.py --cuda-root=/usr/local/cuda --cudadrv-lib-dir=/usr/lib --boost-inc-dir=/usr/include --boost-lib-dir=/usr/lib --boost-python-libname=boost_python-mt --boost-thread-libname=boost_thread-mt --no-use-shipped-boost
 RUN make -j 4
 
-# sudo docker run -i -t -v=/dev/dri:/dev/dri:rw '--lxc-conf=lxc.cgroup.devices.allow = c 226:* rwm' dibyo/pycuda bin/bash
+# sudo docker run -i -t -v=/dev/dri:/dev/dri:rw '--lxc-conf=lxc.cgroup.devices.allow = c 226:* rwm' dibyo/pycuda bin/bashsudo docker run -i -t --privileged=true -v=/dev/dri:/dev/dri:rw '--lxc-conf=lxc.cgroup.devices.allow = c 226:* rwm' ubuntu:12.04 bin/bash
 
 
-# echo "deb http://mirrors.kernel.org/ubuntu precise main universe" >> /etc/apt/sources.list
-# apt-get update
-# apt-get install build-essential wget
-# apt-get install python-dev python-setuptools
-# apt-get install python-numpy
-# apt-get install libboost-python-dev libboost-thread-dev
+echo "deb http://mirrors.kernel.org/ubuntu precise main universe" >> /etc/apt/sources.list
+apt-get update
+apt-get install build-essential wget -y
+apt-get install python-dev python-setuptools -y
+apt-get install python-numpy -y
+apt-get install libboost-python-dev libboost-thread-dev -y
 
-# # cuda
-# wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1204/x86_64/cuda-repo-ubuntu1204_6.0-37_amd64.deb
+# NVIDIA driver
+wget http://us.download.nvidia.com/XFree86/Linux-x86_64/340.24/NVIDIA-Linux-x86_64-340.24.run
+chmod +x NVIDIA-Linux-x86_64-340.24.run
+./NVIDIA-Linux-x86_64-340.run
 
-# dpkg -i cuda-repo-ubuntu1204_6.0-37_amd64.deb
-# apt-get update
-# apt-get install cuda
-# export PATH=/usr/local/cuda-6.0/bin:$PATH
-# export LD_LIBRARY_PATH=/usr/local/cuda-6.0/lib64:$LD_LIBRARY_PATH
-# export CUDA_ROOT=/usr/local/cuda-6.0/
-# wget https://pypi.python.org/packages/source/p/pycuda/pycuda-2013.1.1.tar.gz#md5=acf9319ab2970d9700ed6486aa87b708
-# tar xzvf pycuda-2013.1.1.tar.gz
-# cd pycuda-2013.1.1
-# ./configure.py --cuda-root=/usr/local/cuda --cudadrv-lib-dir=/usr/lib --boost-inc-dir=/usr/include --boost-lib-dir=/usr/lib --boost-python-libname=boost_python-mt --boost-thread-libname=boost_thread-mt --no-use-shipped-boost
-# make -j 4
+# cuda
+wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1204/x86_64/cuda-repo-ubuntu1204_6.0-37_amd64.deb
+
+dpkg -i cuda-repo-ubuntu1204_6.0-37_amd64.deb
+apt-get update
+apt-get install cuda
+export PATH=/usr/local/cuda-6.0/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-6.0/lib64:$LD_LIBRARY_PATH
+export CUDA_ROOT=/usr/local/cuda-6.0/
+wget https://pypi.python.org/packages/source/p/pycuda/pycuda-2013.1.1.tar.gz#md5=acf9319ab2970d9700ed6486aa87b708
+tar xzvf pycuda-2013.1.1.tar.gz
+cd pycuda-2013.1.1
+./configure.py --cuda-root=/usr/local/cuda --cudadrv-lib-dir=/usr/lib --boost-inc-dir=/usr/include --boost-lib-dir=/usr/lib --boost-python-libname=boost_python-mt --boost-thread-libname=boost_thread-mt --no-use-shipped-boost
+make -j 4
+sudo python setup.py install
 
 
 # 01:00.0 VGA compatible controller: NVIDIA Corporation GF116 [GeForce GTX 550 Ti] (rev a1) (prog-if 00 [VGA controller])
@@ -71,4 +77,3 @@ RUN make -j 4
 #     Capabilities: [600] Vendor Specific Information: ID=0001 Rev=1 Len=024 <?>
 #     Kernel driver in use: nvidia
 #     Kernel modules: nvidia_331, nouveau, nvidiafb
-
