@@ -35,13 +35,13 @@ echo "deb http://mirrors.kernel.org/ubuntu precise main universe" >> /etc/apt/so
 apt-get update
 apt-get install build-essential wget -y
 apt-get install python-dev python-setuptools -y
-apt-get install python-numpy -y
+apt-get install python-numpy python-mako -y
 apt-get install libboost-python-dev libboost-thread-dev -y
 
 # NVIDIA driver
-wget http://us.download.nvidia.com/XFree86/Linux-x86_64/340.24/NVIDIA-Linux-x86_64-340.24.run
+wget http://us. download.nvidia.com/XFree86/Linux-x86_64/340.24/NVIDIA-Linux-x86_64-340.24.run
 chmod +x NVIDIA-Linux-x86_64-340.24.run
-./NVIDIA-Linux-x86_64-340.run
+./NVIDIA-Linux-x86_64-340.24.run
 
 # cuda
 wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1204/x86_64/cuda-repo-ubuntu1204_6.0-37_amd64.deb
@@ -77,3 +77,6 @@ sudo python setup.py install
 #     Capabilities: [600] Vendor Specific Information: ID=0001 Rev=1 Len=024 <?>
 #     Kernel driver in use: nvidia
 #     Kernel modules: nvidia_331, nouveau, nvidiafb
+
+
+# sudo docker run -t --privileged=true -v=/dev/dri:/dev/dri:rw -v=/lib/modules/3.8.0-42-generic:/lib/modules/3.8.0-42-generic:rw '--lxc-conf=lxc.cgroup.devices.allow = c 226:* rwm' dibyo/intermediate sh ./NVIDIA-Linux-x86_64-340.24.run
